@@ -16,10 +16,17 @@ final class QueueConsumersValues extends AbstractList_ implements Listener
     public function values(Values $values): void
     {
         $values->registry->add(
-            'queues',
-            array_filter(
-                [...$this->workers()],
-                static fn (Worker $worker): bool => $worker->type === 'kubernetes',
+            'deployments',
+            array_map(
+                static fn (Worker $worker): array => [
+                    'name' => 'queue-worker-' . str_replace('.', '-', $worker->queue),
+                    'command' => 'mammatus-queue',
+                    'arguments' => [$worker->class],
+                ],
+                array_filter(
+                    [...$this->workers()],
+                    static fn (Worker $worker): bool => $worker->type === 'kubernetes',
+                ),
             ),
         );
     }
