@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Mammatus\\Tests\\Cron\\AppTest::runAngry":8,"Mammatus\\Tests\\Cron\\AppTest::runNonAction":8},"times":{"Mammatus\\Tests\\Cron\\AppTest::runHappy":0.053,"Mammatus\\Tests\\Cron\\AppTest::runAngry":0.002,"Mammatus\\Tests\\Cron\\AppTest::runNonAction":0.002}}
