@@ -52,6 +52,8 @@ final class App extends AbstractList_ implements Listener
 
         await(all($promises));
 
+        $this->context->close();
+
         return 0;
     }
 
