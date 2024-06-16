@@ -20,7 +20,7 @@ abstract class AbstractList_
 {% for worker in workers %}
         /** @see \{{ worker.class }} */
         yield new Worker(
-{% if worker.split_out == true %}
+{% if worker.splitOut == true %}
             'kubernetes',
 {% else %}
             'internal',
@@ -28,6 +28,7 @@ abstract class AbstractList_
             '{{ worker.consumer.queue }}',
             {{ worker.consumer.concurrency }},
             \{{ worker.class }}::class,
+            \json_decode('{{ worker.consumer.addOns|json_encode()|raw }}', true), /** @phpstan-ignore-line */
         );
 {% endfor %}
     }
