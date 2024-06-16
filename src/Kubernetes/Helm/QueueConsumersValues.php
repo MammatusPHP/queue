@@ -22,6 +22,7 @@ final class QueueConsumersValues extends AbstractList_ implements Listener
                     'name' => 'queue-worker-' . str_replace('.', '-', $worker->queue),
                     'command' => 'mammatus-queue',
                     'arguments' => [$worker->class],
+                    'addOns' => $worker->addOns,
                 ],
                 array_filter(
                     [...$this->workers()],

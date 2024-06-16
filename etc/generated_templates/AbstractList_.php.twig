@@ -28,6 +28,7 @@ abstract class AbstractList_
             '{{ worker.consumer.queue }}',
             {{ worker.consumer.concurrency }},
             \{{ worker.class }}::class,
+            \json_decode('{{ worker.consumer.addOns|json_encode()|raw }}', true),
         );
 {% endfor %}
     }
