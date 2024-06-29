@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mammatus\Queue;
 
+use Mammatus\Kubernetes\Contracts\AddOn;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
 
 final readonly class Worker
@@ -14,6 +15,7 @@ final readonly class Worker
         public string $queue,
         public int $concurrency,
         public string $class,
+        public array $addOns,
     ) {
     }
 }
