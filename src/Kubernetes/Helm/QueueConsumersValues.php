@@ -10,6 +10,8 @@ use Mammatus\Queue\Worker;
 use WyriHaximus\Broadcast\Contracts\Listener;
 
 use function array_filter;
+use function array_map;
+use function str_replace;
 
 final class QueueConsumersValues extends AbstractList_ implements Listener
 {
@@ -22,6 +24,7 @@ final class QueueConsumersValues extends AbstractList_ implements Listener
                     'name' => 'queue-worker-' . str_replace('.', '-', $worker->queue),
                     'command' => 'mammatus-queue',
                     'arguments' => [$worker->class],
+                    'addOns' => $worker->addOns,
                 ],
                 array_filter(
                     [...$this->workers()],

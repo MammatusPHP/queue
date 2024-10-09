@@ -7,17 +7,14 @@ namespace Mammatus\Queue;
 use Interop\Queue\Consumer;
 use Interop\Queue\Context;
 use Mammatus\LifeCycleEvents\Shutdown;
-use Mammatus\Queue\Contracts\Worker;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
 use Mammatus\Queue\Generated\AbstractList_;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
-use React\EventLoop\Loop;
-use RuntimeException;
 use Throwable;
 use WyriHaximus\Broadcast\Contracts\Listener;
-use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 
+use function assert;
 use function React\Async\async;
 use function React\Async\await;
 use function React\Promise\all;
@@ -57,7 +54,7 @@ final class App extends AbstractList_ implements Listener
         return 0;
     }
 
-    private function setupConsumer(\Mammatus\Queue\Worker $worker): int
+    private function setupConsumer(Worker $worker): int
     {
         $consumer       = $this->context->createConsumer(new Queue($worker->queue));
         $workerInstance = $this->container->get($worker->class);
