@@ -13,12 +13,15 @@ use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 
 use function array_key_exists;
 
+use const PHP_INT_MAX;
+
 final class AppTest extends AsyncTestCase
 {
     /** @test */
     public function runHappy(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create();
+        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
+        $internalConsumer->expects('receiveNoWait')->between(0, PHP_INT_MAX);
 
         Loop::futureTick(static fn () => $consumer->close());
 
@@ -36,7 +39,8 @@ final class AppTest extends AsyncTestCase
     /** @test */
     public function runAngry(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create();
+        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
+        $internalConsumer->expects('receiveNoWait')->between(0, PHP_INT_MAX);
 
         Loop::futureTick(static fn () => $consumer->close());
 
@@ -55,7 +59,7 @@ final class AppTest extends AsyncTestCase
     /** @test */
     public function notAnWorker(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create();
+        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_NOT_EXPECTED);
 
         $container->expects('get')->with(Noop::class)->atLeast()->once()->andReturn(new Sad());
 

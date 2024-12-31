@@ -13,6 +13,8 @@ final readonly class Item implements ItemContract, JsonSerializable
     /** @param class-string $class */
     public function __construct(
         public string $class,
+        public string $method,
+        public string $dtoClass,
         public Consumer $consumer,
         public bool $splitOut,
     ) {
@@ -23,6 +25,8 @@ final readonly class Item implements ItemContract, JsonSerializable
     {
         return [
             'class' => $this->class,
+            'method' => $this->method,
+            'dtoClass' => $this->dtoClass,
             'consumer' => $this->consumer,
             'split_out' => $this->splitOut,
         ];

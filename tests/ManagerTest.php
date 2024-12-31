@@ -19,13 +19,16 @@ use function array_key_exists;
 use function React\Async\await;
 use function React\Promise\Timer\sleep;
 
+use const PHP_INT_MAX;
+
 #[TimeOut(133)]
 final class ManagerTest extends AsyncTestCase
 {
     /** @test */
     public function runHappy(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create();
+        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
+        $internalConsumer->expects('receiveNoWait')->between(0, PHP_INT_MAX);
 
         $container->expects('get')->with(Noop::class)->atLeast()->once()->andReturn(new Noop());
 
@@ -45,14 +48,15 @@ final class ManagerTest extends AsyncTestCase
             $logger,
         );
         $manager->start(new Initialize());
-        await(sleep(99));
+        await(sleep(9));
         $manager->stop(new Shutdown());
     }
 
     /** @test */
     public function runAngry(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create();
+        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
+        $internalConsumer->expects('receiveNoWait')->between(0, PHP_INT_MAX);
 
         $context->expects('close')->once();
 
@@ -74,14 +78,15 @@ final class ManagerTest extends AsyncTestCase
             $logger,
         );
         $manager->start(new Initialize());
-        await(sleep(99));
+        await(sleep(9));
         $manager->stop(new Shutdown());
     }
 
     /** @test */
     public function notAnWorker(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create();
+        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_NOT_EXPECTED);
+        $internalConsumer->expects('receiveNoWait')->between(0, PHP_INT_MAX);
 
         $container->expects('get')->with(Noop::class)->atLeast()->once()->andReturn(new Sad());
 

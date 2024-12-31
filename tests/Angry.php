@@ -14,7 +14,7 @@ final class Angry implements Worker
     {
     }
 
-    public function perform(Message $message): void
+    public function perform(Message $work): void
     {
         throw $this->angry;
     }

@@ -10,6 +10,7 @@ final readonly class Worker
 {
     /**
      * @param class-string<WorkerContract> $class
+     * @param class-string                 $dtoClass
      * @param array<string, mixed>         $addOns
      */
     public function __construct(
@@ -17,6 +18,8 @@ final readonly class Worker
         public string $queue,
         public int $concurrency,
         public string $class,
+        public string $method,
+        public string $dtoClass,
         public array $addOns,
     ) {
     }
