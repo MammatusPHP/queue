@@ -28,6 +28,8 @@ abstract class AbstractList
             '{{ worker.consumer.queue }}',
             {{ worker.consumer.concurrency }},
             \{{ worker.class }}::class,
+            '{{ worker.method }}',
+            \{{ worker.dtoClass }}::class,
             \json_decode('{{ worker.consumer.addOns|json_encode()|raw }}', true), /** @phpstan-ignore-line */
         );
 {% endfor %}

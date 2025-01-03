@@ -1,6 +1,15 @@
 parameters:
+	excludePaths:
+		- ../../src/Generated/*
 	ignoreErrors:
 		- '#Method Mammatus\\Queue\\Consumer::__construct\(\) has a parameter \$container with a type declaration of Psr\\Container\\ContainerInterface, but containers should not be injected.#'
+		- '#thecodingmachine\/safe#'
+		-
+			message: '#file_put_contents blocks the event loop#'
+			path: ../../src/Composer/Plugin.php
+		-
+			message: '#Variable method call on Mammatus\\Queue\\Contracts\\Worker.#'
+			path: ../../src/Consumer.php
 	ergebnis:
 		noExtends:
 			classesAllowedToBeExtended:

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mammatus\Queue\Composer;
 
+use EventSauce\ObjectHydrator\ObjectMapperCodeGenerator;
 use Mammatus\Queue\Contracts\Worker;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\ImplementsInterface;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\IsInstantiable;
@@ -59,5 +60,18 @@ final class Plugin implements GenerativePlugin
         $installPathList   = $rootPath . '/src/Generated/AbstractList.php';
         file_put_contents($installPathList, $classContentsList); /** @phpstan-ignore-line */
         chmod($installPathList, 0664); /** @phpstan-ignore-line */
+
+        $dtos = [];
+        foreach ($items as $item) {
+            if (! ($item instanceof Item)) {
+                continue;
+            }
+
+            $dtos[] = $item->dtoClass;
+        }
+
+        $hydratorGenerator = new ObjectMapperCodeGenerator();
+        $code              = $hydratorGenerator->dump($dtos, 'Mammatus\Queue\Generated\Hydrator');
+        file_put_contents($rootPath . '/src/Generated/Hydrator.php', $code);
     }
 }
