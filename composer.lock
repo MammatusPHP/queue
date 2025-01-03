@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5930d5e0175979e26950627e70f8f403",
+    "content-hash": "6b3cd7fa7240579c61fa35a37ad231af",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -1558,16 +1558,16 @@
         },
         {
             "name": "mammatus/queue-attributes",
-            "version": "dev-enforce-DTOs-for-messaging",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/queue-attributes.git",
-                "reference": "119fecc839f68ab713c061b4726f151552752bd2"
+                "reference": "fe031df9489d5707b133f85bbb143ae63036a0ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/queue-attributes/zipball/119fecc839f68ab713c061b4726f151552752bd2",
-                "reference": "119fecc839f68ab713c061b4726f151552752bd2",
+                "url": "https://api.github.com/repos/MammatusPHP/queue-attributes/zipball/fe031df9489d5707b133f85bbb143ae63036a0ae",
+                "reference": "fe031df9489d5707b133f85bbb143ae63036a0ae",
                 "shasum": ""
             },
             "require": {
@@ -1577,6 +1577,7 @@
             "require-dev": {
                 "wyrihaximus/test-utilities": "^5.6"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1590,7 +1591,7 @@
             "description": "🪆 Queue attributes",
             "support": {
                 "issues": "https://github.com/MammatusPHP/queue-attributes/issues",
-                "source": "https://github.com/MammatusPHP/queue-attributes/tree/enforce-DTOs-for-messaging"
+                "source": "https://github.com/MammatusPHP/queue-attributes/tree/main"
             },
             "funding": [
                 {
@@ -1598,20 +1599,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-31T12:41:44+00:00"
+            "time": "2025-01-03T15:15:45+00:00"
         },
         {
             "name": "mammatus/queue-contracts",
-            "version": "dev-enforce-DTOs-for-messaging",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/queue-contracts.git",
-                "reference": "d26d3771646f376a3d0dfc0117b221c10d913fbf"
+                "reference": "46d11da5cdbc17d74969a3a356459a65c0d595c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/queue-contracts/zipball/d26d3771646f376a3d0dfc0117b221c10d913fbf",
-                "reference": "d26d3771646f376a3d0dfc0117b221c10d913fbf",
+                "url": "https://api.github.com/repos/MammatusPHP/queue-contracts/zipball/46d11da5cdbc17d74969a3a356459a65c0d595c0",
+                "reference": "46d11da5cdbc17d74969a3a356459a65c0d595c0",
                 "shasum": ""
             },
             "require": {
@@ -1621,6 +1622,7 @@
             "require-dev": {
                 "wyrihaximus/test-utilities": "^5.6"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1634,7 +1636,7 @@
             "description": "📜 Queue contracts",
             "support": {
                 "issues": "https://github.com/MammatusPHP/queue-contracts/issues",
-                "source": "https://github.com/MammatusPHP/queue-contracts/tree/enforce-DTOs-for-messaging"
+                "source": "https://github.com/MammatusPHP/queue-contracts/tree/main"
             },
             "funding": [
                 {
@@ -1642,7 +1644,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-31T13:55:18+00:00"
+            "time": "2025-01-03T13:58:24+00:00"
         },
         {
             "name": "mindplay/composer-locator",

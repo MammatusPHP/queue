@@ -13,13 +13,13 @@
     "mammatus/kubernetes-contracts": "^1",
     "mammatus/kubernetes-events": "^1",
     "mammatus/life-cycle-events": "^2",
-    "mammatus/queue-attributes": "dev-enforce-DTOs-for-messaging",
-    "mammatus/queue-contracts": "dev-enforce-DTOs-for-messaging",
+    "mammatus/queue-attributes": "dev-main",
+    "mammatus/queue-contracts": "dev-main",
     "psr/container": "^1.1.2",
     "psr/event-dispatcher": "^1.0",
     "psr/log": "^2",
-    "queue-interop/queue-interop": "*",
-    "react/async": "^4.2",
+    "queue-interop/queue-interop": "^0.8.1",
+    "react/async": "^4.3",
     "react/event-loop": "^1.5",
     "react/promise": "^3.2",
     "roave/better-reflection": "^6.26",
@@ -33,7 +33,7 @@
   "require-dev": {
     "bbqueue/bunny": "dev-main",
     "bunny/bunny": "^0.6@dev",
-    "wyrihaximus/async-test-utilities": "^8.0.1"
+    "wyrihaximus/async-test-utilities": "^8.0.5"
   },
   "autoload": {
     "psr-4": {
