@@ -7,6 +7,7 @@ namespace Mammatus\Queue;
 use Mammatus\LifeCycleEvents\Shutdown;
 use Mammatus\Queue\Generated\AbstractList;
 use Psr\Log\LoggerInterface;
+use React\EventLoop\Loop;
 use Throwable;
 use WyriHaximus\Broadcast\Contracts\Listener;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
@@ -30,7 +31,8 @@ final class App extends AbstractList implements Listener
 
     public function run(string $className): int
     {
-        return await(async(function (string $className): int {
+        $exitCode = 2;
+        async(function (string $className): int {
             $logger = new ContextLogger($this->logger, ['worker' => $className]);
             try {
                 $promises = [];
@@ -52,6 +54,12 @@ final class App extends AbstractList implements Listener
             }
 
             return $exitCode;
-        })($className));
+        })($className)->then(static function (int $resultingExitCode) use (&$exitCode): void {
+            $exitCode = $resultingExitCode;
+        });
+
+        Loop::run();
+
+        return $exitCode;
     }
 }
