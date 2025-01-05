@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php declare(strict_types=1);
 
+use Mammatus\Argv;
+use Mammatus\Boot;
 use Mammatus\Queue\App;
 use Mammatus\ContainerFactory;
 
@@ -15,5 +17,5 @@ use Mammatus\ContainerFactory;
     /**
      * Create and run that one cron job
      */
-    exit((static fn (string $className): int => ContainerFactory::create()->get(App::class)->run($className))($className));
+    exit(Boot::boot(App::class, new App\Queue($className))->value);
 })($argv[1]);

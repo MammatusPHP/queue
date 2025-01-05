@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Mammatus\Queue;
 
 use Interop\Queue as QueueInterop;
+use Interop\Queue\Message;
+use Mammatus\Queue\Contracts\Encoder;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
-use Mammatus\Queue\Generated\AbstractList;
 use Mammatus\Queue\Generated\Hydrator;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
@@ -14,16 +15,16 @@ use React\Promise\PromiseInterface;
 use RuntimeException;
 use Throwable;
 use WyriHaximus\Broadcast\Contracts\Listener;
+use WyriHaximus\PSR3\CallableThrowableLogger\CallableThrowableLogger;
+use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 
-use function is_array;
-use function json_decode;
 use function React\Async\async;
 use function React\Async\await;
 use function React\Promise\all;
 use function React\Promise\Timer\sleep;
 use function WyriHaximus\React\futurePromise;
 
-final class Consumer extends AbstractList implements Listener
+final class Consumer implements Listener
 {
     private bool $running = true;
 
@@ -31,6 +32,7 @@ final class Consumer extends AbstractList implements Listener
         private readonly ContainerInterface $container,
         private readonly QueueInterop\Context $context,
         private readonly Hydrator $hydrator,
+        private readonly Encoder $encoder,
         private readonly LoggerInterface $logger,
     ) {
     }
@@ -43,47 +45,65 @@ final class Consumer extends AbstractList implements Listener
     /** @return PromiseInterface<mixed> */
     public function setupConsumer(Worker $worker): PromiseInterface
     {
+        $this->logger->debug('Setting up logger for ' . $worker->class);
+        $logger = new ContextLogger($this->logger, ['worker' => $worker->class, 'method' => $worker->method]);
+
+        $this->logger->debug('Getting worker instance for ' . $worker->class);
         $workerInstance = $this->container->get($worker->class);
         if (! ($workerInstance instanceof WorkerContract)) {
             throw new RuntimeException('Worker instance must be instance of ' . WorkerContract::class);
         }
 
         $promises = [
-            sleep(0.1),
+            sleep(1),
         ];
+        $this->logger->debug('Starting ' . $worker->concurrency . ' workers for ' . $worker->class);
         for ($i = 0; $i < $worker->concurrency; $i++) {
             $this->logger->info('Starting consumer ' . $i . ' of ' . $worker->concurrency . ' for ' . $worker->class);
-            $promises[] = async(fn () => $this->consume($worker, $workerInstance))();
+            $promises[] = async(fn () => $this->consume($worker, $workerInstance, new ContextLogger($logger, ['fiber' => $i])))();
         }
 
         return all($promises);
     }
 
-    private function consume(Worker $worker, WorkerContract $workerInstance): void
+    private function consume(Worker $worker, WorkerContract $workerInstance, LoggerInterface $baseLogger): bool
     {
+        await(sleep(1));
         $consumer = $this->context->createConsumer(new Queue($worker->queue));
         while ($this->running) {
             $message = $consumer->receiveNoWait();
             if ($message === null) {
-                await(futurePromise());
+                await(sleep(1));
                 continue;
             }
 
-            try {
-                $json = json_decode($message->getBody(), true);
-                if (! is_array($json)) {
-                    throw new RuntimeException('Message is not valid JSON');
-                }
+            $this->handleMessage($message, $consumer, $worker, $workerInstance, $baseLogger);
+            await(futurePromise());
+        }
 
-                $dto = $this->hydrator->hydrateObject($worker->dtoClass, $json);
-                $workerInstance->{$worker->method}($dto);
-                $consumer->acknowledge($message);
-            } catch (Throwable $error) {
-                $consumer->reject($message);
-                $this->close();
+        return true;
+    }
 
-                throw $error;
-            }
+    private function handleMessage(Message $message, \Interop\Queue\Consumer $consumer, Worker $worker, WorkerContract $workerInstance, LoggerInterface $baseLogger): void
+    {
+        $logger = new ContextLogger($baseLogger, ['dtoClass' => $worker->dtoClass]);
+
+        try {
+            $this->logger->debug('Hydrating message');
+            $dto = $this->hydrator->hydrateObject(
+                $worker->dtoClass,
+                $this->encoder->decode($message->getBody()),
+            );
+
+            $this->logger->debug('Invoking worker');
+            $workerInstance->{$worker->method}($dto);
+
+            $this->logger->debug('Acknowledging message');
+            $consumer->acknowledge($message);
+        } catch (Throwable $error) {
+            $this->logger->debug('Rejecting message');
+            $consumer->reject($message);
+            CallableThrowableLogger::create($logger)($error);
         }
     }
 }

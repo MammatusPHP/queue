@@ -18,6 +18,7 @@ use WyriHaximus\React\PHPUnit\TimeOut;
 use function array_key_exists;
 use function React\Async\await;
 use function React\Promise\Timer\sleep;
+use function str_contains;
 
 use const PHP_INT_MAX;
 
@@ -34,6 +35,7 @@ final class ManagerTest extends AsyncTestCase
 
         $eventDispatcher = Mockery::mock(EventDispatcherInterface::class);
 
+        $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('debug')->with('Starting queue manager')->once();
         $logger->expects('debug')->with('Started queue manager')->once();
         $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
@@ -60,6 +62,7 @@ final class ManagerTest extends AsyncTestCase
 
         $exception = new RuntimeException('Ik ben boos!');
 
+        $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('debug')->with('Starting queue manager')->once();
         $logger->expects('debug')->with('Started queue manager')->once();
         $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
@@ -89,8 +92,8 @@ final class ManagerTest extends AsyncTestCase
         $eventDispatcher = Mockery::mock(EventDispatcherInterface::class);
         $eventDispatcher->expects('dispatch')->withArgs(static fn (Shutdown $event): bool => true)->once();
 
+        $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('debug')->with('Starting queue manager')->once();
-
         $logger->expects('error')->withArgs(static function (string $error, array $context): bool {
             if ($error !== 'Worker errored: Worker instance must be instance of ' . WorkerContract::class) {
                 return false;

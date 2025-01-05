@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace Mammatus\Queue;
 
+use Mammatus\Contracts\Argv;
+use Mammatus\Contracts\Bootable;
+use Mammatus\ExitCode;
 use Mammatus\LifeCycleEvents\Shutdown;
+use Mammatus\Queue\App\Queue;
 use Mammatus\Queue\Generated\AbstractList;
 use Psr\Log\LoggerInterface;
-use React\EventLoop\Loop;
 use Throwable;
 use WyriHaximus\Broadcast\Contracts\Listener;
-use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 
-use function React\Async\async;
 use function React\Async\await;
 use function React\Promise\all;
+use function React\Promise\Timer\sleep;
 
-final class App extends AbstractList implements Listener
+/** @implements Bootable<Queue> */
+final class App extends AbstractList implements Bootable, Listener
 {
     public function __construct(
         private readonly Consumer $consumer,
@@ -29,36 +32,28 @@ final class App extends AbstractList implements Listener
         $this->consumer->close();
     }
 
-    public function run(string $className): int
+    public function boot(Argv $argv): ExitCode
     {
-        $exitCode = 2;
-        async(function (string $className): int {
-            $logger = new ContextLogger($this->logger, ['worker' => $className]);
-            try {
-                $promises = [];
-                foreach ($this->workers() as $worker) {
-                    if ($worker->class !== $className) {
-                        continue;
-                    }
-
-                    $promises[] = $this->consumer->setupConsumer($worker);
+        try {
+            $promises = [];
+            foreach ($this->workers() as $worker) {
+                if ($worker->class !== $argv->className) {
+                    continue;
                 }
 
-                await(all($promises));
-
-                $exitCode = 0;
-            } catch (Throwable $throwable) { /** @phpstan-ignore-line */
-                $logger->error('Worker errored: ' . $throwable->getMessage(), ['exception' => $throwable]);
-
-                $exitCode = 1;
+                $promises[] = $this->consumer->setupConsumer($worker);
             }
 
-            return $exitCode;
-        })($className)->then(static function (int $resultingExitCode) use (&$exitCode): void {
-            $exitCode = $resultingExitCode;
-        });
+            await(all($promises));
 
-        Loop::run();
+            $exitCode = ExitCode::Success;
+        } catch (Throwable $throwable) { /** @phpstan-ignore-line */
+            $this->logger->error('Worker errored: ' . $throwable->getMessage(), ['exception' => $throwable]);
+
+            $exitCode = ExitCode::Failure;
+        }
+
+        await(sleep(3));
 
         return $exitCode;
     }
