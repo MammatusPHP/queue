@@ -20,6 +20,7 @@ use function json_decode;
 use function React\Async\async;
 use function React\Async\await;
 use function React\Promise\all;
+use function React\Promise\Timer\sleep;
 use function WyriHaximus\React\futurePromise;
 
 final class Consumer extends AbstractList implements Listener
@@ -37,8 +38,6 @@ final class Consumer extends AbstractList implements Listener
     public function close(): void
     {
         $this->running = false;
-
-        $this->context->close();
     }
 
     /** @return PromiseInterface<mixed> */
@@ -49,7 +48,9 @@ final class Consumer extends AbstractList implements Listener
             throw new RuntimeException('Worker instance must be instance of ' . WorkerContract::class);
         }
 
-        $promises = [];
+        $promises = [
+            sleep(0.1),
+        ];
         for ($i = 0; $i < $worker->concurrency; $i++) {
             $this->logger->info('Starting consumer ' . $i . ' of ' . $worker->concurrency . ' for ' . $worker->class);
             $promises[] = async(fn () => $this->consume($worker, $workerInstance))();

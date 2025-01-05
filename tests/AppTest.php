@@ -27,8 +27,6 @@ final class AppTest extends AsyncTestCase
 
         $container->expects('get')->with(Noop::class)->once()->andReturn(new Noop());
 
-        $context->expects('close')->once();
-
         $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
 
         $exitCode = (new App($consumer, $logger))->run(Noop::class);
@@ -46,8 +44,6 @@ final class AppTest extends AsyncTestCase
 
         $exception = new RuntimeException('Ik ben boos!');
         $container->expects('get')->with(Noop::class)->once()->andReturn(new Angry($exception));
-
-        $context->expects('close')->once();
 
         $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
 
