@@ -32,8 +32,6 @@ final class ManagerTest extends AsyncTestCase
 
         $container->expects('get')->with(Noop::class)->atLeast()->once()->andReturn(new Noop());
 
-        $context->expects('close')->once();
-
         $eventDispatcher = Mockery::mock(EventDispatcherInterface::class);
 
         $logger->expects('debug')->with('Starting queue manager')->once();
@@ -57,8 +55,6 @@ final class ManagerTest extends AsyncTestCase
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
         $internalConsumer->expects('receiveNoWait')->between(0, PHP_INT_MAX);
-
-        $context->expects('close')->once();
 
         $eventDispatcher = Mockery::mock(EventDispatcherInterface::class);
 

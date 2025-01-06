@@ -23,7 +23,6 @@ final class ConsumerTest extends AsyncTestCase
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
         $container->expects('get')->with(Noop::class)->once()->andReturn(new Noop());
-        $context->expects('close')->once();
         $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
 
         $message = new Message();
@@ -53,7 +52,6 @@ final class ConsumerTest extends AsyncTestCase
 
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
         $container->expects('get')->with(Noop::class)->once()->andReturn(new Noop());
-        $context->expects('close')->once();
         $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
 
         $message = new Message();
