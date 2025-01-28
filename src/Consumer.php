@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mammatus\Queue;
 
 use Interop\Queue as QueueInterop;
+use Mammatus\Queue\Contracts\Encoder;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
 use Mammatus\Queue\Generated\AbstractList;
 use Mammatus\Queue\Generated\Hydrator;
@@ -15,8 +16,6 @@ use RuntimeException;
 use Throwable;
 use WyriHaximus\Broadcast\Contracts\Listener;
 
-use function is_array;
-use function json_decode;
 use function React\Async\async;
 use function React\Async\await;
 use function React\Promise\all;
@@ -31,6 +30,7 @@ final class Consumer extends AbstractList implements Listener
         private readonly ContainerInterface $container,
         private readonly QueueInterop\Context $context,
         private readonly Hydrator $hydrator,
+        private readonly Encoder $encoder,
         private readonly LoggerInterface $logger,
     ) {
     }
@@ -70,19 +70,16 @@ final class Consumer extends AbstractList implements Listener
             }
 
             try {
-                $json = json_decode($message->getBody(), true);
-                if (! is_array($json)) {
-                    throw new RuntimeException('Message is not valid JSON');
-                }
+                $dto = $this->hydrator->hydrateObject(
+                    $worker->dtoClass,
+                    $this->encoder->decode($message->getBody()),
+                );
 
-                $dto = $this->hydrator->hydrateObject($worker->dtoClass, $json);
                 $workerInstance->{$worker->method}($dto);
                 $consumer->acknowledge($message);
             } catch (Throwable $error) {
                 $consumer->reject($message);
-                $this->close();
-
-                throw $error;
+                echo $error;
             }
         }
     }

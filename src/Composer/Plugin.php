@@ -61,6 +61,16 @@ final class Plugin implements GenerativePlugin
         file_put_contents($installPathList, $classContentsList); /** @phpstan-ignore-line */
         chmod($installPathList, 0664); /** @phpstan-ignore-line */
 
+        $classContentsList = SimpleTwig::render(
+            file_get_contents( /** @phpstan-ignore-line */
+                $rootPath . '/etc/generated_templates/WorkQueueMap.php.twig',
+            ),
+            ['workers' => $items],
+        );
+        $installPathList   = $rootPath . '/src/Generated/WorkQueueMap.php';
+        file_put_contents($installPathList, $classContentsList); /** @phpstan-ignore-line */
+        chmod($installPathList, 0664); /** @phpstan-ignore-line */
+
         $dtos = [];
         foreach ($items as $item) {
             if (! ($item instanceof Item)) {

@@ -7,6 +7,7 @@ namespace Mammatus\Tests\Queue;
 use Interop\Queue as QueueInterop;
 use Interop\Queue\Queue;
 use Mammatus\Queue\Consumer;
+use Mammatus\Queue\Encoder\JSON;
 use Mammatus\Queue\Generated\Hydrator;
 use Mockery;
 use Psr\Container\ContainerInterface;
@@ -32,7 +33,7 @@ final class ConsumerFactory
             return true;
         })->between($createConsumerExpected ? 1 : 0, PHP_INT_MAX)->andReturn($consumerInternal);
 
-        $consumer = new Consumer($container, $context, new Hydrator(), $logger);
+        $consumer = new Consumer($container, $context, new Hydrator(), new JSON(), $logger);
 
         return [
             $consumer,

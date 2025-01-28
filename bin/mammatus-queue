@@ -15,5 +15,5 @@ use Mammatus\ContainerFactory;
     /**
      * Create and run that one cron job
      */
-    exit((static fn (string $className): int => ContainerFactory::create()->get(App::class)->run($className))($className));
+    exit((static fn (string $className): int => ContainerFactory::create()->get(App::class)->run($className)->value)($className));
 })($argv[1]);

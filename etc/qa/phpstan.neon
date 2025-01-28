@@ -15,6 +15,8 @@ parameters:
 			classesAllowedToBeExtended:
 				- Composer\IO\NullIO
 				- Mammatus\Queue\Generated\AbstractList
+				- Mammatus\Queue\Generated\WorkQueueMap
+				- RuntimeException
 
 includes:
 	- ../../vendor/wyrihaximus/async-test-utilities/rules.neon
