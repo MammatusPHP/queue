@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mammatus\Tests\Queue;
 
+use Mammatus\ExitCode;
 use Mammatus\Queue\App;
 use Mammatus\Queue\BuildIn\Noop;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
@@ -12,6 +13,7 @@ use RuntimeException;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 
 use function array_key_exists;
+use function str_contains;
 
 use const PHP_INT_MAX;
 
@@ -27,11 +29,12 @@ final class AppTest extends AsyncTestCase
 
         $container->expects('get')->with(Noop::class)->once()->andReturn(new Noop());
 
+        $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
 
-        $exitCode = (new App($consumer, $logger))->run(Noop::class);
+        $exitCode = (new App($consumer, $logger))->boot(new App\Queue(Noop::class));
 
-        self::assertSame(0, $exitCode);
+        self::assertSame(ExitCode::Success, $exitCode);
     }
 
     /** @test */
@@ -45,11 +48,12 @@ final class AppTest extends AsyncTestCase
         $exception = new RuntimeException('Ik ben boos!');
         $container->expects('get')->with(Noop::class)->once()->andReturn(new Angry($exception));
 
+        $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
 
-        $exitCode = (new App($consumer, $logger))->run(Noop::class);
+        $exitCode = (new App($consumer, $logger))->boot(new App\Queue(Noop::class));
 
-        self::assertSame(0, $exitCode);
+        self::assertSame(ExitCode::Success, $exitCode);
     }
 
     /** @test */
@@ -59,11 +63,8 @@ final class AppTest extends AsyncTestCase
 
         $container->expects('get')->with(Noop::class)->atLeast()->once()->andReturn(new Sad());
 
-        $logger->expects('log')->withArgs(static function (string $type, string $error, array $context): bool {
-            if ($type !== 'error') {
-                return false;
-            }
-
+        $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
+        $logger->expects('error')->withArgs(static function (string $error, array $context): bool {
             if ($error !== 'Worker errored: Worker instance must be instance of ' . WorkerContract::class) {
                 return false;
             }
@@ -72,8 +73,8 @@ final class AppTest extends AsyncTestCase
         })->atLeast()->once();
         $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Sad::class)->never();
 
-        $exitCode = (new App($consumer, $logger))->run(Noop::class);
+        $exitCode = (new App($consumer, $logger))->boot(new App\Queue(Noop::class));
 
-        self::assertSame(1, $exitCode);
+        self::assertSame(ExitCode::Failure, $exitCode);
     }
 }

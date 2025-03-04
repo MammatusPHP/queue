@@ -10,11 +10,16 @@ parameters:
 		-
 			message: '#Variable method call on Mammatus\\Queue\\Contracts\\Worker.#'
 			path: ../../src/Consumer.php
+		-
+			message: '#In method \"Mammatus\\Queue\\Consumer::handleMessage\", caught \"Throwable\" must be rethrown.#'
+			path: ../../src/Consumer.php
 	ergebnis:
 		noExtends:
 			classesAllowedToBeExtended:
 				- Composer\IO\NullIO
 				- Mammatus\Queue\Generated\AbstractList
+				- Mammatus\Queue\Generated\WorkQueueMap
+				- RuntimeException
 
 includes:
 	- ../../vendor/wyrihaximus/async-test-utilities/rules.neon

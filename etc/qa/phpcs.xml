@@ -9,7 +9,7 @@
     <file>../../src</file>
     <file>../../tests</file>
 
-    <exclude-pattern>src/Generated/*</exclude-pattern>
-
     <rule ref="WyriHaximus-OSS" />
+
+    <exclude-pattern>src/Generated/Hydrator.php</exclude-pattern>
 </ruleset>
