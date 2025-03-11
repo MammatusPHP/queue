@@ -104,16 +104,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.5.5",
+            "version": "1.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "08c50d5ec4c6ced7d0271d2862dec8c1033283e6"
+                "reference": "f65c239c970e7f072f067ab78646e9f0b2935175"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/08c50d5ec4c6ced7d0271d2862dec8c1033283e6",
-                "reference": "08c50d5ec4c6ced7d0271d2862dec8c1033283e6",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/f65c239c970e7f072f067ab78646e9f0b2935175",
+                "reference": "f65c239c970e7f072f067ab78646e9f0b2935175",
                 "shasum": ""
             },
             "require": {
@@ -160,7 +160,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.5.5"
+                "source": "https://github.com/composer/ca-bundle/tree/1.5.6"
             },
             "funding": [
                 {
@@ -176,7 +176,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-01-08T16:17:16+00:00"
+            "time": "2025-03-06T14:30:56+00:00"
         },
         {
             "name": "composer/class-map-generator",
@@ -1263,19 +1263,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/app.git",
-                "reference": "09673bc852be8d1acdbe60dd0f7e891101628b80"
+                "reference": "474b586055a41313eaee3efa2d7a34522fde5626"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/09673bc852be8d1acdbe60dd0f7e891101628b80",
-                "reference": "09673bc852be8d1acdbe60dd0f7e891101628b80",
+                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/474b586055a41313eaee3efa2d7a34522fde5626",
+                "reference": "474b586055a41313eaee3efa2d7a34522fde5626",
                 "shasum": ""
             },
             "require": {
                 "bramus/monolog-colored-line-formatter": "^3.0",
                 "composer-runtime-api": "^2.2",
                 "ext-pcntl": "^8.2",
-                "mammatus/life-cycle-events": "^2.0",
+                "mammatus/life-cycle-events": "^2.1",
                 "monolog/monolog": "^3.5",
                 "php": "^8.2",
                 "php-di-definitions/definitions-gatherer": "^1",
@@ -1359,7 +1359,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-03T23:19:45+00:00"
+            "time": "2025-03-11T20:27:04+00:00"
         },
         {
             "name": "mammatus/kubernetes-attributes",
@@ -1517,16 +1517,16 @@
         },
         {
             "name": "mammatus/life-cycle-events",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/life-cycle-events.git",
-                "reference": "e3baa236cc8493b89028ea46203fbb65619fea47"
+                "reference": "8d8ab3b0baa653750d6a91aac52bcf18cf190297"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/life-cycle-events/zipball/e3baa236cc8493b89028ea46203fbb65619fea47",
-                "reference": "e3baa236cc8493b89028ea46203fbb65619fea47",
+                "url": "https://api.github.com/repos/MammatusPHP/life-cycle-events/zipball/8d8ab3b0baa653750d6a91aac52bcf18cf190297",
+                "reference": "8d8ab3b0baa653750d6a91aac52bcf18cf190297",
                 "shasum": ""
             },
             "require": {
@@ -1548,7 +1548,7 @@
             "description": "♻️ Life Cycle Events for MammatusPHP Applications",
             "support": {
                 "issues": "https://github.com/MammatusPHP/life-cycle-events/issues",
-                "source": "https://github.com/MammatusPHP/life-cycle-events/tree/2.0.0"
+                "source": "https://github.com/MammatusPHP/life-cycle-events/tree/2.1.0"
             },
             "funding": [
                 {
@@ -1556,7 +1556,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-22T20:11:28+00:00"
+            "time": "2025-03-11T18:25:04+00:00"
         },
         {
             "name": "mammatus/queue-attributes",
@@ -5710,31 +5710,32 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakubkulhan/bunny.git",
-                "reference": "c05d3aa8f1ef69b754b77f26794a39e13e7f7637"
+                "reference": "3f43b5126455a870fa653d79c26f59e36d0595e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/c05d3aa8f1ef69b754b77f26794a39e13e7f7637",
-                "reference": "c05d3aa8f1ef69b754b77f26794a39e13e7f7637",
+                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/3f43b5126455a870fa653d79c26f59e36d0595e1",
+                "reference": "3f43b5126455a870fa653d79c26f59e36d0595e1",
                 "shasum": ""
             },
             "require": {
-                "evenement/evenement": "^3",
+                "evenement/evenement": "^3.0",
                 "php": "^8.1",
                 "react/async": "^4.2",
                 "react/event-loop": "^1.5",
                 "react/promise": "^3.1",
-                "react/promise-stream": "^1.7",
-                "react/promise-timer": "^1.10",
-                "react/socket": "^1.15",
-                "react/stream": "^1.3"
+                "react/socket": "^1.15"
             },
             "require-dev": {
+                "doctrine/coding-standard": "^12.0",
                 "ext-pcntl": "*",
-                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan": "^2.1",
                 "phpunit/phpunit": "^9.6",
                 "react/child-process": "^0.6.5",
-                "wyrihaximus/react-phpunit-run-tests-in-fiber": "^2 || ^1"
+                "react/promise-stream": "^1.7",
+                "react/promise-timer": "^1.11",
+                "squizlabs/php_codesniffer": "^3.11",
+                "wyrihaximus/react-phpunit-run-tests-in-fiber": "^1.0 || ^2.0"
             },
             "default-branch": true,
             "type": "library",
@@ -5775,7 +5776,7 @@
                 "issues": "https://github.com/jakubkulhan/bunny/issues",
                 "source": "https://github.com/jakubkulhan/bunny/tree/0.6.x"
             },
-            "time": "2025-02-20T10:49:46+00:00"
+            "time": "2025-03-10T13:33:49+00:00"
         },
         {
             "name": "colinodell/json5",
@@ -9835,16 +9836,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.19",
+            "version": "1.12.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c42ba9bab7a940ed00092ecb1c77bad98896d789"
+                "reference": "14276fdef70575106a3392a4ed553c06a984df28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c42ba9bab7a940ed00092ecb1c77bad98896d789",
-                "reference": "c42ba9bab7a940ed00092ecb1c77bad98896d789",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/14276fdef70575106a3392a4ed553c06a984df28",
+                "reference": "14276fdef70575106a3392a4ed553c06a984df28",
                 "shasum": ""
             },
             "require": {
@@ -9889,7 +9890,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-19T15:42:21+00:00"
+            "time": "2025-03-09T09:24:50+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -11147,85 +11148,6 @@
                 }
             ],
             "time": "2024-06-13T14:18:03+00:00"
-        },
-        {
-            "name": "react/promise-stream",
-            "version": "v1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/promise-stream.git",
-                "reference": "5c7ec3450f558deb779742e33967d837e2db7871"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/5c7ec3450f558deb779742e33967d837e2db7871",
-                "reference": "5c7ec3450f558deb779742e33967d837e2db7871",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3",
-                "react/promise": "^3 || ^2.1 || ^1.2",
-                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.6 || ^5.7 || ^4.8.36"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/functions_include.php"
-                ],
-                "psr-4": {
-                    "React\\Promise\\Stream\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Lück",
-                    "email": "christian@clue.engineering",
-                    "homepage": "https://clue.engineering/"
-                },
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "reactphp@ceesjankiewiet.nl",
-                    "homepage": "https://wyrihaximus.net/"
-                },
-                {
-                    "name": "Jan Sorgalla",
-                    "email": "jsorgalla@gmail.com",
-                    "homepage": "https://sorgalla.com/"
-                },
-                {
-                    "name": "Chris Boden",
-                    "email": "cboden@gmail.com",
-                    "homepage": "https://cboden.dev/"
-                }
-            ],
-            "description": "The missing link between Promise-land and Stream-land for ReactPHP",
-            "homepage": "https://github.com/reactphp/promise-stream",
-            "keywords": [
-                "Buffer",
-                "async",
-                "promise",
-                "reactphp",
-                "stream",
-                "unwrap"
-            ],
-            "support": {
-                "issues": "https://github.com/reactphp/promise-stream/issues",
-                "source": "https://github.com/reactphp/promise-stream/tree/v1.7.0"
-            },
-            "funding": [
-                {
-                    "url": "https://opencollective.com/reactphp",
-                    "type": "open_collective"
-                }
-            ],
-            "time": "2023-12-13T11:32:02+00:00"
         },
         {
             "name": "react/socket",

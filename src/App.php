@@ -11,6 +11,7 @@ use Mammatus\LifeCycleEvents\Shutdown;
 use Mammatus\Queue\App\Queue;
 use Mammatus\Queue\Generated\AbstractList;
 use Psr\Log\LoggerInterface;
+use React\Promise\PromiseInterface;
 use Throwable;
 use WyriHaximus\Broadcast\Contracts\Listener;
 
@@ -21,6 +22,9 @@ use function React\Promise\Timer\sleep;
 /** @implements Bootable<Queue> */
 final class App extends AbstractList implements Bootable, Listener
 {
+    /** @var array<PromiseInterface<mixed>> */
+    private array $promises = [];
+
     public function __construct(
         private readonly Consumer $consumer,
         private readonly LoggerInterface $logger,
@@ -29,22 +33,25 @@ final class App extends AbstractList implements Bootable, Listener
 
     public function stop(Shutdown $event): void
     {
+        foreach ($this->promises as $promise) {
+            $promise->cancel();
+        }
+
         $this->consumer->close();
     }
 
     public function boot(Argv $argv): ExitCode
     {
         try {
-            $promises = [];
             foreach ($this->workers() as $worker) {
                 if ($worker->class !== $argv->className) {
                     continue;
                 }
 
-                $promises[] = $this->consumer->setupConsumer($worker);
+                $this->promises[] = $this->consumer->setupConsumer($worker);
             }
 
-            await(all($promises));
+            await(all($this->promises));
 
             $exitCode = ExitCode::Success;
         } catch (Throwable $throwable) { /** @phpstan-ignore-line */
