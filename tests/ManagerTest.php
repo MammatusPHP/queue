@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Mammatus\Tests\Queue;
 
-use Mammatus\LifeCycleEvents\Initialize;
+use Mammatus\LifeCycleEvents\Boot;
 use Mammatus\LifeCycleEvents\Shutdown;
 use Mammatus\Queue\BuildIn\Noop;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
@@ -47,7 +47,7 @@ final class ManagerTest extends AsyncTestCase
             $eventDispatcher,
             $logger,
         );
-        $manager->start(new Initialize());
+        $manager->start(new Boot());
         await(sleep(9));
         $manager->stop(new Shutdown());
     }
@@ -76,7 +76,7 @@ final class ManagerTest extends AsyncTestCase
             $eventDispatcher,
             $logger,
         );
-        $manager->start(new Initialize());
+        $manager->start(new Boot());
         await(sleep(9));
         $manager->stop(new Shutdown());
     }
@@ -111,6 +111,6 @@ final class ManagerTest extends AsyncTestCase
             $eventDispatcher,
             $logger,
         );
-        $manager->start(new Initialize());
+        $manager->start(new Boot());
     }
 }
