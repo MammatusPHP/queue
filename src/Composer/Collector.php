@@ -26,8 +26,8 @@ final class Collector implements ItemCollector
     {
         $attributes = [];
         foreach ((new \ReflectionClass($class->getName()))->getAttributes() as $attributeReflection) {
-            $attribute                     = $attributeReflection->newInstance();
-            $attributes[$attribute::class] = $attribute;
+            $attribute                       = $attributeReflection->newInstance();
+            $attributes[$attribute::class][] = $attribute;
         }
 
         if (! array_key_exists(Consumer::class, $attributes)) {
@@ -69,14 +69,16 @@ final class Collector implements ItemCollector
                     continue;
                 }
 
-                /** @psalm-suppress ArgumentTypeCoercion */
-                yield new Item(
-                    $class->getName(),
-                    $method->getName(),
-                    $messageDTO,
-                    $attributes[Consumer::class], /** @phpstan-ignore-line */
-                    array_key_exists(SplitOut::class, $attributes),
-                );
+                foreach ($attributes[Consumer::class] as $attribute) {
+                    /** @psalm-suppress ArgumentTypeCoercion */
+                    yield new Item(
+                        $class->getName(),
+                        $method->getName(),
+                        $messageDTO,
+                        $attribute, /** @phpstan-ignore-line */
+                        array_key_exists(SplitOut::class, $attributes),
+                    );
+                }
             }
         }
     }

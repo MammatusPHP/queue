@@ -12,8 +12,8 @@ use Mammatus\Queue\Contracts\Work;
 abstract class WorkQueueMap
 {
     private const MAP = [
-{% for worker in workers %}
-        \{{ worker.dtoClass }}::class => '{{ worker.consumer.queue }}',
+{% for item in items %}
+        \{{ item.dtoClass }}::class => '{{ item.queue }}',
 {% endfor %}
     ];
 

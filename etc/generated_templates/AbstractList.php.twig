@@ -16,9 +16,11 @@ abstract class AbstractList
      */
     final protected function workers(): iterable
     {
-{% for worker in workers %}
+{% for hash, worker in workers %}
         /** @see \{{ worker.class }} */
-        yield '{% if action.splitOut == true %}kubernetes{% else %}internal{% endif %}-{{ worker.class|replace({'\\': '-'}) }}' => new Worker(
+        yield '{% if action.splitOut == true %}kubernetes{% else %}internal{% endif %}-{{ worker.class|replace({'\\': '-'}) }}-{{ worker.consumer.friendlyName|length > 0 ? worker.consumer.friendlyName : hash }}' => new Worker(
+            '{{ hash }}',
+            '{{ worker.consumer.friendlyName }}',
 {% if worker.splitOut == true %}
             'kubernetes',
 {% else %}

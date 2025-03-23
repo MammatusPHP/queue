@@ -26,7 +26,7 @@ final class ConsumerTest extends AsyncTestCase
         $logger->expects('debug')->with('Setting up logger for ' . Noop::class)->once();
         $logger->expects('debug')->with('Getting worker instance for ' . Noop::class)->once();
         $logger->expects('debug')->with('Starting 1 workers for ' . Noop::class)->once();
-        $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->atLeast()->once();
         $logger->expects('debug')->with('Hydrating message')->once();
         $logger->expects('debug')->with('Invoking worker')->once();
         $logger->expects('debug')->with('Acknowledging message')->once();
@@ -35,6 +35,8 @@ final class ConsumerTest extends AsyncTestCase
         $message->setBody('[]');
 
         $worker = new Worker(
+            '1829be63f4279d034d6b46caa90b1f8d',
+            'noop_1',
             'internal',
             'noop',
             1,
@@ -58,7 +60,7 @@ final class ConsumerTest extends AsyncTestCase
         $logger->expects('debug')->with('Setting up logger for ' . Noop::class)->once();
         $logger->expects('debug')->with('Getting worker instance for ' . Noop::class)->once();
         $logger->expects('debug')->with('Starting 1 workers for ' . Noop::class)->once();
-        $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->once();
+        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->once();
         $logger->expects('debug')->with('Hydrating message')->atLeast()->once();
         $logger->expects('debug')->with('Invoking worker')->never();
         $logger->expects('debug')->with('Rejecting message')->atLeast()->once();
@@ -74,6 +76,8 @@ final class ConsumerTest extends AsyncTestCase
         $message->setBody('{]');
 
         $worker = new Worker(
+            '1829be63f4279d034d6b46caa90b1f8d',
+            'noop_1',
             'internal',
             'noop',
             1,

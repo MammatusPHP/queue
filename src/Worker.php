@@ -14,6 +14,8 @@ final readonly class Worker
      * @param array<string, mixed>         $addOns
      */
     public function __construct(
+        public string $hash,
+        public string $friendlyName,
         public string $type,
         public string $queue,
         public int $concurrency,

@@ -17,6 +17,8 @@ use WyriHaximus\Twig\SimpleTwig;
 use function chmod;
 use function file_get_contents;
 use function file_put_contents;
+use function md5;
+use function serialize;
 
 final class Plugin implements GenerativePlugin
 {
@@ -51,11 +53,27 @@ final class Plugin implements GenerativePlugin
 
     public function compile(string $rootPath, ItemContract ...$items): void
     {
+        $map     = [];
+        $workers = [];
+        $dtos    = [];
+        foreach ($items as $item) {
+            if (! ($item instanceof Item)) {
+                continue;
+            }
+
+            $map[$item->dtoClass]           = [
+                'dtoClass' => $item->dtoClass,
+                'queue' => $item->consumer->queue,
+            ];
+            $workers[md5(serialize($item))] = $item;
+            $dtos[$item->dtoClass]          = $item->dtoClass;
+        }
+
         $classContentsList = SimpleTwig::render(
             file_get_contents( /** @phpstan-ignore-line */
                 $rootPath . '/etc/generated_templates/AbstractList.php.twig',
             ),
-            ['workers' => $items],
+            ['workers' => $workers],
         );
         $installPathList   = $rootPath . '/src/Generated/AbstractList.php';
         file_put_contents($installPathList, $classContentsList); /** @phpstan-ignore-line */
@@ -65,20 +83,11 @@ final class Plugin implements GenerativePlugin
             file_get_contents( /** @phpstan-ignore-line */
                 $rootPath . '/etc/generated_templates/WorkQueueMap.php.twig',
             ),
-            ['workers' => $items],
+            ['items' => $map],
         );
         $installPathList   = $rootPath . '/src/Generated/WorkQueueMap.php';
         file_put_contents($installPathList, $classContentsList); /** @phpstan-ignore-line */
         chmod($installPathList, 0664); /** @phpstan-ignore-line */
-
-        $dtos = [];
-        foreach ($items as $item) {
-            if (! ($item instanceof Item)) {
-                continue;
-            }
-
-            $dtos[] = $item->dtoClass;
-        }
 
         $hydratorGenerator = new ObjectMapperCodeGenerator();
         $code              = $hydratorGenerator->dump($dtos, 'Mammatus\Queue\Generated\Hydrator');

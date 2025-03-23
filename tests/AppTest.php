@@ -30,9 +30,9 @@ final class AppTest extends AsyncTestCase
         $container->expects('get')->with(Noop::class)->once()->andReturn(new Noop());
 
         $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
-        $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->atLeast()->once();
 
-        $exitCode = (new App($consumer, $logger))->boot(new App\Queue(Noop::class));
+        $exitCode = (new App($consumer, $logger))->boot(new App\Queue('ae45abb14e21aa2ae051315fb47a7b12'));
 
         self::assertSame(ExitCode::Success, $exitCode);
     }
@@ -49,9 +49,9 @@ final class AppTest extends AsyncTestCase
         $container->expects('get')->with(Noop::class)->once()->andReturn(new Angry($exception));
 
         $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
-        $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->atLeast()->once();
 
-        $exitCode = (new App($consumer, $logger))->boot(new App\Queue(Noop::class));
+        $exitCode = (new App($consumer, $logger))->boot(new App\Queue('ae45abb14e21aa2ae051315fb47a7b12'));
 
         self::assertSame(ExitCode::Success, $exitCode);
     }
@@ -71,9 +71,9 @@ final class AppTest extends AsyncTestCase
 
             return array_key_exists('exception', $context) && $context['exception']->getMessage() === 'Worker instance must be instance of ' . WorkerContract::class;
         })->atLeast()->once();
-        $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Sad::class)->never();
+        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Sad::class)->never();
 
-        $exitCode = (new App($consumer, $logger))->boot(new App\Queue(Noop::class));
+        $exitCode = (new App($consumer, $logger))->boot(new App\Queue('ae45abb14e21aa2ae051315fb47a7b12'));
 
         self::assertSame(ExitCode::Failure, $exitCode);
     }

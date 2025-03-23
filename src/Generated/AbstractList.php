@@ -19,10 +19,38 @@ abstract class AbstractList
     final protected function workers(): iterable
     {
         /** @see \Mammatus\Queue\BuildIn\Noop */
-        yield 'internal-Mammatus-Queue-BuildIn-Noop' => new Worker(
+        yield 'internal-Mammatus-Queue-BuildIn-Noop-ae45abb14e21aa2ae051315fb47a7b12' => new Worker(
+            'ae45abb14e21aa2ae051315fb47a7b12',
+            '',
             'internal',
             'noop',
             1,
+            Noop::class,
+            'perform',
+            EmptyMessage::class,
+            json_decode('[]', true), /** @phpstan-ignore-line */
+        );
+
+        /** @see \Mammatus\Queue\BuildIn\Noop */
+        yield 'internal-Mammatus-Queue-BuildIn-Noop-noop_2' => new Worker(
+            '03d9cb358a96e3cd6c0ec1759d39290b',
+            'noop_2',
+            'internal',
+            'noop',
+            2,
+            Noop::class,
+            'perform',
+            EmptyMessage::class,
+            json_decode('[]', true), /** @phpstan-ignore-line */
+        );
+
+        /** @see \Mammatus\Queue\BuildIn\Noop */
+        yield 'internal-Mammatus-Queue-BuildIn-Noop-noop_3' => new Worker(
+            '8103cfd64b01225ca080d52daff46dea',
+            'noop_3',
+            'internal',
+            'noop',
+            3,
             Noop::class,
             'perform',
             EmptyMessage::class,

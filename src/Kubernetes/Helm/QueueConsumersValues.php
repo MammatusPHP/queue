@@ -12,6 +12,7 @@ use WyriHaximus\Broadcast\Contracts\Listener;
 use function array_filter;
 use function array_map;
 use function str_replace;
+use function strlen;
 
 final class QueueConsumersValues extends AbstractList implements Listener
 {
@@ -27,9 +28,9 @@ final class QueueConsumersValues extends AbstractList implements Listener
             'deployments',
             array_map(
                 static fn (Worker $worker): array => [
-                    'name' => 'queue-worker-' . str_replace('.', '-', $worker->queue),
+                    'name' => 'queue-worker-' . str_replace('.', '-', $worker->queue) . '-' . (strlen($worker->friendlyName) > 0 ? $worker->friendlyName : $worker->hash),
                     'command' => 'mammatus-queue',
-                    'arguments' => [$worker->class],
+                    'arguments' => [$worker->hash],
                     'addOns' => $worker->addOns,
                 ],
                 $this->type === false ? [...$this->workers()] : array_filter(
