@@ -8,7 +8,7 @@ use Mammatus\Kubernetes\Events\Helm\Values;
 use Mammatus\Queue\Kubernetes\Helm\QueueConsumersValues;
 use WyriHaximus\TestUtilities\TestCase;
 
-final class CronJobsValuesTest extends TestCase
+final class QueueConsumersValuesTest extends TestCase
 {
     /** @test */
     public function none(): void
@@ -29,10 +29,22 @@ final class CronJobsValuesTest extends TestCase
 
         self::assertSame([
             'deployments' => [
-                'internal-Mammatus-Queue-BuildIn-Noop' => [
-                    'name' => 'queue-worker-noop',
+                'internal-Mammatus-Queue-BuildIn-Noop-ae45abb14e21aa2ae051315fb47a7b12' => [
+                    'name' => 'queue-worker-noop-ae45abb14e21aa2ae051315fb47a7b12',
                     'command' => 'mammatus-queue',
-                    'arguments' => ['Mammatus\Queue\BuildIn\Noop'],
+                    'arguments' => ['ae45abb14e21aa2ae051315fb47a7b12'],
+                    'addOns' => [],
+                ],
+                'internal-Mammatus-Queue-BuildIn-Noop-noop_2' => [
+                    'name' => 'queue-worker-noop-noop_2',
+                    'command' => 'mammatus-queue',
+                    'arguments' => ['03d9cb358a96e3cd6c0ec1759d39290b'],
+                    'addOns' => [],
+                ],
+                'internal-Mammatus-Queue-BuildIn-Noop-noop_3' => [
+                    'name' => 'queue-worker-noop-noop_3',
+                    'command' => 'mammatus-queue',
+                    'arguments' => ['8103cfd64b01225ca080d52daff46dea'],
                     'addOns' => [],
                 ],
             ],

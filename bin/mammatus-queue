@@ -13,9 +13,9 @@ use Mammatus\ContainerFactory;
     require_once $_composer_autoload_path;
 })($_composer_autoload_path);
 
-(static function(string $className) {
+(static function(string $hash) {
     /**
      * Create and run that one cron job
      */
-    exit(Boot::boot(App::class, new App\Queue($className))->value);
+    exit(Boot::boot(App::class, new App\Queue($hash))->value);
 })($argv[1]);

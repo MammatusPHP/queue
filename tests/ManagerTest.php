@@ -38,7 +38,12 @@ final class ManagerTest extends AsyncTestCase
         $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('debug')->with('Starting queue manager')->once();
         $logger->expects('debug')->with('Started queue manager')->once();
-        $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 1 of 2 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 2 of 2 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 1 of 3 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 2 of 3 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 3 of 3 for ' . Noop::class)->atLeast()->once();
         $logger->expects('debug')->with('Stopping queue manager')->once();
         $logger->expects('debug')->with('Stopped queue manager')->once();
 
@@ -65,7 +70,12 @@ final class ManagerTest extends AsyncTestCase
         $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('debug')->with('Starting queue manager')->once();
         $logger->expects('debug')->with('Started queue manager')->once();
-        $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 1 of 2 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 2 of 2 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 1 of 3 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 2 of 3 for ' . Noop::class)->atLeast()->once();
+        $logger->expects('info')->with('Starting consumer 3 of 3 for ' . Noop::class)->atLeast()->once();
         $logger->expects('debug')->with('Stopping queue manager')->once();
         $logger->expects('debug')->with('Stopped queue manager')->once();
 
@@ -102,7 +112,7 @@ final class ManagerTest extends AsyncTestCase
             return array_key_exists('exception', $context) && $context['exception']->getMessage() === 'Worker instance must be instance of ' . WorkerContract::class;
         })->atLeast()->once();
         $logger->expects('debug')->with('Started queue manager')->once();
-        $logger->expects('info')->with('Starting consumer 0 of 1 for ' . Noop::class)->never();
+        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->never();
         $logger->expects('debug')->with('Stopping queue manager')->never();
         $logger->expects('debug')->with('Stopped queue manager')->never();
 

@@ -44,7 +44,7 @@ final class App extends AbstractList implements Bootable, Listener
     {
         try {
             foreach ($this->workers() as $worker) {
-                if ($worker->class !== $argv->className) {
+                if ($worker->hash !== $argv->hash) {
                     continue;
                 }
 

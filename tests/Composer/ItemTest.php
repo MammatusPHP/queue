@@ -24,6 +24,7 @@ final class ItemTest extends TestCase
             EmptyMessage::class,
             new Consumer(
                 'test',
+                'test',
                 EmptyMessage::class,
                 1337,
                 new Resources(
@@ -34,7 +35,7 @@ final class ItemTest extends TestCase
             false,
         );
         self::assertSame(
-            '{"class":"Mammatus\\\\Queue\\\\BuildIn\\\\Noop","method":"perform","dtoClass":"Mammatus\\\\Queue\\\\BuildIn\\\\EmptyMessage","consumer":{"addOns":[{"type":"container","helper":"mammatus.container.resources","arguments":{"cpu":"666m","memory":"3072Mi"}}],"queue":"test","dtoClass":"Mammatus\\\\Queue\\\\BuildIn\\\\EmptyMessage","concurrency":1337},"split_out":false}',
+            '{"class":"Mammatus\\\\Queue\\\\BuildIn\\\\Noop","method":"perform","dtoClass":"Mammatus\\\\Queue\\\\BuildIn\\\\EmptyMessage","consumer":{"addOns":[{"type":"container","helper":"mammatus.container.resources","arguments":{"cpu":"666m","memory":"3072Mi"}}],"friendlyName":"test","queue":"test","dtoClass":"Mammatus\\\\Queue\\\\BuildIn\\\\EmptyMessage","concurrency":1337},"split_out":false}',
             json_encode($item),
         );
     }

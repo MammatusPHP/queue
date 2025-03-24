@@ -59,7 +59,7 @@ final class Consumer implements Listener
         ];
         $this->logger->debug('Starting ' . $worker->concurrency . ' workers for ' . $worker->class);
         for ($i = 0; $i < $worker->concurrency; $i++) {
-            $this->logger->info('Starting consumer ' . $i . ' of ' . $worker->concurrency . ' for ' . $worker->class);
+            $this->logger->info('Starting consumer ' . ($i + 1) . ' of ' . $worker->concurrency . ' for ' . $worker->class);
             $promises[] = async(fn () => $this->consume($worker, $workerInstance, new ContextLogger($logger, ['fiber' => $i])))();
         }
 
