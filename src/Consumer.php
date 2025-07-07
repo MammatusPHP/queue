@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Mammatus\Queue;
 
-use OpenTelemetry\API\Instrumentation\SpanAttribute;
-use OpenTelemetry\API\Instrumentation\WithSpan;
 use Interop\Queue as QueueInterop;
 use Interop\Queue\Message;
 use Mammatus\Queue\Contracts\Encoder;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
 use Mammatus\Queue\Generated\Hydrator;
+use OpenTelemetry\API\Instrumentation\SpanAttribute;
+use OpenTelemetry\API\Instrumentation\WithSpan;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use React\Promise\PromiseInterface;
@@ -93,9 +93,9 @@ final class Consumer implements Listener
 
         try {
             $this->logger->debug('Hydrating message');
-            $dto = $this->hydrator->hydrateObject(
-                $worker->dtoClass,
-                $this->encoder->decode($message->getBody()),
+            $dto = $this->hydrateMessage(
+                $worker,
+                $this->decodeMessage($message),
             );
 
             $this->logger->debug('Invoking worker');
@@ -110,6 +110,23 @@ final class Consumer implements Listener
         }
     }
 
+    /** @param array<mixed> $message */
     #[WithSpan]
-    private function hydrateMessage(Worker $worker, Message $message)
+    private function hydrateMessage(
+        #[SpanAttribute]
+        Worker $worker,
+        array $message,
+    ): object {
+        return $this->hydrator->hydrateObject(
+            $worker->dtoClass,
+            $message,
+        );
+    }
+
+    /** @return array<mixed> */
+    #[WithSpan]
+    private function decodeMessage(Message $message): array
+    {
+        return $this->encoder->decode($message->getBody());
+    }
 }
