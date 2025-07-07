@@ -31,6 +31,7 @@ final class App extends AbstractList implements Bootable, Listener
     ) {
     }
 
+    /** @phpstan-ignore shipmonk.deadMethod */
     public function stop(Shutdown $event): void
     {
         foreach ($this->promises as $promise) {
@@ -54,7 +55,7 @@ final class App extends AbstractList implements Bootable, Listener
             await(all($this->promises));
 
             $exitCode = ExitCode::Success;
-        } catch (Throwable $throwable) { /** @phpstan-ignore-line */
+        } catch (Throwable $throwable) {
             $this->logger->error('Worker errored: ' . $throwable->getMessage(), ['exception' => $throwable]);
 
             $exitCode = ExitCode::Failure;

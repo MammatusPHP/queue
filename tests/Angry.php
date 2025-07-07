@@ -8,13 +8,13 @@ use Interop\Queue\Message;
 use Mammatus\Queue\Contracts\Worker;
 use Throwable;
 
-final class Angry implements Worker
+final readonly class Angry implements Worker
 {
-    public function __construct(private readonly Throwable $angry)
+    public function __construct(private Throwable $angry)
     {
     }
 
-    public function perform(Message $work): void
+    public function perform(Message $work): never
     {
         throw $this->angry;
     }

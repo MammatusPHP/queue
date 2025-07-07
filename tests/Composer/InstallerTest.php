@@ -15,6 +15,7 @@ use Composer\Script\Event;
 use Composer\Script\ScriptEvents;
 use Mammatus\Queue\Composer\Installer;
 use Mockery;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\Console\Output\StreamOutput;
 use WyriHaximus\TestUtilities\TestCase;
 
@@ -41,13 +42,13 @@ use const DIRECTORY_SEPARATOR;
 
 final class InstallerTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function getSubscribedEvents(): void
     {
         self::assertSame([ScriptEvents::PRE_AUTOLOAD_DUMP => 'findActions'], Installer::getSubscribedEvents());
     }
 
-    /** @test */
+    #[Test]
     public function generate(): void
     {
         $composerConfig = new Config();
@@ -108,7 +109,7 @@ final class InstallerTest extends TestCase
         $installer->deactivate($composer, $io);
         $installer->uninstall($composer, $io);
 
-        $this->recurseCopy(dirname(dirname(__DIR__)) . '/', $this->getTmpDir());
+        $this->recurseCopy(dirname(__DIR__, 2) . '/', $this->getTmpDir());
 
         $fileNameList = $this->getTmpDir() . 'src/Generated/AbstractList.php';
         if (file_exists($fileNameList)) { /** @phpstan-ignore-line */

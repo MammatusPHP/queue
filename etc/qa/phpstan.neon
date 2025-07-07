@@ -3,16 +3,24 @@ parameters:
 		- ../../src/Generated/*
 	ignoreErrors:
 		- '#Method Mammatus\\Queue\\Consumer::__construct\(\) has a parameter \$container with a type declaration of Psr\\Container\\ContainerInterface, but containers should not be injected.#'
-		- '#thecodingmachine\/safe#'
 		-
-			message: '#file_put_contents blocks the event loop#'
+			identifier: wyrihaximus.reactphp.blocking.function.filePutContents
 			path: ../../src/Composer/Plugin.php
 		-
 			message: '#Variable method call on Mammatus\\Queue\\Contracts\\Worker.#'
 			path: ../../src/Consumer.php
 		-
-			message: '#In method \"Mammatus\\Queue\\Consumer::handleMessage\", caught \"Throwable\" must be rethrown.#'
+			identifier: psr3.interpolated
+			path: ../../src/App.php
+			count: 1
+		-
+			identifier: psr3.interpolated
 			path: ../../src/Consumer.php
+			count: 4
+		-
+			identifier: psr3.interpolated
+			path: ../../src/Manager.php
+			count: 1
 	ergebnis:
 		noExtends:
 			classesAllowedToBeExtended:
@@ -20,6 +28,3 @@ parameters:
 				- Mammatus\Queue\Generated\AbstractList
 				- Mammatus\Queue\Generated\WorkQueueMap
 				- RuntimeException
-
-includes:
-	- ../../vendor/wyrihaximus/async-test-utilities/rules.neon

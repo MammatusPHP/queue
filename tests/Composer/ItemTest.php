@@ -9,13 +9,14 @@ use Mammatus\Queue\Attributes\Consumer;
 use Mammatus\Queue\BuildIn\EmptyMessage;
 use Mammatus\Queue\BuildIn\Noop;
 use Mammatus\Queue\Composer\Item;
+use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\TestUtilities\TestCase;
 
 use function Safe\json_encode;
 
 final class ItemTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function json(): void
     {
         $item = new Item(

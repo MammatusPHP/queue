@@ -4,8 +4,8 @@
   "license": "MIT",
   "type": "composer-plugin",
   "require": {
-    "php": "^8.2",
-    "ext-json": "^8.2",
+    "php": "^8.3",
+    "ext-json": "^8.3",
     "composer-plugin-api": "^2.0",
     "eventsauce/object-hydrator": "^1.6.1",
     "mammatus/app": "dev-master",
@@ -35,7 +35,8 @@
   "require-dev": {
     "bbqueue/bunny": "dev-main",
     "bunny/bunny": "^0.6@dev",
-    "wyrihaximus/async-test-utilities": "^8.0.5"
+    "wyrihaximus/async-test-utilities": "^9.4.1",
+    "wyrihaximus/makefiles": "^0.4.3"
   },
   "autoload": {
     "psr-4": {
@@ -59,10 +60,12 @@
       "icanhazstring/composer-unused": true,
       "infection/extension-installer": true,
       "mindplay/composer-locator": true,
-      "wyrihaximus/broadcast": true
+      "phpstan/extension-installer": true,
+      "wyrihaximus/broadcast": true,
+      "wyrihaximus/makefiles": true
     },
     "platform": {
-      "php": "8.2.13"
+      "php": "8.3.13"
     },
     "sort-packages": true
   },

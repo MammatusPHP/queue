@@ -18,7 +18,7 @@ final class QueueConsumersValues extends AbstractList implements Listener
 {
     /** @phpstan-ignore-next-line This makes this class test able */
     public function __construct(
-        private false|string $type = 'kubernetes',
+        private readonly false|string $type = 'kubernetes',
     ) {
     }
 

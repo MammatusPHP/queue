@@ -17,8 +17,8 @@ use const PHP_INT_MAX;
 
 final class ConsumerFactory
 {
-    public const CREATE_CONSUMER_EXPECTED     = true;
-    public const CREATE_CONSUMER_NOT_EXPECTED = false;
+    public const true CREATE_CONSUMER_EXPECTED      = true;
+    public const false CREATE_CONSUMER_NOT_EXPECTED = false;
 
     /** @return array{Consumer, Mockery\MockInterface&ContainerInterface, Mockery\MockInterface&QueueInterop\Context, Mockery\MockInterface&QueueInterop\Consumer, Mockery\MockInterface&LoggerInterface} */
     public static function create(bool $createConsumerExpected): array
@@ -29,9 +29,8 @@ final class ConsumerFactory
 
         $consumerInternal = Mockery::mock(QueueInterop\Consumer::class);
 
-        $context->expects('createConsumer')->withArgs(static function (Queue $queue): bool {
-            return true;
-        })->between($createConsumerExpected ? 1 : 0, PHP_INT_MAX)->andReturn($consumerInternal);
+        /** @phpstan-ignore method.nonObject */
+        $context->expects('createConsumer')->withArgs(static fn (Queue $queue): bool => true)->between($createConsumerExpected ? 1 : 0, PHP_INT_MAX)->andReturn($consumerInternal);
 
         $consumer = new Consumer($container, $context, new Hydrator(), new JSON(), $logger);
 

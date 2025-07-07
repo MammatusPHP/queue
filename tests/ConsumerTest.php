@@ -8,6 +8,7 @@ use BBQueue\Bunny\Message;
 use Mammatus\Queue\BuildIn\EmptyMessage;
 use Mammatus\Queue\BuildIn\Noop;
 use Mammatus\Queue\Worker;
+use PHPUnit\Framework\Attributes\Test;
 use React\EventLoop\Loop;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use WyriHaximus\React\PHPUnit\TimeOut;
@@ -18,7 +19,7 @@ use function str_contains;
 #[TimeOut(69)]
 final class ConsumerTest extends AsyncTestCase
 {
-    /** @test */
+    #[Test]
     public function consumeHappy(): void
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
@@ -52,7 +53,7 @@ final class ConsumerTest extends AsyncTestCase
         await($consumer->setupConsumer($worker));
     }
 
-    /** @test */
+    #[Test]
     public function invalidJson(): void
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
