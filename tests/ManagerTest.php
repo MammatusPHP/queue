@@ -10,8 +10,10 @@ use Mammatus\Queue\BuildIn\Noop;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
 use Mammatus\Queue\Manager;
 use Mockery;
+use PHPUnit\Framework\Attributes\Test;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use RuntimeException;
+use Throwable;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use WyriHaximus\React\PHPUnit\TimeOut;
 
@@ -25,7 +27,7 @@ use const PHP_INT_MAX;
 #[TimeOut(133)]
 final class ManagerTest extends AsyncTestCase
 {
-    /** @test */
+    #[Test]
     public function runHappy(): void
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
@@ -57,7 +59,7 @@ final class ManagerTest extends AsyncTestCase
         $manager->stop(new Shutdown());
     }
 
-    /** @test */
+    #[Test]
     public function runAngry(): void
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
@@ -91,7 +93,7 @@ final class ManagerTest extends AsyncTestCase
         $manager->stop(new Shutdown());
     }
 
-    /** @test */
+    #[Test]
     public function notAnWorker(): void
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_NOT_EXPECTED);
@@ -109,7 +111,7 @@ final class ManagerTest extends AsyncTestCase
                 return false;
             }
 
-            return array_key_exists('exception', $context) && $context['exception']->getMessage() === 'Worker instance must be instance of ' . WorkerContract::class;
+            return array_key_exists('exception', $context) && $context['exception'] instanceof Throwable && $context['exception']->getMessage() === 'Worker instance must be instance of ' . WorkerContract::class;
         })->atLeast()->once();
         $logger->expects('debug')->with('Started queue manager')->once();
         $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->never();

@@ -45,7 +45,7 @@ final class Manager extends AbstractList implements Listener
 
                 $this->consumer->setupConsumer($worker);
             }
-        } catch (Throwable $throwable) { /** @phpstan-ignore-line */
+        } catch (Throwable $throwable) {
             $this->logger->error('Worker errored: ' . $throwable->getMessage(), ['exception' => $throwable]);
             $this->eventDispatcher->dispatch(new Shutdown());
         }

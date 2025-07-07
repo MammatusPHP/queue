@@ -6,6 +6,7 @@ namespace Mammatus\Queue\Composer;
 
 use EventSauce\ObjectHydrator\ObjectMapperCodeGenerator;
 use Mammatus\Queue\Contracts\Worker;
+use Mammatus\Queue\Generated\Hydrator;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\ImplementsInterface;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\IsInstantiable;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Package\ComposerJsonHasItemWithSpecificValue;
@@ -77,7 +78,7 @@ final class Plugin implements GenerativePlugin
         );
         $installPathList   = $rootPath . '/src/Generated/AbstractList.php';
         file_put_contents($installPathList, $classContentsList); /** @phpstan-ignore-line */
-        chmod($installPathList, 0664); /** @phpstan-ignore-line */
+        chmod($installPathList, 0664);
 
         $classContentsList = SimpleTwig::render(
             file_get_contents( /** @phpstan-ignore-line */
@@ -87,10 +88,10 @@ final class Plugin implements GenerativePlugin
         );
         $installPathList   = $rootPath . '/src/Generated/WorkQueueMap.php';
         file_put_contents($installPathList, $classContentsList); /** @phpstan-ignore-line */
-        chmod($installPathList, 0664); /** @phpstan-ignore-line */
+        chmod($installPathList, 0664);
 
         $hydratorGenerator = new ObjectMapperCodeGenerator();
-        $code              = $hydratorGenerator->dump($dtos, 'Mammatus\Queue\Generated\Hydrator');
+        $code              = $hydratorGenerator->dump($dtos, Hydrator::class);
         file_put_contents($rootPath . '/src/Generated/Hydrator.php', $code);
     }
 }

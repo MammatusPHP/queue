@@ -8,8 +8,10 @@ use Mammatus\ExitCode;
 use Mammatus\Queue\App;
 use Mammatus\Queue\BuildIn\Noop;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
+use PHPUnit\Framework\Attributes\Test;
 use React\EventLoop\Loop;
 use RuntimeException;
+use Throwable;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 
 use function array_key_exists;
@@ -19,7 +21,7 @@ use const PHP_INT_MAX;
 
 final class AppTest extends AsyncTestCase
 {
-    /** @test */
+    #[Test]
     public function runHappy(): void
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
@@ -37,7 +39,7 @@ final class AppTest extends AsyncTestCase
         self::assertSame(ExitCode::Success, $exitCode);
     }
 
-    /** @test */
+    #[Test]
     public function runAngry(): void
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_EXPECTED);
@@ -56,7 +58,7 @@ final class AppTest extends AsyncTestCase
         self::assertSame(ExitCode::Success, $exitCode);
     }
 
-    /** @test */
+    #[Test]
     public function notAnWorker(): void
     {
         [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(ConsumerFactory::CREATE_CONSUMER_NOT_EXPECTED);
@@ -69,7 +71,7 @@ final class AppTest extends AsyncTestCase
                 return false;
             }
 
-            return array_key_exists('exception', $context) && $context['exception']->getMessage() === 'Worker instance must be instance of ' . WorkerContract::class;
+            return array_key_exists('exception', $context) && $context['exception'] instanceof Throwable && $context['exception']->getMessage() === 'Worker instance must be instance of ' . WorkerContract::class;
         })->atLeast()->once();
         $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Sad::class)->never();
 

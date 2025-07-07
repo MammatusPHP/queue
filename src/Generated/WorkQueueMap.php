@@ -15,7 +15,7 @@ use function array_key_exists;
  */
 abstract class WorkQueueMap
 {
-    private const MAP = [EmptyMessage::class => 'noop'];
+    private const array MAP = [EmptyMessage::class => 'noop'];
 
     final protected function lookUp(Work $work): string
     {

@@ -6,11 +6,12 @@ namespace Mammatus\Tests\Queue\Kubernetes\Helm;
 
 use Mammatus\Kubernetes\Events\Helm\Values;
 use Mammatus\Queue\Kubernetes\Helm\QueueConsumersValues;
+use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\TestUtilities\TestCase;
 
 final class QueueConsumersValuesTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function none(): void
     {
         $values = new Values(new Values\Registry());
@@ -21,7 +22,7 @@ final class QueueConsumersValuesTest extends TestCase
         ], $values->registry->get());
     }
 
-    /** @test */
+    #[Test]
     public function all(): void
     {
         $values = new Values(new Values\Registry());

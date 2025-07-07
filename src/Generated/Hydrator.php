@@ -23,7 +23,7 @@ class Hydrator implements ObjectMapper
     public function hydrateObject(string $className, array $payload): object
     {
         return match($className) {
-            'Mammatus\Queue\BuildIn\EmptyMessage' => $this->hydrateMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage($payload),
+            \Mammatus\Queue\BuildIn\EmptyMessage::class => $this->hydrateMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage($payload),
             default => throw UnableToHydrateObject::noHydrationDefined($className, $this->hydrationStack),
         };
     }
@@ -35,7 +35,7 @@ class Hydrator implements ObjectMapper
         $missingFields = [];
         try {
         } catch (\Throwable $exception) {
-            throw UnableToHydrateObject::dueToError('Mammatus\Queue\BuildIn\EmptyMessage', $exception, stack: $this->hydrationStack);
+            throw UnableToHydrateObject::dueToError(\Mammatus\Queue\BuildIn\EmptyMessage::class, $exception, stack: $this->hydrationStack);
         }
 
         if (count($missingFields) > 0) {
@@ -45,24 +45,24 @@ class Hydrator implements ObjectMapper
         try {
             return new \Mammatus\Queue\BuildIn\EmptyMessage(...$properties);
         } catch (\Throwable $exception) {
-            throw UnableToHydrateObject::dueToError('Mammatus\Queue\BuildIn\EmptyMessage', $exception, stack: $this->hydrationStack);
+            throw UnableToHydrateObject::dueToError(\Mammatus\Queue\BuildIn\EmptyMessage::class, $exception, stack: $this->hydrationStack);
         }
     }
     
     private function serializeViaTypeMap(string $accessor, object $object, array $payloadToTypeMap): array
     {
         foreach ($payloadToTypeMap as $payloadType => [$valueType, $method]) {
-            if (is_a($object, $valueType)) {
+            if ($object instanceof $valueType) {
                 return [$accessor => $payloadType] + $this->{$method}($object);
             }
         }
 
-        throw new \LogicException('No type mapped for object of class: ' . get_class($object));
+        throw new \LogicException('No type mapped for object of class: ' . $object::class);
     }
 
     public function serializeObject(object $object): mixed
     {
-        return $this->serializeObjectOfType($object, get_class($object));
+        return $this->serializeObjectOfType($object, $object::class);
     }
 
     /**
@@ -80,7 +80,7 @@ class Hydrator implements ObjectMapper
             'DateTime' => $this->serializeValueDateTime($object),
             'DateTimeImmutable' => $this->serializeValueDateTimeImmutable($object),
             'DateTimeInterface' => $this->serializeValueDateTimeInterface($object),
-            'Mammatus\Queue\BuildIn\EmptyMessage' => $this->serializeObjectMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage($object),
+            \Mammatus\Queue\BuildIn\EmptyMessage::class => $this->serializeObjectMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage($object),
                 default => throw new \LogicException("No serialization defined for $className"),
             };
         } catch (\Throwable $exception) {
@@ -94,8 +94,8 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeArrayItems(...array (
-));
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeArrayItems(... [
+]);
         }
         
         return $serializer->serialize($value, $this);
@@ -107,8 +107,8 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeUuidToString(...array (
-));
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeUuidToString(... [
+]);
         }
         
         return $serializer->serialize($value, $this);
@@ -120,8 +120,8 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(...array (
-));
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(... [
+]);
         }
         
         return $serializer->serialize($value, $this);
@@ -133,8 +133,8 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(...array (
-));
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(... [
+]);
         }
         
         return $serializer->serialize($value, $this);
@@ -146,8 +146,8 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(...array (
-));
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(... [
+]);
         }
         
         return $serializer->serialize($value, $this);

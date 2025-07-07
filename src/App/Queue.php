@@ -6,7 +6,7 @@ namespace Mammatus\Queue\App;
 
 use Mammatus\Contracts\Argv;
 
-final class Queue implements Argv
+final readonly class Queue implements Argv
 {
     public function __construct(
         public string $hash,

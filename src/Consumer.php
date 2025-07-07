@@ -60,7 +60,7 @@ final class Consumer implements Listener
         $this->logger->debug('Starting ' . $worker->concurrency . ' workers for ' . $worker->class);
         for ($i = 0; $i < $worker->concurrency; $i++) {
             $this->logger->info('Starting consumer ' . ($i + 1) . ' of ' . $worker->concurrency . ' for ' . $worker->class);
-            $promises[] = async(fn () => $this->consume($worker, $workerInstance, new ContextLogger($logger, ['fiber' => $i])))();
+            $promises[] = async(fn (): bool => $this->consume($worker, $workerInstance, new ContextLogger($logger, ['fiber' => $i])))();
         }
 
         return all($promises);
@@ -72,7 +72,7 @@ final class Consumer implements Listener
         $consumer = $this->context->createConsumer(new Queue($worker->queue));
         while ($this->running) {
             $message = $consumer->receiveNoWait();
-            if ($message === null) {
+            if (! $message instanceof Message) {
                 await(sleep(1));
                 continue;
             }
