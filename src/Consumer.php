@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Mammatus\Queue;
 
+use OpenTelemetry\API\Instrumentation\SpanAttribute;
+use OpenTelemetry\API\Instrumentation\WithSpan;
 use Interop\Queue as QueueInterop;
 use Interop\Queue\Message;
 use Mammatus\Queue\Contracts\Encoder;
@@ -84,6 +86,7 @@ final class Consumer implements Listener
         return true;
     }
 
+    #[WithSpan]
     private function handleMessage(Message $message, \Interop\Queue\Consumer $consumer, Worker $worker, WorkerContract $workerInstance, LoggerInterface $baseLogger): void
     {
         $logger = new ContextLogger($baseLogger, ['dtoClass' => $worker->dtoClass]);
@@ -106,4 +109,7 @@ final class Consumer implements Listener
             CallableThrowableLogger::create($logger)($error);
         }
     }
+
+    #[WithSpan]
+    private function hydrateMessage(Worker $worker, Message $message)
 }
