@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Mammatus\Queue;
 
-use Mammatus\LifeCycleEvents\Boot;
 use Mammatus\LifeCycleEvents\Shutdown;
+use Mammatus\LifeCycleEvents\Start;
 use Mammatus\Queue\Generated\AbstractList;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
@@ -21,7 +21,7 @@ final class Manager extends AbstractList implements Listener
     ) {
     }
 
-    public function start(Boot $event): void
+    public function start(Start $event): void
     {
         $this->logger->debug('Starting queue manager');
         $this->boot();
