@@ -10,7 +10,7 @@ use Mammatus\Queue\Contracts\Producer as ProducerContract;
 use Mammatus\Queue\Contracts\Work;
 use Mammatus\Queue\Generated\Hydrator;
 use Mammatus\Queue\Generated\WorkQueueMap;
-use OpenTelemetry\API\Instrumentation\WithSpan;
+//use OpenTelemetry\API\Instrumentation\WithSpan;
 use RuntimeException;
 
 use function gettype;
