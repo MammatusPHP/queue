@@ -8,8 +8,8 @@ use Interop\Queue as QueueInterop;
 use Interop\Queue\Message;
 use Mammatus\Queue\Contracts\Encoder;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
-use OpenTelemetry\API\Instrumentation\SpanAttribute;
-use OpenTelemetry\API\Instrumentation\WithSpan;
+//use OpenTelemetry\API\Instrumentation\SpanAttribute;
+//use OpenTelemetry\API\Instrumentation\WithSpan;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use React\Promise\PromiseInterface;
@@ -84,7 +84,7 @@ final class Consumer implements Listener
         return true;
     }
 
-    #[WithSpan]
+    /**#[WithSpan]*/
     private function handleMessage(Message $message, \Interop\Queue\Consumer $consumer, Worker $worker, WorkerContract $workerInstance, LoggerInterface $baseLogger): void
     {
         $logger = new ContextLogger($baseLogger, ['dtoClass' => $worker->dtoClass]);
@@ -108,10 +108,11 @@ final class Consumer implements Listener
         }
     }
 
+    /**#[WithSpan]*/
+
     /** @param array<mixed> $message */
-    #[WithSpan]
     private function hydrateMessage(
-        #[SpanAttribute]
+        /**#[SpanAttribute]*/
         Worker $worker,
         array $message,
     ): object {
@@ -121,8 +122,9 @@ final class Consumer implements Listener
         );
     }
 
+    /**#[WithSpan]*/
+
     /** @return array<mixed> */
-    #[WithSpan]
     private function decodeMessage(Message $message): array
     {
         return $this->encoder->decode($message->getBody());
