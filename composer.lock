@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab2b8cf867b61e5b5bfb854a8b1145ff",
+    "content-hash": "89fd531b07111aeb03d45b3b8ea7599b",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -1902,135 +1902,6 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.8.0"
             },
             "time": "2026-07-04T14:30:18+00:00"
-        },
-        {
-            "name": "open-telemetry/api",
-            "version": "1.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/api.git",
-                "reference": "7c029c4a6fd457094a20569bf98f93d95e9a7559"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/7c029c4a6fd457094a20569bf98f93d95e9a7559",
-                "reference": "7c029c4a6fd457094a20569bf98f93d95e9a7559",
-                "shasum": ""
-            },
-            "require": {
-                "open-telemetry/context": "^1.4",
-                "php": "^8.1",
-                "psr/log": "^1.1|^2.0|^3.0",
-                "symfony/polyfill-php82": "^1.26"
-            },
-            "conflict": {
-                "open-telemetry/sdk": "<=1.11"
-            },
-            "type": "library",
-            "extra": {
-                "spi": {
-                    "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\HookManagerInterface": [
-                        "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\ExtensionHookManager"
-                    ]
-                },
-                "branch-alias": {
-                    "dev-main": "1.8.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "Trace/functions.php"
-                ],
-                "psr-4": {
-                    "OpenTelemetry\\API\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "opentelemetry-php contributors",
-                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
-                }
-            ],
-            "description": "API for OpenTelemetry PHP.",
-            "keywords": [
-                "Metrics",
-                "api",
-                "apm",
-                "logging",
-                "opentelemetry",
-                "otel",
-                "tracing"
-            ],
-            "support": {
-                "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
-                "docs": "https://opentelemetry.io/docs/languages/php",
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php"
-            },
-            "time": "2026-07-06T12:28:04+00:00"
-        },
-        {
-            "name": "open-telemetry/context",
-            "version": "1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opentelemetry-php/context.git",
-                "reference": "3c414b246e0dabb7d6145404e6a5e4536ca18d07"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/context/zipball/3c414b246e0dabb7d6145404e6a5e4536ca18d07",
-                "reference": "3c414b246e0dabb7d6145404e6a5e4536ca18d07",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.1",
-                "symfony/polyfill-php82": "^1.26"
-            },
-            "suggest": {
-                "ext-ffi": "To allow context switching in Fibers"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "fiber/initialize_fiber_handler.php"
-                ],
-                "psr-4": {
-                    "OpenTelemetry\\Context\\": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "opentelemetry-php contributors",
-                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
-                }
-            ],
-            "description": "Context implementation for OpenTelemetry PHP.",
-            "keywords": [
-                "Context",
-                "opentelemetry",
-                "otel"
-            ],
-            "support": {
-                "chat": "https://app.slack.com/client/T08PSQ7BQ/C01NFPCV44V",
-                "docs": "https://opentelemetry.io/docs/languages/php",
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php"
-            },
-            "time": "2025-10-19T06:44:33+00:00"
         },
         {
             "name": "php-di-definitions/definitions-gatherer",
@@ -4140,86 +4011,6 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/polyfill-php81/tree/v1.38.1"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/nicolas-grekas",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2026-05-26T12:45:58+00:00"
-        },
-        {
-            "name": "symfony/polyfill-php82",
-            "version": "v1.38.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php82.git",
-                "reference": "002dc0cfe5fd4ed6033d48f27d4f19a486c4b04b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php82/zipball/002dc0cfe5fd4ed6033d48f27d4f19a486c4b04b",
-                "reference": "002dc0cfe5fd4ed6033d48f27d4f19a486c4b04b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "type": "library",
-            "extra": {
-                "thanks": {
-                    "url": "https://github.com/symfony/polyfill",
-                    "name": "symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php82\\": ""
-                },
-                "classmap": [
-                    "Resources/stubs"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 8.2+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-php82/tree/v1.38.1"
             },
             "funding": [
                 {
@@ -11040,16 +10831,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "8.31.0",
+            "version": "8.31.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "ae5e938b49986fa48b494557445e22ee1ca795b7"
+                "reference": "0a40807a48873948bfa7ffce2a4e69ba40cf5e76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/ae5e938b49986fa48b494557445e22ee1ca795b7",
-                "reference": "ae5e938b49986fa48b494557445e22ee1ca795b7",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/0a40807a48873948bfa7ffce2a4e69ba40cf5e76",
+                "reference": "0a40807a48873948bfa7ffce2a4e69ba40cf5e76",
                 "shasum": ""
             },
             "require": {
@@ -11061,11 +10852,11 @@
             "require-dev": {
                 "phing/phing": "3.0.1|3.1.2",
                 "php-parallel-lint/php-parallel-lint": "1.4.0",
-                "phpstan/phpstan": "2.2.5",
-                "phpstan/phpstan-deprecation-rules": "2.0.4",
+                "phpstan/phpstan": "2.2.7",
+                "phpstan/phpstan-deprecation-rules": "2.0.5",
                 "phpstan/phpstan-phpunit": "2.0.18",
                 "phpstan/phpstan-strict-rules": "2.0.12",
-                "phpunit/phpunit": "9.6.34|10.5.63|11.4.4|11.5.55|12.5.30"
+                "phpunit/phpunit": "9.6.34|10.5.63|11.4.4|11.5.56|12.5.33"
             },
             "type": "phpcodesniffer-standard",
             "extra": {
@@ -11089,7 +10880,7 @@
             ],
             "support": {
                 "issues": "https://github.com/slevomat/coding-standard/issues",
-                "source": "https://github.com/slevomat/coding-standard/tree/8.31.0"
+                "source": "https://github.com/slevomat/coding-standard/tree/8.31.1"
             },
             "funding": [
                 {
@@ -11101,7 +10892,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-21T16:20:20+00:00"
+            "time": "2026-07-31T10:42:43+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
