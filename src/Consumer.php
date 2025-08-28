@@ -9,8 +9,8 @@ use Interop\Queue\Message;
 use Mammatus\Queue\Contracts\Encoder;
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
 use Mammatus\Queue\Generated\Hydrator;
-use OpenTelemetry\API\Instrumentation\SpanAttribute;
-use OpenTelemetry\API\Instrumentation\WithSpan;
+//use OpenTelemetry\API\Instrumentation\SpanAttribute;
+//use OpenTelemetry\API\Instrumentation\WithSpan;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use React\Promise\PromiseInterface;
@@ -112,7 +112,7 @@ final class Consumer implements Listener
     /** @param array<mixed> $message */
     #[WithSpan]
     private function hydrateMessage(
-        #[SpanAttribute]
+        /**#[SpanAttribute]*/
         Worker $worker,
         array $message,
     ): object {

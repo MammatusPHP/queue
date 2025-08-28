@@ -16,7 +16,6 @@
     "mammatus/life-cycle-events": "^2.3.0",
     "mammatus/queue-attributes": "^0.1.0",
     "mammatus/queue-contracts": "^0.1.0",
-    "open-telemetry/api": "^1.4.0",
     "psr/container": "^1.1.2 || ^2",
     "psr/event-dispatcher": "^1.0",
     "psr/log": "^3.0.2",

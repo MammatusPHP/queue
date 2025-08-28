@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Mammatus\Queue;
 
 use Mammatus\Queue\Contracts\Worker as WorkerContract;
-use Mammatus\Queue\Worker\Type;
-use OpenTelemetry\API\Instrumentation\SpanAttribute;
+//use OpenTelemetry\API\Instrumentation\SpanAttribute;
 
 final readonly class Worker
 {
@@ -17,19 +16,19 @@ final readonly class Worker
      */
     public function __construct(
         public string $hash,
-        #[SpanAttribute]
+        /**#[SpanAttribute]*/
         public string $friendlyName,
-        #[SpanAttribute]
-        public Type $type,
-        #[SpanAttribute]
+//        /**#[SpanAttribute]*/
+//        public string $type,
+        /**#[SpanAttribute]*/
         public string $queue,
-        #[SpanAttribute]
+        /**#[SpanAttribute]*/
         public int $concurrency,
-        #[SpanAttribute]
+        /**#[SpanAttribute]*/
         public string $class,
-        #[SpanAttribute]
+        /**#[SpanAttribute]*/
         public string $method,
-        #[SpanAttribute]
+        /**#[SpanAttribute]*/
         public string $dtoClass,
         public array $addOns,
     ) {
