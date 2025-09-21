@@ -37,7 +37,7 @@
     "bbqueue/bunny": "dev-main",
     "bunny/bunny": "^0.6@dev",
     "wyrihaximus/async-test-utilities": "^9.4.1",
-    "wyrihaximus/makefiles": "^0.4.3"
+    "wyrihaximus/makefiles": "^0.7.5"
   },
   "autoload": {
     "psr-4": {
