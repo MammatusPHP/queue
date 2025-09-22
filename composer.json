@@ -29,7 +29,7 @@
     "wyrihaximus/generative-composer-plugin-tooling": "^1",
     "wyrihaximus/monolog-factory": "^2",
     "wyrihaximus/psr-3-callable-throwable-logger": "^2.3",
-    "wyrihaximus/psr-3-context-logger": "^2.0",
+    "wyrihaximus/psr-3-context-logger": "^2.0 || ^3.0",
     "wyrihaximus/simple-twig": "^2.2.1",
     "wyrihaximus/ticking-promise": "^3.1"
   },
