@@ -25,7 +25,7 @@ final class Collector implements ItemCollector
     public function collect(ReflectionClass $class): iterable
     {
         $attributes = [];
-        foreach ((new \ReflectionClass($class->getName()))->getAttributes() as $attributeReflection) {
+        foreach (new \ReflectionClass($class->getName())->getAttributes() as $attributeReflection) {
             $attribute                       = $attributeReflection->newInstance();
             $attributes[$attribute::class][] = $attribute;
         }
@@ -65,7 +65,7 @@ final class Collector implements ItemCollector
             }
 
             foreach ($messageDTOs as $messageDTO) {
-                if (! (new \ReflectionClass($messageDTO))->implementsInterface(Work::class)) {
+                if (! new \ReflectionClass($messageDTO)->implementsInterface(Work::class)) {
                     continue;
                 }
 

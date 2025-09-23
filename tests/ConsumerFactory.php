@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Mammatus\Tests\Queue;
 
 use Interop\Queue as QueueInterop;
-use Interop\Queue\Queue;
 use Mammatus\Queue\Consumer;
 use Mammatus\Queue\Encoder\JSON;
 use Mammatus\Queue\Generated\Hydrator;
@@ -30,7 +29,7 @@ final class ConsumerFactory
         $consumerInternal = Mockery::mock(QueueInterop\Consumer::class);
 
         /** @phpstan-ignore method.nonObject */
-        $context->expects('createConsumer')->withArgs(static fn (Queue $queue): bool => true)->between($createConsumerExpected ? 1 : 0, PHP_INT_MAX)->andReturn($consumerInternal);
+        $context->expects('createConsumer')->withArgs(static fn (): bool => true)->between($createConsumerExpected ? 1 : 0, PHP_INT_MAX)->andReturn($consumerInternal);
 
         $consumer = new Consumer($container, $context, new Hydrator(), new JSON(), $logger);
 
