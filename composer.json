@@ -36,7 +36,7 @@
   "require-dev": {
     "bbqueue/bunny": "dev-main",
     "bunny/bunny": "^0.6@dev",
-    "wyrihaximus/async-test-utilities": "^9.4.1",
+    "wyrihaximus/async-test-utilities": "^10.2.0",
     "wyrihaximus/makefiles": "^0.4.3"
   },
   "autoload": {
