@@ -15,7 +15,7 @@ final class QueueConsumersValuesTest extends TestCase
     public function none(): void
     {
         $values = new Values(new Values\Registry());
-        (new QueueConsumersValues())->values($values);
+        new QueueConsumersValues()->values($values);
 
         self::assertSame([
             'deployments' => [], // Empty array here because we don't have any default deployments running in Kubernetes out of the box
@@ -26,7 +26,7 @@ final class QueueConsumersValuesTest extends TestCase
     public function all(): void
     {
         $values = new Values(new Values\Registry());
-        (new QueueConsumersValues(false))->values($values);
+        new QueueConsumersValues(false)->values($values);
 
         self::assertSame([
             'deployments' => [

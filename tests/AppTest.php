@@ -34,7 +34,7 @@ final class AppTest extends AsyncTestCase
         $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->atLeast()->once();
 
-        $exitCode = (new App($consumer, $logger))->boot(new App\Queue('ae45abb14e21aa2ae051315fb47a7b12'));
+        $exitCode = new App($consumer, $logger)->boot(new App\Queue('ae45abb14e21aa2ae051315fb47a7b12'));
 
         self::assertSame(ExitCode::Success, $exitCode);
     }
@@ -53,7 +53,7 @@ final class AppTest extends AsyncTestCase
         $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->atLeast()->once();
 
-        $exitCode = (new App($consumer, $logger))->boot(new App\Queue('ae45abb14e21aa2ae051315fb47a7b12'));
+        $exitCode = new App($consumer, $logger)->boot(new App\Queue('ae45abb14e21aa2ae051315fb47a7b12'));
 
         self::assertSame(ExitCode::Success, $exitCode);
     }
@@ -75,7 +75,7 @@ final class AppTest extends AsyncTestCase
         })->atLeast()->once();
         $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Sad::class)->never();
 
-        $exitCode = (new App($consumer, $logger))->boot(new App\Queue('ae45abb14e21aa2ae051315fb47a7b12'));
+        $exitCode = new App($consumer, $logger)->boot(new App\Queue('ae45abb14e21aa2ae051315fb47a7b12'));
 
         self::assertSame(ExitCode::Failure, $exitCode);
     }

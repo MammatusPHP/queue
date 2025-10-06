@@ -102,7 +102,7 @@ final class ManagerTest extends AsyncTestCase
         $container->expects('get')->with(Noop::class)->atLeast()->once()->andReturn(new Sad());
 
         $eventDispatcher = Mockery::mock(EventDispatcherInterface::class);
-        $eventDispatcher->expects('dispatch')->withArgs(static fn (Shutdown $event): bool => true)->once();
+        $eventDispatcher->expects('dispatch')->withArgs(static fn (): bool => true)->once();
 
         $logger->expects('debug')->withArgs(static fn (string $error): bool => str_contains($error, ' for ' . Noop::class))->atLeast()->once();
         $logger->expects('debug')->with('Starting queue manager')->once();

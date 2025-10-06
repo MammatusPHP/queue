@@ -68,7 +68,7 @@ final class Consumer implements Listener
         return all($promises);
     }
 
-    private function consume(Worker $worker, WorkerContract $workerInstance, LoggerInterface $baseLogger): bool
+    private function consume(Worker $worker, WorkerContract $workerInstance, LoggerInterface $baseLogger): true
     {
         await(sleep(1));
         $consumer = $this->context->createConsumer(new Queue($worker->queue));
