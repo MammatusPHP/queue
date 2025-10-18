@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3ca6a8f672f0bacc122166dbd9015d5",
+    "content-hash": "38771d692be57d49b95cabf2dcd6cb81",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -1008,16 +1008,16 @@
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v2.0.5",
+            "version": "v2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "3832547db6e0e2f8bb03d4093857b378c66eceed"
+                "reference": "038ce42edee619599a1debb7e81d7b3759492819"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/3832547db6e0e2f8bb03d4093857b378c66eceed",
-                "reference": "3832547db6e0e2f8bb03d4093857b378c66eceed",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/038ce42edee619599a1debb7e81d7b3759492819",
+                "reference": "038ce42edee619599a1debb7e81d7b3759492819",
                 "shasum": ""
             },
             "require": {
@@ -1065,38 +1065,38 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2025-09-22T17:29:40+00:00"
+            "time": "2025-10-09T13:42:30+00:00"
         },
         {
             "name": "lcobucci/clock",
-            "version": "3.3.1",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/clock.git",
-                "reference": "db3713a61addfffd615b79bf0bc22f0ccc61b86b"
+                "reference": "f91d84f65cb3e974988bbe872b5da8ca132a155f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/clock/zipball/db3713a61addfffd615b79bf0bc22f0ccc61b86b",
-                "reference": "db3713a61addfffd615b79bf0bc22f0ccc61b86b",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/f91d84f65cb3e974988bbe872b5da8ca132a155f",
+                "reference": "f91d84f65cb3e974988bbe872b5da8ca132a155f",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
+                "php": "~8.3.0 || ~8.4.0",
                 "psr/clock": "^1.0"
             },
             "provide": {
                 "psr/clock-implementation": "1.0"
             },
             "require-dev": {
-                "infection/infection": "^0.29",
+                "infection/infection": "^0.31",
                 "lcobucci/coding-standard": "^11.1.0",
                 "phpstan/extension-installer": "^1.3.1",
-                "phpstan/phpstan": "^1.10.25",
-                "phpstan/phpstan-deprecation-rules": "^1.1.3",
-                "phpstan/phpstan-phpunit": "^1.3.13",
-                "phpstan/phpstan-strict-rules": "^1.5.1",
-                "phpunit/phpunit": "^11.3.6"
+                "phpstan/phpstan": "^2.0.0",
+                "phpstan/phpstan-deprecation-rules": "^2.0.0",
+                "phpstan/phpstan-phpunit": "^2.0.0",
+                "phpstan/phpstan-strict-rules": "^2.0.0",
+                "phpunit/phpunit": "^12.0.0"
             },
             "type": "library",
             "autoload": {
@@ -1117,7 +1117,7 @@
             "description": "Yet another clock abstraction",
             "support": {
                 "issues": "https://github.com/lcobucci/clock/issues",
-                "source": "https://github.com/lcobucci/clock/tree/3.3.1"
+                "source": "https://github.com/lcobucci/clock/tree/3.4.0"
             },
             "funding": [
                 {
@@ -1129,7 +1129,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-09-24T20:45:14+00:00"
+            "time": "2025-10-08T18:00:48+00:00"
         },
         {
             "name": "league/tactician",
@@ -1192,12 +1192,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/app.git",
-                "reference": "dc23f879f4a679570a80c33452c09af06b2bbc67"
+                "reference": "052764a2a07b25cb451cb92455ce34d551d5ebe4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/dc23f879f4a679570a80c33452c09af06b2bbc67",
-                "reference": "dc23f879f4a679570a80c33452c09af06b2bbc67",
+                "url": "https://api.github.com/repos/MammatusPHP/app/zipball/052764a2a07b25cb451cb92455ce34d551d5ebe4",
+                "reference": "052764a2a07b25cb451cb92455ce34d551d5ebe4",
                 "shasum": ""
             },
             "require": {
@@ -1206,12 +1206,12 @@
                 "ext-pcntl": "^8.3",
                 "mammatus/life-cycle-events": "^2.2",
                 "monolog/monolog": "^3.5",
-                "php": "^8.3",
+                "php": "^8.4",
                 "php-di-definitions/definitions-gatherer": "^1",
                 "php-di/php-di": "^7",
                 "psr/container": "^1 || ^2",
                 "psr/event-dispatcher": "^1",
-                "psr/log": "^2",
+                "psr/log": "^3",
                 "react/async": "^4.3",
                 "react/event-loop": "^1.5",
                 "react/promise": "^3.2",
@@ -1222,15 +1222,15 @@
                 "wyrihaximus/metrics": "^3",
                 "wyrihaximus/metrics-tactician": "^1.2",
                 "wyrihaximus/monolog-factory": "^2.0",
-                "wyrihaximus/psr-3-context-logger": "^2.0",
-                "wyrihaximus/psr-3-utilities": "^2.2",
-                "wyrihaximus/react-psr-3-stdio": "^3.0"
+                "wyrihaximus/psr-3-context-logger": "^3.0.0",
+                "wyrihaximus/psr-3-utilities": "^2.3.0",
+                "wyrihaximus/react-psr-3-stdio": "^4.0.0"
             },
             "require-dev": {
                 "mammatus/test-app": "dev-master",
                 "runroom/rector-prophecy-to-mocking": "^0.1.0",
-                "wyrihaximus/makefiles": "^0.4.2",
-                "wyrihaximus/test-utilities": "^7.2.0"
+                "wyrihaximus/makefiles": "^0.7.9",
+                "wyrihaximus/test-utilities": "^8.2.0"
             },
             "default-branch": true,
             "bin": [
@@ -1246,22 +1246,6 @@
                 "wyrihaximus": {
                     "broadcast": {
                         "has-listeners": true
-                    },
-                    "bin-autoload-path-update": [
-                        "bin/mammatus"
-                    ]
-                },
-                "react-parallel": {
-                    "object-proxy": {
-                        "interfaces-to-proxy": [
-                            "WyriHaximus\\Metrics\\Registry",
-                            "WyriHaximus\\Metrics\\Registry\\Counters",
-                            "WyriHaximus\\Metrics\\Registry\\Gauges",
-                            "WyriHaximus\\Metrics\\Registry\\Histograms",
-                            "WyriHaximus\\Metrics\\Counter",
-                            "WyriHaximus\\Metrics\\Gauge",
-                            "WyriHaximus\\Metrics\\Histogram"
-                        ]
                     }
                 },
                 "php-di-definitions": {
@@ -1290,7 +1274,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-07-14T14:13:38+00:00"
+            "time": "2025-10-13T13:18:15+00:00"
         },
         {
             "name": "mammatus/kubernetes-attributes",
@@ -2329,16 +2313,16 @@
         },
         {
             "name": "psr/log",
-            "version": "2.0.0",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "ef29f6d262798707a9edd554e2b82517ef3a9376"
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/ef29f6d262798707a9edd554e2b82517ef3a9376",
-                "reference": "ef29f6d262798707a9edd554e2b82517ef3a9376",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "shasum": ""
             },
             "require": {
@@ -2347,7 +2331,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
@@ -2373,9 +2357,9 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/2.0.0"
+                "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
-            "time": "2021-07-14T16:41:46+00:00"
+            "time": "2024-09-11T13:17:53+00:00"
         },
         {
             "name": "queue-interop/queue-interop",
@@ -4535,27 +4519,27 @@
         },
         {
             "name": "wyrihaximus/get-in-packages-composer.jason",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-get-in-packages-composer.json.git",
-                "reference": "296f684f0d370b2945ec8d8b97526de28cc8ddf4"
+                "reference": "b2e94f3b10390de2750fae459b4ea95e79226e55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-get-in-packages-composer.json/zipball/296f684f0d370b2945ec8d8b97526de28cc8ddf4",
-                "reference": "296f684f0d370b2945ec8d8b97526de28cc8ddf4",
+                "url": "https://api.github.com/repos/WyriHaximus/php-get-in-packages-composer.json/zipball/b2e94f3b10390de2750fae459b4ea95e79226e55",
+                "reference": "b2e94f3b10390de2750fae459b4ea95e79226e55",
                 "shasum": ""
             },
             "require": {
                 "composer/composer": "^2.8",
-                "ext-json": "^8.3",
+                "ext-json": "^8.4",
                 "igorw/get-in": "^1.0.3",
-                "php": "^8.3"
+                "php": "^8.4"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.4.3",
-                "wyrihaximus/test-utilities": "^7.5.2"
+                "wyrihaximus/makefiles": "^0.7.9",
+                "wyrihaximus/test-utilities": "^8.5.0"
             },
             "type": "library",
             "autoload": {
@@ -4580,7 +4564,7 @@
             "description": "Functions around joshdifabio/composed and igorw/get-in to gather configuration from composer.json",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-get-in-packages-composer.json/issues",
-                "source": "https://github.com/WyriHaximus/php-get-in-packages-composer.json/tree/2.2.1"
+                "source": "https://github.com/WyriHaximus/php-get-in-packages-composer.json/tree/2.3.0"
             },
             "funding": [
                 {
@@ -4588,7 +4572,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-07-06T12:29:22+00:00"
+            "time": "2025-10-13T17:34:43+00:00"
         },
         {
             "name": "wyrihaximus/list-classes-in-directory",
@@ -4805,27 +4789,27 @@
         },
         {
             "name": "wyrihaximus/monolog-formatted-psr-handler",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler.git",
-                "reference": "6ac21e1a8dd460f8bf248935e3e0eafeada062b3"
+                "reference": "f562261b140d998eedf11555b351d4619eb98f64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-monolog-formatted-psr-handler/zipball/6ac21e1a8dd460f8bf248935e3e0eafeada062b3",
-                "reference": "6ac21e1a8dd460f8bf248935e3e0eafeada062b3",
+                "url": "https://api.github.com/repos/WyriHaximus/php-monolog-formatted-psr-handler/zipball/f562261b140d998eedf11555b351d4619eb98f64",
+                "reference": "f562261b140d998eedf11555b351d4619eb98f64",
                 "shasum": ""
             },
             "require": {
                 "monolog/monolog": "^3.4.0",
-                "php": "^8.3",
-                "psr/log": "^2 || ^3",
+                "php": "^8.4",
+                "psr/log": "^3",
                 "wyrihaximus/psr-3-utilities": "^2.2"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.3.4",
-                "wyrihaximus/test-utilities": "^7.1.0"
+                "wyrihaximus/makefiles": "^0.7.9",
+                "wyrihaximus/test-utilities": "^8.5.0"
             },
             "type": "library",
             "autoload": {
@@ -4846,7 +4830,7 @@
             "description": "Passes `formatted` instead of `message` to the PSR-3 logger",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler/issues",
-                "source": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler/tree/3.1.0"
+                "source": "https://github.com/WyriHaximus/php-monolog-formatted-psr-handler/tree/3.2.0"
             },
             "funding": [
                 {
@@ -4854,7 +4838,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-04T12:12:04+00:00"
+            "time": "2025-10-12T11:01:55+00:00"
         },
         {
             "name": "wyrihaximus/monolog-processors",
@@ -4961,25 +4945,26 @@
         },
         {
             "name": "wyrihaximus/psr-3-context-logger",
-            "version": "2.0.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-psr-3-context-logger.git",
-                "reference": "391199155da86315392e73eea39013c4e18b7e77"
+                "reference": "da960e51cd68e4c7c04a8b0adccdd4154c8e3bbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-context-logger/zipball/391199155da86315392e73eea39013c4e18b7e77",
-                "reference": "391199155da86315392e73eea39013c4e18b7e77",
+                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-context-logger/zipball/da960e51cd68e4c7c04a8b0adccdd4154c8e3bbf",
+                "reference": "da960e51cd68e4c7c04a8b0adccdd4154c8e3bbf",
                 "shasum": ""
             },
             "require": {
-                "php": "^8",
-                "psr/log": "^2"
+                "php": "^8.4",
+                "psr/log": "^3.0.2"
             },
             "require-dev": {
-                "wyrihaximus/psr-3-utilities": "^2",
-                "wyrihaximus/test-utilities": "^4.0.0"
+                "wyrihaximus/makefiles": "^0.7.5",
+                "wyrihaximus/psr-3-utilities": "^2.2",
+                "wyrihaximus/test-utilities": "^8.2.0"
             },
             "type": "library",
             "autoload": {
@@ -5000,7 +4985,7 @@
             "description": "PSR-3 context logger decorator",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-psr-3-context-logger/issues",
-                "source": "https://github.com/WyriHaximus/php-psr-3-context-logger/tree/2.0.0"
+                "source": "https://github.com/WyriHaximus/php-psr-3-context-logger/tree/3.0.0"
             },
             "funding": [
                 {
@@ -5008,30 +4993,30 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-06T22:30:26+00:00"
+            "time": "2025-09-18T21:02:44+00:00"
         },
         {
             "name": "wyrihaximus/psr-3-utilities",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-psr-3-utilities.git",
-                "reference": "dd26d0fa947dfb55305f44d4a9a98e9e86d72d0f"
+                "reference": "ff7865a85e64e137ceb2cd762e4f70a53953a853"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-utilities/zipball/dd26d0fa947dfb55305f44d4a9a98e9e86d72d0f",
-                "reference": "dd26d0fa947dfb55305f44d4a9a98e9e86d72d0f",
+                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-utilities/zipball/ff7865a85e64e137ceb2cd762e4f70a53953a853",
+                "reference": "ff7865a85e64e137ceb2cd762e4f70a53953a853",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "^8.3",
-                "php": "^8.3",
-                "psr/log": "^2 || ^3"
+                "ext-json": "^8.4",
+                "php": "^8.4",
+                "psr/log": "^3"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.3.4",
-                "wyrihaximus/test-utilities": "^7.0.0"
+                "wyrihaximus/makefiles": "^0.7.9",
+                "wyrihaximus/test-utilities": "^8.5.0"
             },
             "type": "library",
             "autoload": {
@@ -5056,7 +5041,7 @@
             "description": "PSR-3 logger utilities",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-psr-3-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-psr-3-utilities/tree/2.2.0"
+                "source": "https://github.com/WyriHaximus/php-psr-3-utilities/tree/2.3.0"
             },
             "funding": [
                 {
@@ -5064,30 +5049,31 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-03T17:03:16+00:00"
+            "time": "2025-10-12T12:03:53+00:00"
         },
         {
             "name": "wyrihaximus/react-psr-3-stdio",
-            "version": "3.0.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-psr-3-stdio.git",
-                "reference": "8dfbe69be3d591a08737c15e72c9ebf8a1a4f2aa"
+                "reference": "1a32814029d316ea8297ea77b2a2b1d75772051c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-psr-3-stdio/zipball/8dfbe69be3d591a08737c15e72c9ebf8a1a4f2aa",
-                "reference": "8dfbe69be3d591a08737c15e72c9ebf8a1a4f2aa",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-psr-3-stdio/zipball/1a32814029d316ea8297ea77b2a2b1d75772051c",
+                "reference": "1a32814029d316ea8297ea77b2a2b1d75772051c",
                 "shasum": ""
             },
             "require": {
-                "php": "^8",
-                "psr/log": "^2",
-                "react/stream": "^1.2",
-                "wyrihaximus/psr-3-utilities": "^2.1"
+                "php": "^8.4",
+                "psr/log": "^3.0.2",
+                "react/stream": "^1.4.0",
+                "wyrihaximus/psr-3-utilities": "^2.3.0"
             },
             "require-dev": {
-                "wyrihaximus/async-test-utilities": "^4.2.0"
+                "wyrihaximus/async-test-utilities": "^10.4.0",
+                "wyrihaximus/makefiles": "^0.7.9"
             },
             "type": "library",
             "autoload": {
@@ -5108,7 +5094,7 @@
             "description": "Async PSR-3 stdio logger",
             "support": {
                 "issues": "https://github.com/WyriHaximus/reactphp-psr-3-stdio/issues",
-                "source": "https://github.com/WyriHaximus/reactphp-psr-3-stdio/tree/3.0.0"
+                "source": "https://github.com/WyriHaximus/reactphp-psr-3-stdio/tree/4.0.0"
             },
             "funding": [
                 {
@@ -5116,7 +5102,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-08T22:27:13+00:00"
+            "time": "2025-10-12T19:00:57+00:00"
         },
         {
             "name": "wyrihaximus/simple-twig",
