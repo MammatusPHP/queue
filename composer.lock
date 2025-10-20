@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "38771d692be57d49b95cabf2dcd6cb81",
+    "content-hash": "c00c7c95fc86c376322895cac95d73de",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -1381,23 +1381,25 @@
         },
         {
             "name": "mammatus/kubernetes-events",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/kubernetes-events.git",
-                "reference": "86826fe5b3be715c16773f85f94a2d214dfd08d8"
+                "reference": "25d3a7a49b0163b927bea3c0830380d43a7dacdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/kubernetes-events/zipball/86826fe5b3be715c16773f85f94a2d214dfd08d8",
-                "reference": "86826fe5b3be715c16773f85f94a2d214dfd08d8",
+                "url": "https://api.github.com/repos/MammatusPHP/kubernetes-events/zipball/25d3a7a49b0163b927bea3c0830380d43a7dacdf",
+                "reference": "25d3a7a49b0163b927bea3c0830380d43a7dacdf",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.2"
+                "php": "^8.4",
+                "symfony/yaml": "^7.3"
             },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^6.0.10"
+                "wyrihaximus/makefiles": "^0.7.10",
+                "wyrihaximus/test-utilities": "^8.5"
             },
             "type": "library",
             "extra": {
@@ -1421,10 +1423,10 @@
             "license": [
                 "MIT"
             ],
-            "description": "⏱️ Cron manager",
+            "description": "☸📣 Kubernetes related Events",
             "support": {
                 "issues": "https://github.com/MammatusPHP/kubernetes-events/issues",
-                "source": "https://github.com/MammatusPHP/kubernetes-events/tree/1.0.1"
+                "source": "https://github.com/MammatusPHP/kubernetes-events/tree/2.0.0"
             },
             "funding": [
                 {
@@ -1432,7 +1434,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-16T22:11:30+00:00"
+            "time": "2025-10-20T10:46:50+00:00"
         },
         {
             "name": "mammatus/life-cycle-events",
@@ -4235,6 +4237,82 @@
                 }
             ],
             "time": "2025-09-11T14:36:48+00:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v7.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "d4f4a66866fe2451f61296924767280ab5732d9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/d4f4a66866fe2451f61296924767280ab5732d9d",
+                "reference": "d4f4a66866fe2451f61296924767280ab5732d9d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/deprecation-contracts": "^2.5|^3.0",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "conflict": {
+                "symfony/console": "<6.4"
+            },
+            "require-dev": {
+                "symfony/console": "^6.4|^7.0"
+            },
+            "bin": [
+                "Resources/bin/yaml-lint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Loads and dumps YAML files",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/yaml/tree/v7.3.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-08-27T11:34:33+00:00"
         },
         {
             "name": "twig/twig",
@@ -11596,28 +11674,28 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991"
+                "reference": "541057574806f942c94662b817a50f63f7345360"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/11cb2199493b2f8a3b53e7f19068fc6aac760991",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/541057574806f942c94662b817a50f63f7345360",
+                "reference": "541057574806f942c94662b817a50f63f7345360",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
+                "ext-date": "*",
+                "ext-filter": "*",
                 "php": "^7.2 || ^8.0"
             },
-            "conflict": {
-                "phpstan/phpstan": "<0.12.20",
-                "vimeo/psalm": "<4.6.1 || 4.6.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5.13"
+            "suggest": {
+                "ext-intl": "",
+                "ext-simplexml": "",
+                "ext-spl": ""
             },
             "type": "library",
             "extra": {
@@ -11648,9 +11726,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/1.11.0"
+                "source": "https://github.com/webmozarts/assert/tree/1.12.0"
             },
-            "time": "2022-06-03T18:03:27+00:00"
+            "time": "2025-10-20T12:43:39+00:00"
         },
         {
             "name": "webmozart/glob",
