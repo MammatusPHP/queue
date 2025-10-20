@@ -9,12 +9,14 @@ use Mammatus\Queue\Kubernetes\Helm\QueueConsumersValues;
 use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\TestUtilities\TestCase;
 
+use const DIRECTORY_SEPARATOR;
+
 final class QueueConsumersValuesTest extends TestCase
 {
     #[Test]
     public function none(): void
     {
-        $values = new Values(new Values\Registry());
+        $values = new Values(new Values\Registry(Values\ValuesFile::createFromFile(__DIR__ . DIRECTORY_SEPARATOR . 'values.yaml')));
         new QueueConsumersValues()->values($values);
 
         self::assertSame([
@@ -25,7 +27,7 @@ final class QueueConsumersValuesTest extends TestCase
     #[Test]
     public function all(): void
     {
-        $values = new Values(new Values\Registry());
+        $values = new Values(new Values\Registry(Values\ValuesFile::createFromFile(__DIR__ . DIRECTORY_SEPARATOR . 'values.yaml')));
         new QueueConsumersValues(false)->values($values);
 
         self::assertSame([
