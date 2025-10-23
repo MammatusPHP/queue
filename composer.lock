@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c00c7c95fc86c376322895cac95d73de",
+    "content-hash": "c1c26e72fd158697ab2ac2e89edcd565",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -5490,16 +5490,16 @@
         },
         {
             "name": "bunny/bunny",
-            "version": "0.6.x-dev",
+            "version": "v0.6.0-alpha.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakubkulhan/bunny.git",
-                "reference": "307e7818f81e2c6fb65ae741c49bf90365dc12f0"
+                "reference": "5a37f769b5c8a1698742fc2394781b37279fe0f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/307e7818f81e2c6fb65ae741c49bf90365dc12f0",
-                "reference": "307e7818f81e2c6fb65ae741c49bf90365dc12f0",
+                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/5a37f769b5c8a1698742fc2394781b37279fe0f1",
+                "reference": "5a37f769b5c8a1698742fc2394781b37279fe0f1",
                 "shasum": ""
             },
             "require": {
@@ -5521,7 +5521,6 @@
                 "squizlabs/php_codesniffer": "^3.11",
                 "wyrihaximus/react-phpunit-run-tests-in-fiber": "^1.0 || ^2.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -5558,9 +5557,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jakubkulhan/bunny/issues",
-                "source": "https://github.com/jakubkulhan/bunny/tree/0.6.x"
+                "source": "https://github.com/jakubkulhan/bunny/tree/v0.6.0-alpha.1"
             },
-            "time": "2025-09-18T22:25:52+00:00"
+            "time": "2025-07-28T21:47:41+00:00"
         },
         {
             "name": "colinodell/json5",
