@@ -9,6 +9,7 @@ use Mammatus\Queue\Attributes\Consumer;
 use Mammatus\Queue\BuildIn\EmptyMessage;
 use Mammatus\Queue\BuildIn\Noop;
 use Mammatus\Queue\Composer\Item;
+use Mammatus\Queue\Worker\Type;
 use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\TestUtilities\TestCase;
 
@@ -20,9 +21,12 @@ final class ItemTest extends TestCase
     public function json(): void
     {
         $item = new Item(
+            'brownie',
             Noop::class,
             'perform',
             EmptyMessage::class,
+            'SpaceCake',
+            'queue-worker-space-cake',
             new Consumer(
                 'test',
                 'test',
@@ -33,10 +37,10 @@ final class ItemTest extends TestCase
                     memory: 3,
                 ),
             ),
-            false,
+            Type::Internal,
         );
         self::assertSame(
-            '{"class":"Mammatus\\\\Queue\\\\BuildIn\\\\Noop","method":"perform","dtoClass":"Mammatus\\\\Queue\\\\BuildIn\\\\EmptyMessage","consumer":{"addOns":[{"type":"container","helper":"mammatus.container.resources","arguments":{"cpu":"666m","memory":"3072Mi"}}],"friendlyName":"test","queue":"test","dtoClass":"Mammatus\\\\Queue\\\\BuildIn\\\\EmptyMessage","concurrency":1337},"split_out":false}',
+            '{"hash":"brownie","class":"Mammatus\\\\Queue\\\\BuildIn\\\\Noop","method":"perform","dtoClass":"Mammatus\\\\Queue\\\\BuildIn\\\\EmptyMessage","generateClassesClassNameSuffix":"SpaceCake","groupName":"queue-worker-space-cake","consumer":{"addOns":[{"type":"container","helper":"mammatus.container.resources","arguments":{"cpu":"666m","memory":"3072Mi"}}],"friendlyName":"test","queue":"test","dtoClass":"Mammatus\\\\Queue\\\\BuildIn\\\\EmptyMessage","concurrency":1337},"type":"internal"}',
             json_encode($item),
         );
     }
