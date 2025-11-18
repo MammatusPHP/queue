@@ -38,7 +38,7 @@ final class ConsumerTest extends AsyncTestCase
         $worker = new Worker(
             '1829be63f4279d034d6b46caa90b1f8d',
             'noop_1',
-            'internal',
+            Worker\Type::Internal,
             'noop',
             1,
             Noop::class,
@@ -79,7 +79,7 @@ final class ConsumerTest extends AsyncTestCase
         $worker = new Worker(
             '1829be63f4279d034d6b46caa90b1f8d',
             'noop_1',
-            'internal',
+            Worker\Type::Internal,
             'noop',
             1,
             Noop::class,

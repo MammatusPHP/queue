@@ -9,10 +9,11 @@
     "composer-plugin-api": "^2.0",
     "eventsauce/object-hydrator": "^1.6.1",
     "mammatus/app": "dev-master",
-    "mammatus/kubernetes-attributes": "^1",
-    "mammatus/kubernetes-contracts": "^1",
-    "mammatus/kubernetes-events": "^2.0.0",
-    "mammatus/life-cycle-events": "^2.3.0",
+    "mammatus/groups": "dev-full-initial-implementation",
+    "mammatus/kubernetes-attributes": "dev-add-group as 1.13.666",
+    "mammatus/kubernetes-contracts": "dev-add-groups as 1.13.666",
+    "mammatus/kubernetes-events": "dev-add-groups as 2.13.666",
+    "mammatus/life-cycle-events": "dev-switch-to-groups as 2.4.0",
     "mammatus/queue-attributes": "^0.1.0",
     "mammatus/queue-contracts": "^0.1.0",
     "open-telemetry/api": "^1.4.0",
@@ -24,13 +25,13 @@
     "react/event-loop": "^1.5",
     "react/promise": "^3.2",
     "react/promise-timer": "^1.11",
+    "realodix/change-case": "^4.2",
     "roave/better-reflection": "^6.26",
     "wyrihaximus/broadcast-contracts": "^1.3",
-    "wyrihaximus/generative-composer-plugin-tooling": "^1",
+    "wyrihaximus/generative-composer-plugin-tooling": "^1.2.0",
     "wyrihaximus/monolog-factory": "^2.0.0",
     "wyrihaximus/psr-3-callable-throwable-logger": "^2.4",
     "wyrihaximus/psr-3-context-logger": "^3.0.0",
-    "wyrihaximus/simple-twig": "^2.2.1",
     "wyrihaximus/ticking-promise": "^3.1"
   },
   "require-dev": {
@@ -49,9 +50,6 @@
       "Mammatus\\Tests\\Queue\\": "tests/"
     }
   },
-  "bin": [
-    "bin/mammatus-queue"
-  ],
   "config": {
     "allow-plugins": {
       "composer/package-versions-deprecated": true,
@@ -61,6 +59,7 @@
       "icanhazstring/composer-unused": true,
       "infection/extension-installer": true,
       "mammatus/app": true,
+      "mammatus/groups": true,
       "mindplay/composer-locator": true,
       "phpstan/extension-installer": true,
       "wyrihaximus/broadcast": true,
@@ -76,6 +75,7 @@
     "class": "Mammatus\\Queue\\Composer\\Installer",
     "mammatus": {
       "has-bootable": true,
+      "has-groups": true,
       "queue": {
         "has-workers": true
       }

@@ -23,31 +23,12 @@ class Hydrator implements ObjectMapper
     public function hydrateObject(string $className, array $payload): object
     {
         return match($className) {
-            \Mammatus\Queue\BuildIn\EmptyMessage::class => $this->hydrateMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage($payload),
+            
             default => throw UnableToHydrateObject::noHydrationDefined($className, $this->hydrationStack),
         };
     }
     
-            
-    private function hydrateMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage(array $payload): \Mammatus\Queue\BuildIn\EmptyMessage
-    {
-        $properties = []; 
-        $missingFields = [];
-        try {
-        } catch (\Throwable $exception) {
-            throw UnableToHydrateObject::dueToError(\Mammatus\Queue\BuildIn\EmptyMessage::class, $exception, stack: $this->hydrationStack);
-        }
-
-        if (count($missingFields) > 0) {
-            throw UnableToHydrateObject::dueToMissingFields(\Mammatus\Queue\BuildIn\EmptyMessage::class, $missingFields, stack: $this->hydrationStack);
-        }
-
-        try {
-            return new \Mammatus\Queue\BuildIn\EmptyMessage(...$properties);
-        } catch (\Throwable $exception) {
-            throw UnableToHydrateObject::dueToError(\Mammatus\Queue\BuildIn\EmptyMessage::class, $exception, stack: $this->hydrationStack);
-        }
-    }
+    
     
     private function serializeViaTypeMap(string $accessor, object $object, array $payloadToTypeMap): array
     {
@@ -80,7 +61,6 @@ class Hydrator implements ObjectMapper
             'DateTime' => $this->serializeValueDateTime($object),
             'DateTimeImmutable' => $this->serializeValueDateTimeImmutable($object),
             'DateTimeInterface' => $this->serializeValueDateTimeInterface($object),
-            \Mammatus\Queue\BuildIn\EmptyMessage::class => $this->serializeObjectMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage($object),
                 default => throw new \LogicException("No serialization defined for $className"),
             };
         } catch (\Throwable $exception) {
@@ -151,16 +131,6 @@ class Hydrator implements ObjectMapper
         }
         
         return $serializer->serialize($value, $this);
-    }
-
-
-    private function serializeObjectMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage(mixed $object): mixed
-    {
-        \assert($object instanceof \Mammatus\Queue\BuildIn\EmptyMessage);
-        $result = [];
-
-
-        return $result;
     }
     
     

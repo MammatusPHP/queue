@@ -28,7 +28,7 @@ final class ProducerTest extends AsyncTestCase
                 return false;
             }
 
-            return $message->getBody() === '[]';
+            return $message->getBody() === '[]' && $message->getHeaders() === [];
         })->once();
 
         $producer = new Producer($interOpProducer, new Hydrator(), new JSON());
