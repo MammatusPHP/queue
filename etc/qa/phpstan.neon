@@ -4,8 +4,10 @@ parameters:
 		- ../../etc
 		- ../../src
 		- ../../tests
+		- ../dev-app
 	excludePaths:
 		- ../../src/Generated/*
+		- ../../tests/Composer/ExpectedAbstractList.php (?)
 	ignoreErrors:
 		- '#Method Mammatus\\Queue\\Consumer::__construct\(\) has a parameter \$container with a type declaration of Psr\\Container\\ContainerInterface, but containers should not be injected.#'
 		-
@@ -16,16 +18,8 @@ parameters:
 			path: ../../src/Consumer.php
 		-
 			identifier: psr3.interpolated
-			path: ../../src/App.php
-			count: 1
-		-
-			identifier: psr3.interpolated
 			path: ../../src/Consumer.php
 			count: 4
-		-
-			identifier: psr3.interpolated
-			path: ../../src/Manager.php
-			count: 1
 	ergebnis:
 		noExtends:
 			classesAllowedToBeExtended:

@@ -11,12 +11,11 @@ use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\ImplementsInterfac
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\IsInstantiable;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Package\ComposerJsonHasItemWithSpecificValue;
 use WyriHaximus\Composer\GenerativePluginTooling\GenerativePlugin;
+use WyriHaximus\Composer\GenerativePluginTooling\Helper\Remove;
+use WyriHaximus\Composer\GenerativePluginTooling\Helper\TwigFile;
 use WyriHaximus\Composer\GenerativePluginTooling\Item as ItemContract;
 use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
-use WyriHaximus\Twig\SimpleTwig;
 
-use function chmod;
-use function file_get_contents;
 use function file_put_contents;
 use function md5;
 use function serialize;
@@ -54,6 +53,8 @@ final class Plugin implements GenerativePlugin
 
     public function compile(string $rootPath, ItemContract ...$items): void
     {
+        Remove::directoryContents($rootPath . '/src/Generated');
+
         $map     = [];
         $workers = [];
         $dtos    = [];
@@ -68,27 +69,36 @@ final class Plugin implements GenerativePlugin
             ];
             $workers[md5(serialize($item))] = $item;
             $dtos[$item->dtoClass]          = $item->dtoClass;
+
+            TwigFile::render(
+                $rootPath . '/etc/generated_templates/Consumer.php.twig',
+                $rootPath . '/src/Generated/Consumer/' . $item->generateClassesClassNameSuffix . '.php',
+                ['worker' => $item],
+            );
+            TwigFile::render(
+                $rootPath . '/etc/generated_templates/WorkerFactory.php.twig',
+                $rootPath . '/src/Generated/WorkerFactory/' . $item->generateClassesClassNameSuffix . '.php',
+                ['worker' => $item],
+            );
         }
 
-        $classContentsList = SimpleTwig::render(
-            file_get_contents( /** @phpstan-ignore-line */
-                $rootPath . '/etc/generated_templates/AbstractList.php.twig',
-            ),
+        TwigFile::render(
+            $rootPath . '/etc/generated_templates/AbstractList.php.twig',
+            $rootPath . '/src/Generated/AbstractList.php',
             ['workers' => $workers],
         );
-        $installPathList   = $rootPath . '/src/Generated/AbstractList.php';
-        file_put_contents($installPathList, $classContentsList); /** @phpstan-ignore-line */
-        chmod($installPathList, 0664);
 
-        $classContentsList = SimpleTwig::render(
-            file_get_contents( /** @phpstan-ignore-line */
-                $rootPath . '/etc/generated_templates/WorkQueueMap.php.twig',
-            ),
+//        TwigFile::render(
+//            $rootPath . '/etc/generated_templates/AbstractList.php.twig',
+//            $rootPath . '/tests/Composer/ExpectedAbstractList.php',
+//            ['workers' => $workers],
+//        );
+
+        TwigFile::render(
+            $rootPath . '/etc/generated_templates/WorkQueueMap.php.twig',
+            $rootPath . '/src/Generated/WorkQueueMap.php',
             ['items' => $map],
         );
-        $installPathList   = $rootPath . '/src/Generated/WorkQueueMap.php';
-        file_put_contents($installPathList, $classContentsList); /** @phpstan-ignore-line */
-        chmod($installPathList, 0664);
 
         $hydratorGenerator = new ObjectMapperCodeGenerator();
         $code              = $hydratorGenerator->dump($dtos, Hydrator::class);
