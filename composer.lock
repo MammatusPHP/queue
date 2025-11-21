@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6722a912a5e52774bb2adf74441b748",
+    "content-hash": "6b204f3e7bcfdf8a5aa0da7c93acd613",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -5490,16 +5490,16 @@
         },
         {
             "name": "bunny/bunny",
-            "version": "v0.6.0-alpha.1",
+            "version": "v0.6.0-alpha.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakubkulhan/bunny.git",
-                "reference": "5a37f769b5c8a1698742fc2394781b37279fe0f1"
+                "reference": "b0e9af0303af18e0dd272b7a959b25ccbaae1abc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/5a37f769b5c8a1698742fc2394781b37279fe0f1",
-                "reference": "5a37f769b5c8a1698742fc2394781b37279fe0f1",
+                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/b0e9af0303af18e0dd272b7a959b25ccbaae1abc",
+                "reference": "b0e9af0303af18e0dd272b7a959b25ccbaae1abc",
                 "shasum": ""
             },
             "require": {
@@ -5557,9 +5557,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jakubkulhan/bunny/issues",
-                "source": "https://github.com/jakubkulhan/bunny/tree/v0.6.0-alpha.1"
+                "source": "https://github.com/jakubkulhan/bunny/tree/v0.6.0-alpha.2"
             },
-            "time": "2025-07-28T21:47:41+00:00"
+            "time": "2025-11-09T12:58:13+00:00"
         },
         {
             "name": "colinodell/json5",
