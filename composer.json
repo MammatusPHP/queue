@@ -11,7 +11,7 @@
     "mammatus/app": "dev-master",
     "mammatus/kubernetes-attributes": "^1",
     "mammatus/kubernetes-contracts": "^1",
-    "mammatus/kubernetes-events": "^2.0.0",
+    "mammatus/kubernetes-events": "^2.0.0 || ^3.0.0",
     "mammatus/life-cycle-events": "^2.3.0",
     "mammatus/queue-attributes": "^0.1.0",
     "mammatus/queue-contracts": "^0.1.0",
