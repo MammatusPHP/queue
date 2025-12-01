@@ -23,46 +23,101 @@ class Hydrator implements ObjectMapper
     public function hydrateObject(string $className, array $payload): object
     {
         return match($className) {
-            \Mammatus\Queue\BuildIn\EmptyMessage::class => $this->hydrateMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage($payload),
+            'Mammatus\DevApp\Queue\EmptyMessage' => $this->hydrateMammatus⚡️DevApp⚡️Queue⚡️EmptyMessage($payload),
+                'Mammatus\DevApp\Queue\BeerMessage' => $this->hydrateMammatus⚡️DevApp⚡️Queue⚡️BeerMessage($payload),
             default => throw UnableToHydrateObject::noHydrationDefined($className, $this->hydrationStack),
         };
     }
     
             
-    private function hydrateMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage(array $payload): \Mammatus\Queue\BuildIn\EmptyMessage
+    private function hydrateMammatus⚡️DevApp⚡️Queue⚡️EmptyMessage(array $payload): \Mammatus\DevApp\Queue\EmptyMessage
     {
         $properties = []; 
         $missingFields = [];
         try {
         } catch (\Throwable $exception) {
-            throw UnableToHydrateObject::dueToError(\Mammatus\Queue\BuildIn\EmptyMessage::class, $exception, stack: $this->hydrationStack);
+            throw UnableToHydrateObject::dueToError('Mammatus\DevApp\Queue\EmptyMessage', $exception, stack: $this->hydrationStack);
         }
 
         if (count($missingFields) > 0) {
-            throw UnableToHydrateObject::dueToMissingFields(\Mammatus\Queue\BuildIn\EmptyMessage::class, $missingFields, stack: $this->hydrationStack);
+            throw UnableToHydrateObject::dueToMissingFields(\Mammatus\DevApp\Queue\EmptyMessage::class, $missingFields, stack: $this->hydrationStack);
         }
 
         try {
-            return new \Mammatus\Queue\BuildIn\EmptyMessage(...$properties);
+            return new \Mammatus\DevApp\Queue\EmptyMessage(...$properties);
         } catch (\Throwable $exception) {
-            throw UnableToHydrateObject::dueToError(\Mammatus\Queue\BuildIn\EmptyMessage::class, $exception, stack: $this->hydrationStack);
+            throw UnableToHydrateObject::dueToError('Mammatus\DevApp\Queue\EmptyMessage', $exception, stack: $this->hydrationStack);
+        }
+    }
+
+        
+    private function hydrateMammatus⚡️DevApp⚡️Queue⚡️BeerMessage(array $payload): \Mammatus\DevApp\Queue\BeerMessage
+    {
+        $properties = []; 
+        $missingFields = [];
+        try {
+            $value = $payload['name'] ?? null;
+
+            if ($value === null) {
+                $missingFields[] = 'name';
+                goto after_name;
+            }
+
+            $properties['name'] = $value;
+
+            after_name:
+
+            $value = $payload['type'] ?? null;
+
+            if ($value === null) {
+                $missingFields[] = 'type';
+                goto after_type;
+            }
+
+            $properties['type'] = $value;
+
+            after_type:
+
+            $value = $payload['alcohol_percentage'] ?? null;
+
+            if ($value === null) {
+                $missingFields[] = 'alcohol_percentage';
+                goto after_alcoholPercentage;
+            }
+
+            $properties['alcoholPercentage'] = $value;
+
+            after_alcoholPercentage:
+
+        } catch (\Throwable $exception) {
+            throw UnableToHydrateObject::dueToError('Mammatus\DevApp\Queue\BeerMessage', $exception, stack: $this->hydrationStack);
+        }
+
+        if (count($missingFields) > 0) {
+            throw UnableToHydrateObject::dueToMissingFields(\Mammatus\DevApp\Queue\BeerMessage::class, $missingFields, stack: $this->hydrationStack);
+        }
+
+        try {
+            return new \Mammatus\DevApp\Queue\BeerMessage(...$properties);
+        } catch (\Throwable $exception) {
+            throw UnableToHydrateObject::dueToError('Mammatus\DevApp\Queue\BeerMessage', $exception, stack: $this->hydrationStack);
         }
     }
     
     private function serializeViaTypeMap(string $accessor, object $object, array $payloadToTypeMap): array
     {
         foreach ($payloadToTypeMap as $payloadType => [$valueType, $method]) {
-            if ($object instanceof $valueType) {
+            if (is_a($object, $valueType)) {
                 return [$accessor => $payloadType] + $this->{$method}($object);
             }
         }
 
-        throw new \LogicException('No type mapped for object of class: ' . $object::class);
+        throw new \LogicException('No type mapped for object of class: ' . get_class($object));
     }
 
     public function serializeObject(object $object): mixed
     {
-        return $this->serializeObjectOfType($object, $object::class);
+        return $this->serializeObjectOfType($object, get_class($object));
     }
 
     /**
@@ -80,7 +135,8 @@ class Hydrator implements ObjectMapper
             'DateTime' => $this->serializeValueDateTime($object),
             'DateTimeImmutable' => $this->serializeValueDateTimeImmutable($object),
             'DateTimeInterface' => $this->serializeValueDateTimeInterface($object),
-            \Mammatus\Queue\BuildIn\EmptyMessage::class => $this->serializeObjectMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage($object),
+            'Mammatus\DevApp\Queue\EmptyMessage' => $this->serializeObjectMammatus⚡️DevApp⚡️Queue⚡️EmptyMessage($object),
+            'Mammatus\DevApp\Queue\BeerMessage' => $this->serializeObjectMammatus⚡️DevApp⚡️Queue⚡️BeerMessage($object),
                 default => throw new \LogicException("No serialization defined for $className"),
             };
         } catch (\Throwable $exception) {
@@ -94,8 +150,8 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeArrayItems(... [
-]);
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeArrayItems(...array (
+));
         }
         
         return $serializer->serialize($value, $this);
@@ -107,8 +163,8 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeUuidToString(... [
-]);
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeUuidToString(...array (
+));
         }
         
         return $serializer->serialize($value, $this);
@@ -120,8 +176,8 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(... [
-]);
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(...array (
+));
         }
         
         return $serializer->serialize($value, $this);
@@ -133,8 +189,8 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(... [
-]);
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(...array (
+));
         }
         
         return $serializer->serialize($value, $this);
@@ -146,18 +202,39 @@ class Hydrator implements ObjectMapper
         static $serializer;
         
         if ($serializer === null) {
-            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(... [
-]);
+            $serializer = new \EventSauce\ObjectHydrator\PropertySerializers\SerializeDateTime(...array (
+));
         }
         
         return $serializer->serialize($value, $this);
     }
 
 
-    private function serializeObjectMammatus⚡️Queue⚡️BuildIn⚡️EmptyMessage(mixed $object): mixed
+    private function serializeObjectMammatus⚡️DevApp⚡️Queue⚡️EmptyMessage(mixed $object): mixed
     {
-        \assert($object instanceof \Mammatus\Queue\BuildIn\EmptyMessage);
+        \assert($object instanceof \Mammatus\DevApp\Queue\EmptyMessage);
         $result = [];
+
+
+        return $result;
+    }
+
+
+    private function serializeObjectMammatus⚡️DevApp⚡️Queue⚡️BeerMessage(mixed $object): mixed
+    {
+        \assert($object instanceof \Mammatus\DevApp\Queue\BeerMessage);
+        $result = [];
+
+        $name = $object->name;
+        after_name:        $result['name'] = $name;
+
+        
+        $type = $object->type;
+        after_type:        $result['type'] = $type;
+
+        
+        $alcoholPercentage = $object->alcoholPercentage;
+        after_alcoholPercentage:        $result['alcohol_percentage'] = $alcoholPercentage;
 
 
         return $result;

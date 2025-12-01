@@ -16,8 +16,8 @@ use const PHP_INT_MAX;
 
 final class ConsumerFactory
 {
-    public const true CREATE_CONSUMER_EXPECTED      = true;
-    public const false CREATE_CONSUMER_NOT_EXPECTED = false;
+    public const true CREATE_CONSUMER_EXPECTED = true;
+//    public const false CREATE_CONSUMER_NOT_EXPECTED = false;
 
     /** @return array{Consumer, Mockery\MockInterface&ContainerInterface, Mockery\MockInterface&QueueInterop\Context, Mockery\MockInterface&QueueInterop\Consumer, Mockery\MockInterface&LoggerInterface} */
     public static function create(bool $createConsumerExpected): array

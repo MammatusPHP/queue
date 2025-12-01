@@ -70,7 +70,6 @@ final class Consumer implements Listener
 
     private function consume(Worker $worker, WorkerContract $workerInstance, LoggerInterface $baseLogger): true
     {
-        await(sleep(1));
         $consumer = $this->context->createConsumer(new Queue($worker->queue));
         while ($this->running) {
             $message = $consumer->receiveNoWait();

@@ -13,16 +13,15 @@ use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Repository\RepositoryManager;
 use Composer\Script\Event;
 use Composer\Script\ScriptEvents;
-use Mammatus\Queue\Composer\Installer;
+use Mammatus\DevApp\Queue\Noop;
+use Mammatus\Queue\Composer\CodeGenerator;
 use Mockery;
 use PHPUnit\Framework\Attributes\Test;
-use Symfony\Component\Console\Output\StreamOutput;
 use WyriHaximus\TestUtilities\TestCase;
 
 use function closedir;
 use function dirname;
 use function file_exists;
-use function fseek;
 use function in_array;
 use function is_dir;
 use function is_file;
@@ -30,13 +29,11 @@ use function readdir;
 use function Safe\copy;
 use function Safe\file_get_contents;
 use function Safe\fileperms;
-use function Safe\fopen;
 use function Safe\mkdir;
 use function Safe\opendir;
-use function Safe\stream_get_contents;
-use function Safe\unlink;
 use function sprintf;
 use function substr;
+use function touch;
 
 use const DIRECTORY_SEPARATOR;
 
@@ -45,11 +42,81 @@ final class InstallerTest extends TestCase
     #[Test]
     public function getSubscribedEvents(): void
     {
-        self::assertSame([ScriptEvents::PRE_AUTOLOAD_DUMP => 'findActions'], Installer::getSubscribedEvents());
+        self::assertSame([ScriptEvents::PRE_AUTOLOAD_DUMP => 'findActions'], CodeGenerator::getSubscribedEvents());
     }
 
     #[Test]
     public function generate(): void
+    {
+        $composerConfig = $this->mockComposerConfig();
+        $rootPackage    = $this->mockRootPackage();
+
+        $io       = new IOMock();
+        $composer = $this->mockComposer($io, $composerConfig, $rootPackage);
+
+        $event = new Event(
+            ScriptEvents::PRE_AUTOLOAD_DUMP,
+            $composer,
+            $io,
+        );
+
+        $installer = new CodeGenerator();
+
+        // Test dead methods and make Infection happy
+        $installer->activate($composer, $io);
+        $installer->deactivate($composer, $io);
+        $installer->uninstall($composer, $io);
+
+        $this->recurseCopy(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR, $this->getTmpDir());
+
+        $sneakyFile = $this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR . 'Generated' . DIRECTORY_SEPARATOR . 'sneaky.file';
+        touch($sneakyFile);
+
+        $fileNameList          = $this->getTmpDir() . 'src/Generated/AbstractList.php';
+        $fileNameWorkerFactory = $this->getTmpDir() . 'src/Generated/WorkerFactory/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php';
+
+        self::assertFileExists($sneakyFile);
+
+        // Do the actual generating
+        CodeGenerator::findActions($event);
+
+        self::assertFileDoesNotExist($sneakyFile);
+        self::assertFileDoesNotExist($this->getTmpDir() . 'src/Generated/WorkerFactory/MammatusDevAppQueueOHellNoViaConstructForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3.php');
+
+        $output = $io->output();
+
+        self::assertStringContainsString('<info>mammatus/queue:</info> Locating actions', $output);
+        self::assertStringContainsString('<info>mammatus/queue:</info> Generated static abstract queue manager and queue list in ', $output);
+        self::assertStringContainsString('<info>mammatus/queue:</info> Found 9 action(s)', $output);
+
+        self::assertFileExists($fileNameList);
+        self::assertTrue(in_array(
+            substr(sprintf('%o', fileperms($fileNameList)), -4),
+            [
+                '0764',
+                '0664',
+                '0666',
+            ],
+            true,
+        ));
+        $fileContentsList = file_get_contents($fileNameList);
+        self::assertStringContainsStringIgnoringCase('/** @see \\' . Noop::class, $fileContentsList);
+        self::assertStringContainsStringIgnoringCase('yield \'mammatus-dev-app-queue-noop-via-perform-for-noop-with-mammatus-dev-app-queue-empty-message-34bc35c3b25ff54c5995f879e78b4d3f\' => WorkerFactory\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage::create();', $fileContentsList);
+        self::assertStringContainsStringIgnoringCase('yield \'mammatus-dev-app-queue-noop-via-perform-for-noop-with-mammatus-dev-app-queue-empty-message-as-noop2-noop-2\' => WorkerFactory\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop2::create();', $fileContentsList);
+        self::assertStringContainsStringIgnoringCase('yield \'mammatus-dev-app-queue-o-hell-no-via-proost-for-noop-with-mammatus-dev-app-queue-beer-message-as-noop3-noop-3\' => WorkerFactory\\MammatusDevAppQueueOHellNoViaProostForNoopWithMammatusDevAppQueueBeerMessageAsNoop3::create();', $fileContentsList);
+        self::assertStringNotContainsStringIgnoringCase('mammatus-dev-app-queue-o-hell-no-via-construct-for-noop-with-mammatus-dev-app-queue-empty-message', $fileContentsList);
+        self::assertStringNotContainsStringIgnoringCase('construct', $fileContentsList);
+        self::assertStringNotContainsStringIgnoringCase('prut', $fileContentsList);
+        self::assertFileEquals(__DIR__ . '/ExpectedAbstractList.php', $fileNameList);
+        $fileContentsWorkerFactory = file_get_contents($fileNameWorkerFactory);
+        self::assertStringContainsStringIgnoringCase('/** @see \\' . Noop::class, $fileContentsWorkerFactory);
+        self::assertStringContainsStringIgnoringCase('\'34bc35c3b25ff54c5995f879e78b4d3f\',', $fileContentsWorkerFactory);
+        self::assertStringContainsStringIgnoringCase('Type::from(\'internal\'),', $fileContentsWorkerFactory);
+        self::assertStringContainsStringIgnoringCase('EmptyMessage::class,', $fileContentsWorkerFactory);
+        self::assertStringContainsStringIgnoringCase('json_decode(\'[]\', true), /** @phpstan-ignore-line */', $fileContentsWorkerFactory);
+    }
+
+    private function mockComposerConfig(): Config
     {
         $composerConfig = new Config();
         $composerConfig->merge([
@@ -57,40 +124,30 @@ final class InstallerTest extends TestCase
                 'vendor-dir' => $this->getTmpDir() . 'vendor' . DIRECTORY_SEPARATOR,
             ],
         ]);
+
+        return $composerConfig;
+    }
+
+    private function mockRootPackage(): RootPackage
+    {
         $rootPackage = new RootPackage('mammatus/queue', 'dev-master', 'dev-master');
         $rootPackage->setExtra([
             'mammatus' => [
-                'queue' => ['has-actions' => true],
+                'queue' => ['has-workers' => true],
             ],
         ]);
         $rootPackage->setAutoload([
-            'psr-4' => ['Mammatus\\Queue\\' => 'src'],
+            'psr-4' => [
+                'Mammatus\\DevApp\\Queue\\' => 'etc/dev-app',
+                'Mammatus\\Queue\\' => 'src',
+            ],
         ]);
 
-        $io         = new class () extends NullIO {
-            private readonly StreamOutput $output;
+        return $rootPackage;
+    }
 
-            public function __construct()
-            {
-                $this->output = new StreamOutput(fopen('php://memory', 'rw'), decorated: false);
-            }
-
-            public function output(): string
-            {
-                fseek($this->output->getStream(), 0);
-
-                return stream_get_contents($this->output->getStream());
-            }
-
-            /**
-             * @inheritDoc
-             * @phpstan-ignore typeCoverage.paramTypeCoverage
-             */
-            public function write($messages, bool $newline = true, int $verbosity = self::NORMAL): void
-            {
-                $this->output->write($messages, $newline, $verbosity & StreamOutput::OUTPUT_RAW);
-            }
-        };
+    private function mockComposer(NullIO $io, Config $composerConfig, RootPackage $rootPackage): Composer
+    {
         $repository = Mockery::mock(InstalledRepositoryInterface::class);
         $repository->allows()->getCanonicalPackages()->andReturn([]);
         $repositoryManager = new RepositoryManager($io, $composerConfig, Factory::createHttpDownloader($io, $composerConfig));
@@ -99,50 +156,8 @@ final class InstallerTest extends TestCase
         $composer->setConfig($composerConfig);
         $composer->setRepositoryManager($repositoryManager);
         $composer->setPackage($rootPackage);
-        $event = new Event(
-            ScriptEvents::PRE_AUTOLOAD_DUMP,
-            $composer,
-            $io,
-        );
 
-        $installer = new Installer();
-
-        // Test dead methods and make Infection happy
-        $installer->activate($composer, $io);
-        $installer->deactivate($composer, $io);
-        $installer->uninstall($composer, $io);
-
-        $this->recurseCopy(dirname(__DIR__, 2) . '/', $this->getTmpDir());
-
-        $fileNameList = $this->getTmpDir() . 'src/Generated/AbstractList.php';
-        if (file_exists($fileNameList)) { /** @phpstan-ignore-line */
-            unlink($fileNameList);
-        }
-
-        self::assertFileDoesNotExist($fileNameList);
-
-        // Do the actual generating
-        Installer::findActions($event);
-
-        $output = $io->output();
-
-        self::assertStringContainsString('<info>mammatus/queue:</info> Locating actions', $output);
-        self::assertStringContainsString('<info>mammatus/queue:</info> Generated static abstract queue manager and queue list in ', $output);
-        self::assertStringContainsString('<info>mammatus/queue:</info> Found 0 action(s)', $output);
-
-        self::assertFileExists($fileNameList);
-        self::assertTrue(in_array(
-            substr(sprintf('%o', fileperms($fileNameList)), -4),
-            [
-                '0664',
-                '0666',
-            ],
-            true,
-        ));
-        $fileContentsList = file_get_contents($fileNameList);
-//        self::assertStringContainsStringIgnoringCase(' * @see \Mammatus\Queue\BuildIn\Noop', $fileContentsList);
-//        self::assertStringContainsStringIgnoringCase('yield \'internal-no.op-Mammatus-queue-BuildIn-Noop\' => new Action(', $fileContentsList);
-//        self::assertStringContainsStringIgnoringCase('addOns: \json_decode(\'[]\', true), /** @ p h pstan-ignore-line */', $fileContentsList);
+        return $composer;
     }
 
     private function recurseCopy(string $src, string $dst): void
@@ -157,10 +172,11 @@ final class InstallerTest extends TestCase
                 continue;
             }
 
-            if (is_dir($src . '/' . $file)) { /** @phpstan-ignore-line */
-                $this->recurseCopy($src . '/' . $file, $dst . '/' . $file);
-            } elseif (is_file($src . '/' . $file)) { /** @phpstan-ignore-line */
-                copy($src . '/' . $file, $dst . '/' . $file);
+            if (is_dir($src . $file)) { /** @phpstan-ignore-line */
+                $this->recurseCopy($src . $file . DIRECTORY_SEPARATOR, $dst . $file . DIRECTORY_SEPARATOR);
+            } elseif (is_file($src . $file)) { /** @phpstan-ignore-line */
+//                echo $src . $file, ' => ', $dst . $file, PHP_EOL;
+                copy($src . $file, $dst . $file);
             }
         }
 

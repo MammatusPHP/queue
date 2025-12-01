@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Mammatus\Tests\Queue;
 
 use Interop\Queue\Producer as InteropProducer;
-use Mammatus\Queue\BuildIn\EmptyMessage;
+use Mammatus\DevApp\Queue\BeerMessage;
 use Mammatus\Queue\Encoder\JSON;
 use Mammatus\Queue\Generated\Hydrator;
 use Mammatus\Queue\Message;
@@ -28,10 +28,14 @@ final class ProducerTest extends AsyncTestCase
                 return false;
             }
 
-            return $message->getBody() === '[]';
+            return $message->getBody() === '{"name":"Barcode Turquoise Orange","type":"Barrel Aged Stout","alcohol_percentage":15}' && $message->getHeaders() === [];
         })->once();
 
         $producer = new Producer($interOpProducer, new Hydrator(), new JSON());
-        $producer->send(new EmptyMessage());
+        $producer->send(new BeerMessage(
+            'Barcode Turquoise Orange',
+            'Barrel Aged Stout',
+            15,
+        ));
     }
 }

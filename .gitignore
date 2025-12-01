@@ -3,3 +3,4 @@ var/*
 vendor/
 etc/qa/.phpunit.cache
 etc/qa/.phpunit.result.cache
+tests/Composer/ExpectedAbstractList.php

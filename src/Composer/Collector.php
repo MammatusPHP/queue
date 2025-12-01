@@ -7,6 +7,8 @@ namespace Mammatus\Queue\Composer;
 use Mammatus\Kubernetes\Attributes\SplitOut;
 use Mammatus\Queue\Attributes\Consumer;
 use Mammatus\Queue\Contracts\Work;
+use Mammatus\Queue\Worker\Type;
+use Realodix\ChangeCase\ChangeCase;
 use Roave\BetterReflection\Reflection\ReflectionClass;
 use Roave\BetterReflection\Reflection\ReflectionIntersectionType;
 use Roave\BetterReflection\Reflection\ReflectionType;
@@ -16,6 +18,9 @@ use WyriHaximus\Composer\GenerativePluginTooling\ItemCollector;
 
 use function array_key_exists;
 use function array_map;
+use function assert;
+use function md5;
+use function str_replace;
 
 final class Collector implements ItemCollector
 {
@@ -70,13 +75,24 @@ final class Collector implements ItemCollector
                 }
 
                 foreach ($attributes[Consumer::class] as $attribute) {
+                    assert($attribute instanceof Consumer);
+
+                    $generateClassesClassNameSuffix = ChangeCase::pascal(
+                        $class->getName() . '_Via_' . $method->getName() . '_For_' . $attribute->queue . '_With_' . $messageDTO . ($attribute->friendlyName !== '' ? '_As_' . $attribute->friendlyName : ''),
+                    );
+                    $hash                           = md5($generateClassesClassNameSuffix);
+
                     /** @psalm-suppress ArgumentTypeCoercion */
                     yield new Item(
+                        $hash,
                         $class->getName(),
                         $method->getName(),
                         $messageDTO,
-                        $attribute, /** @phpstan-ignore-line */
-                        array_key_exists(SplitOut::class, $attributes),
+                        str_replace(['.', '_'], '-', ChangeCase::snake($generateClassesClassNameSuffix) . '-' . ($attribute->friendlyName !== '' ? $attribute->friendlyName : $hash)),
+                        $generateClassesClassNameSuffix,
+                        str_replace(['.', '_'], '-', 'queue-worker-' . $attribute->queue . '-' . ($attribute->friendlyName !== '' ? $attribute->friendlyName : $hash)),
+                        $attribute,
+                        array_key_exists(SplitOut::class, $attributes) ? Type::Kubernetes : Type::Internal,
                     );
                 }
             }

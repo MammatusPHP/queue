@@ -9,8 +9,10 @@
     <file>../../etc</file>
     <file>../../src</file>
     <file>../../tests</file>
+    <file>../dev-app</file>
 
     <rule ref="WyriHaximus-OSS" />
 
     <exclude-pattern>src/Generated/Hydrator.php</exclude-pattern>
+    <exclude-pattern>tests/Composer/ExpectedAbstractList.php</exclude-pattern>
 </ruleset>

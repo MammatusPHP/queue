@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mammatus\Queue\BuildIn;
+namespace Mammatus\DevApp\Queue;
 
 use Mammatus\Queue\Contracts\Work;
 
