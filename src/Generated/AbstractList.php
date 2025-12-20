@@ -15,6 +15,15 @@ abstract class AbstractList
     /** @return iterable<string, Worker> */
     final protected function workers(): iterable
     {
+        /** @see \Mammatus\DevApp\Queue\OHellNo */
+        yield 'mammatus-dev-app-queue-o-hell-no-via-proost-for-noop-with-mammatus-dev-app-queue-beer-message-1f7ac9a5eef00cd465efed97b117a820' => WorkerFactory\MammatusDevAppQueueOHellNoViaProostForNoopWithMammatusDevAppQueueBeerMessage::create();
+
+        /** @see \Mammatus\DevApp\Queue\OHellNo */
+        yield 'mammatus-dev-app-queue-o-hell-no-via-proost-for-noop-with-mammatus-dev-app-queue-beer-message-as-noop2-noop-2' => WorkerFactory\MammatusDevAppQueueOHellNoViaProostForNoopWithMammatusDevAppQueueBeerMessageAsNoop2::create();
+
+        /** @see \Mammatus\DevApp\Queue\OHellNo */
+        yield 'mammatus-dev-app-queue-o-hell-no-via-proost-for-noop-with-mammatus-dev-app-queue-beer-message-as-noop3-noop-3' => WorkerFactory\MammatusDevAppQueueOHellNoViaProostForNoopWithMammatusDevAppQueueBeerMessageAsNoop3::create();
+
         /** @see \Mammatus\DevApp\Queue\Noop */
         yield 'mammatus-dev-app-queue-noop-via-perform-for-noop-with-mammatus-dev-app-queue-empty-message-34bc35c3b25ff54c5995f879e78b4d3f' => WorkerFactory\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage::create();
 
@@ -32,15 +41,6 @@ abstract class AbstractList
 
         /** @see \Mammatus\DevApp\Queue\Noop */
         yield 'mammatus-dev-app-queue-noop-via-perform-for-noop-with-mammatus-dev-app-queue-beer-message-as-noop3-noop-3' => WorkerFactory\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueBeerMessageAsNoop3::create();
-
-        /** @see \Mammatus\DevApp\Queue\OHellNo */
-        yield 'mammatus-dev-app-queue-o-hell-no-via-proost-for-noop-with-mammatus-dev-app-queue-beer-message-1f7ac9a5eef00cd465efed97b117a820' => WorkerFactory\MammatusDevAppQueueOHellNoViaProostForNoopWithMammatusDevAppQueueBeerMessage::create();
-
-        /** @see \Mammatus\DevApp\Queue\OHellNo */
-        yield 'mammatus-dev-app-queue-o-hell-no-via-proost-for-noop-with-mammatus-dev-app-queue-beer-message-as-noop2-noop-2' => WorkerFactory\MammatusDevAppQueueOHellNoViaProostForNoopWithMammatusDevAppQueueBeerMessageAsNoop2::create();
-
-        /** @see \Mammatus\DevApp\Queue\OHellNo */
-        yield 'mammatus-dev-app-queue-o-hell-no-via-proost-for-noop-with-mammatus-dev-app-queue-beer-message-as-noop3-noop-3' => WorkerFactory\MammatusDevAppQueueOHellNoViaProostForNoopWithMammatusDevAppQueueBeerMessageAsNoop3::create();
         yield from [];
     }
 }
