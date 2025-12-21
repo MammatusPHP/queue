@@ -87,7 +87,7 @@ final class InstallerTest extends TestCase
 
         self::assertStringContainsString('<info>mammatus/queue:</info> Locating actions', $output);
         self::assertStringContainsString('<info>mammatus/queue:</info> Generated static abstract queue manager and queue list in ', $output);
-        self::assertStringContainsString('<info>mammatus/queue:</info> Found 9 action(s)', $output);
+        self::assertStringContainsString('<info>mammatus/queue:</info> Found 5 action(s)', $output);
 
         self::assertFileExists($fileNameList);
         self::assertTrue(in_array(
@@ -99,21 +99,32 @@ final class InstallerTest extends TestCase
             ],
             true,
         ));
-        $fileContentsList = file_get_contents($fileNameList);
+
+        $fileContentsList          = file_get_contents($fileNameList);
+        $fileContentsWorkerFactory = file_get_contents($fileNameWorkerFactory);
+
         self::assertStringContainsStringIgnoringCase('/** @see \\' . Noop::class, $fileContentsList);
         self::assertStringContainsStringIgnoringCase('yield \'mammatus-dev-app-queue-noop-via-perform-for-noop-with-mammatus-dev-app-queue-empty-message-34bc35c3b25ff54c5995f879e78b4d3f\' => WorkerFactory\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage::create();', $fileContentsList);
         self::assertStringContainsStringIgnoringCase('yield \'mammatus-dev-app-queue-noop-via-perform-for-noop-with-mammatus-dev-app-queue-empty-message-as-noop2-noop-2\' => WorkerFactory\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop2::create();', $fileContentsList);
-        self::assertStringContainsStringIgnoringCase('yield \'mammatus-dev-app-queue-o-hell-no-via-proost-for-noop-with-mammatus-dev-app-queue-beer-message-as-noop3-noop-3\' => WorkerFactory\\MammatusDevAppQueueOHellNoViaProostForNoopWithMammatusDevAppQueueBeerMessageAsNoop3::create();', $fileContentsList);
-        self::assertStringNotContainsStringIgnoringCase('mammatus-dev-app-queue-o-hell-no-via-construct-for-noop-with-mammatus-dev-app-queue-empty-message', $fileContentsList);
+        self::assertStringContainsStringIgnoringCase('mammatus-dev-app-queue-bar-via-round-for-noop-with-mammatus-dev-app-queue-beer-message-as-vol-vol', $fileContentsList);
+        self::assertStringContainsStringIgnoringCase('mammatus-dev-app-queue-bar-via-round-for-noop-with-mammatus-dev-app-queue-empty-message-as-leeg-leeg', $fileContentsList);
         self::assertStringNotContainsStringIgnoringCase('construct', $fileContentsList);
         self::assertStringNotContainsStringIgnoringCase('prut', $fileContentsList);
-        self::assertFileEquals(__DIR__ . '/ExpectedAbstractList.php', $fileNameList);
-        $fileContentsWorkerFactory = file_get_contents($fileNameWorkerFactory);
+
         self::assertStringContainsStringIgnoringCase('/** @see \\' . Noop::class, $fileContentsWorkerFactory);
         self::assertStringContainsStringIgnoringCase('\'34bc35c3b25ff54c5995f879e78b4d3f\',', $fileContentsWorkerFactory);
         self::assertStringContainsStringIgnoringCase('Type::from(\'internal\'),', $fileContentsWorkerFactory);
         self::assertStringContainsStringIgnoringCase('EmptyMessage::class,', $fileContentsWorkerFactory);
         self::assertStringContainsStringIgnoringCase('json_decode(\'[]\', true), /** @phpstan-ignore-line */', $fileContentsWorkerFactory);
+
+        // Make sure we don't have any duplication from union types
+        self::assertStringNotContainsStringIgnoringCase('yield \'mammatus-dev-app-queue-o-hell-no-via-proost-for-noop-with-mammatus-dev-app-queue-beer-message-as-noop3-noop-3\' => WorkerFactory\\MammatusDevAppQueueOHellNoViaProostForNoopWithMammatusDevAppQueueBeerMessageAsNoop3::create();', $fileContentsList);
+        self::assertStringNotContainsStringIgnoringCase('mammatus-dev-app-queue-bar-via-round-for-noop-with-mammatus-dev-app-queue-beer-message-as-leeg-leeg', $fileContentsList);
+        self::assertStringNotContainsStringIgnoringCase('mammatus-dev-app-queue-bar-via-round-for-noop-with-mammatus-dev-app-queue-empty-message-as-vol-vol', $fileContentsList);
+        self::assertStringNotContainsStringIgnoringCase('mammatus-dev-app-queue-o-hell-no-via-construct-for-noop-with-mammatus-dev-app-queue-empty-message', $fileContentsList);
+
+        // Make sure the generated file is identical to the expected one
+        self::assertFileEquals(__DIR__ . '/ExpectedAbstractList.php', $fileNameList);
     }
 
     private function mockComposerConfig(): Config
@@ -175,7 +186,6 @@ final class InstallerTest extends TestCase
             if (is_dir($src . $file)) { /** @phpstan-ignore-line */
                 $this->recurseCopy($src . $file . DIRECTORY_SEPARATOR, $dst . $file . DIRECTORY_SEPARATOR);
             } elseif (is_file($src . $file)) { /** @phpstan-ignore-line */
-//                echo $src . $file, ' => ', $dst . $file, PHP_EOL;
                 copy($src . $file, $dst . $file);
             }
         }
