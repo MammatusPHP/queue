@@ -16,6 +16,7 @@ use WyriHaximus\Composer\GenerativePluginTooling\Helper\TwigFile;
 use WyriHaximus\Composer\GenerativePluginTooling\Item as ItemContract;
 use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
 
+use function file_exists;
 use function file_put_contents;
 use function md5;
 use function serialize;
@@ -88,11 +89,14 @@ final class Plugin implements GenerativePlugin
             ['workers' => $workers],
         );
 
-//        TwigFile::render(
-//            $rootPath . '/etc/generated_templates/AbstractList.php.twig',
-//            $rootPath . '/tests/Composer/ExpectedAbstractList.php',
-//            ['workers' => $workers],
-//        );
+        /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.fileExists */
+        if (file_exists($rootPath . '/tests/Composer/')) {
+            TwigFile::render(
+                $rootPath . '/etc/generated_templates/AbstractList.php.twig',
+                $rootPath . '/tests/Composer/ExpectedAbstractList.php',
+                ['workers' => $workers],
+            );
+        }
 
         TwigFile::render(
             $rootPath . '/etc/generated_templates/WorkQueueMap.php.twig',

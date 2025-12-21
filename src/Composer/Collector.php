@@ -77,6 +77,10 @@ final class Collector implements ItemCollector
                 foreach ($attributes[Consumer::class] as $attribute) {
                     assert($attribute instanceof Consumer);
 
+                    if ($attribute->dtoClass !== $messageDTO) {
+                        continue;
+                    }
+
                     $generateClassesClassNameSuffix = ChangeCase::pascal(
                         $class->getName() . '_Via_' . $method->getName() . '_For_' . $attribute->queue . '_With_' . $messageDTO . ($attribute->friendlyName !== '' ? '_As_' . $attribute->friendlyName : ''),
                     );
