@@ -1,0 +1,18 @@
+<?php declare(strict_types=1);
+
+namespace Mammatus\Queue\Generated\Kubernetes\Helm;
+
+use Mammatus\Kubernetes\Events\Helm\Values;
+use WyriHaximus\Broadcast\Contracts\Listener;
+
+final class GroupAddons implements Listener
+{
+    public function values(Values $values): void
+    {
+        {% for worker in workers -%}
+        {% if worker.consumer.addOns|length > 0 -%}
+        $values->addToGroup(new \Mammatus\Groups\Attributes\Group(\Mammatus\Groups\Type::Normal, '{{ worker.groupName }}'), \json_decode('{{ worker.consumer.addOns|json_encode()|raw }}', true));
+        {% endif -%}
+        {%- endfor %}
+    }
+}
