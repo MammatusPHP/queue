@@ -29,7 +29,7 @@ final class MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMess
             Bar::class,
             'round',
             BeerMessage::class,
-            json_decode('[]', true), /** @phpstan-ignore-line */
+            json_decode('{"addOns":{"type":"container","helper":"mammatus.container.resources","arguments":{"cpu":"1000m","memory":"2048Mi"}}}', true), /** @phpstan-ignore-line */
         );
     }
 }

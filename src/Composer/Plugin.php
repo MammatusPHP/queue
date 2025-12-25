@@ -104,6 +104,12 @@ final class Plugin implements GenerativePlugin
             ['items' => $map],
         );
 
+        TwigFile::render(
+            $rootPath . '/etc/generated_templates/GroupAddons.php.twig',
+            $rootPath . '/src/Generated/Kubernetes/Helm/GroupAddons.php',
+            ['workers' => $workers],
+        );
+
         $hydratorGenerator = new ObjectMapperCodeGenerator();
         $code              = $hydratorGenerator->dump($dtos, Hydrator::class);
         file_put_contents($rootPath . '/src/Generated/Hydrator.php', $code);
