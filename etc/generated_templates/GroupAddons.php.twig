@@ -11,7 +11,7 @@ final class GroupAddons implements Listener
     {
         {% for worker in workers -%}
         {% if worker.consumer.addOns|length > 0 -%}
-        $values->addToGroup(new \Mammatus\Groups\Attributes\Group(\Mammatus\Groups\Type::Normal, '{{ worker.groupName }}'), \json_decode('{{ worker.consumer.addOns|json_encode()|raw }}', true));
+        $values->addToGroup(new \Mammatus\Groups\Attributes\Group(\Mammatus\Groups\Type::Normal, '{{ worker.groupName }}'), \Mammatus\Queue\Generated\WorkerFactory\{{ worker.generateClassesClassNameSuffix }}::create()->addOns);
         {% endif -%}
         {%- endfor %}
     }

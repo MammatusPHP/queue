@@ -112,8 +112,6 @@ final class InstallerTest extends TestCase
         self::assertStringNotContainsStringIgnoringCase('prut', $fileContentsList);
 
         self::assertStringContainsStringIgnoringCase('/** @see \\' . Noop::class, $fileContentsWorkerFactory);
-        self::assertStringContainsStringIgnoringCase('\'34bc35c3b25ff54c5995f879e78b4d3f\',', $fileContentsWorkerFactory);
-        self::assertStringContainsStringIgnoringCase('Type::from(\'internal\'),', $fileContentsWorkerFactory);
         self::assertStringContainsStringIgnoringCase('EmptyMessage::class,', $fileContentsWorkerFactory);
         self::assertStringContainsStringIgnoringCase('json_decode(\'[]\', true), /** @phpstan-ignore-line */', $fileContentsWorkerFactory);
 
