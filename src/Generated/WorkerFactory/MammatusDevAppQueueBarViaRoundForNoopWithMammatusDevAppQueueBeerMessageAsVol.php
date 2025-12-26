@@ -7,7 +7,6 @@ namespace Mammatus\Queue\Generated\WorkerFactory;
 use Mammatus\DevApp\Queue\Bar;
 use Mammatus\DevApp\Queue\BeerMessage;
 use Mammatus\Queue\Worker;
-use Mammatus\Queue\Worker\Type;
 
 use function json_decode;
 
@@ -21,9 +20,6 @@ final class MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMess
     {
         /** @see \Mammatus\DevApp\Queue\Bar */
         return new Worker(
-            'e54244d5af8e016658daa929d36c1935',
-            'vol',
-            Type::from('internal'),
             'noop',
             1,
             Bar::class,

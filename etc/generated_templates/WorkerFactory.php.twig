@@ -14,9 +14,6 @@ final class {{ worker.generateClassesClassNameSuffix }}
     {
         /** @see \{{ worker.class }} */
         return new Worker(
-            '{{ worker.hash }}',
-            '{{ worker.consumer.friendlyName }}',
-            \Mammatus\Queue\Worker\Type::from('{{ worker.type.value }}'),
             '{{ worker.consumer.queue }}',
             {{ worker.consumer.concurrency }},
             \{{ worker.class }}::class,
