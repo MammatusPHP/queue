@@ -18,8 +18,8 @@ use function array_key_exists;
 abstract class WorkQueueMap
 {
     private const array MAP = [
-        BeerMessage::class => 'noop',
         EmptyMessage::class => 'noop',
+        BeerMessage::class => 'noop',
     ];
 
     final protected function lookUp(Work $work): string

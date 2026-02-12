@@ -1,0 +1,5 @@
+services:
+    -
+        class: Mammatus\Queue\PHPSan\ShipMonkDeadCode
+        tags:
+            - shipmonk.deadCode.memberUsageProvider

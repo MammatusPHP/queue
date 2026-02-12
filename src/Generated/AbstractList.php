@@ -15,12 +15,6 @@ abstract class AbstractList
     /** @return iterable<string, Worker> */
     final protected function workers(): iterable
     {
-        /** @see \Mammatus\DevApp\Queue\Bar */
-        yield 'mammatus-dev-app-queue-bar-via-round-for-noop-with-mammatus-dev-app-queue-beer-message-as-vol-vol' => WorkerFactory\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol::create();
-
-        /** @see \Mammatus\DevApp\Queue\Bar */
-        yield 'mammatus-dev-app-queue-bar-via-round-for-noop-with-mammatus-dev-app-queue-empty-message-as-leeg-leeg' => WorkerFactory\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg::create();
-
         /** @see \Mammatus\DevApp\Queue\Noop */
         yield 'mammatus-dev-app-queue-noop-via-perform-for-noop-with-mammatus-dev-app-queue-empty-message-34bc35c3b25ff54c5995f879e78b4d3f' => WorkerFactory\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage::create();
 
@@ -29,6 +23,12 @@ abstract class AbstractList
 
         /** @see \Mammatus\DevApp\Queue\Noop */
         yield 'mammatus-dev-app-queue-noop-via-perform-for-noop-with-mammatus-dev-app-queue-empty-message-as-noop3-noop-3' => WorkerFactory\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3::create();
+
+        /** @see \Mammatus\DevApp\Queue\Bar */
+        yield 'mammatus-dev-app-queue-bar-via-round-for-noop-with-mammatus-dev-app-queue-beer-message-as-vol-vol' => WorkerFactory\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol::create();
+
+        /** @see \Mammatus\DevApp\Queue\Bar */
+        yield 'mammatus-dev-app-queue-bar-via-round-for-noop-with-mammatus-dev-app-queue-empty-message-as-leeg-leeg' => WorkerFactory\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg::create();
         yield from [];
     }
 }
