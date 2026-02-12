@@ -24,6 +24,9 @@ parameters:
 		noExtends:
 			classesAllowedToBeExtended:
 				- Composer\IO\NullIO
+				- ShipMonk\PHPStan\DeadCode\Provider\ReflectionBasedMemberUsageProvider
 				- Mammatus\Queue\Generated\AbstractList
 				- Mammatus\Queue\Generated\WorkQueueMap
 				- RuntimeException
+includes:
+    - ../../extension.neon
