@@ -16,6 +16,7 @@ use RuntimeException;
 use function gettype;
 use function is_array;
 
+/** @api */
 final class Producer extends WorkQueueMap implements ProducerContract
 {
     public function __construct(
@@ -45,7 +46,11 @@ final class Producer extends WorkQueueMap implements ProducerContract
     ): array {
         /** @var array<string, mixed> $array */
         $array = $this->hydrator->serializeObject($work);
-        /** @phpstan-ignore-next-line */
+        /**
+         * Sure it's already narrowed but the above call return type is still mixed
+         *
+         * @phpstan-ignore function.alreadyNarrowedType
+         */
         if (! is_array($array)) {
             throw new RuntimeException('Message isn\'t translated into an array but ' . gettype($array) . ' instead');
         }
