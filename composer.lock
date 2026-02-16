@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06276691530720dab12dd2516b30ee22",
+    "content-hash": "05a5cd85179a635e0c49a477cd93e328",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -1552,24 +1552,25 @@
         },
         {
             "name": "mammatus/queue-attributes",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/queue-attributes.git",
-                "reference": "5d01dba9841c2b6fe50dcc3ba47fd46519904648"
+                "reference": "97868da621dd7a4b0f51c8d0a1e8eb79d4665750"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/queue-attributes/zipball/5d01dba9841c2b6fe50dcc3ba47fd46519904648",
-                "reference": "5d01dba9841c2b6fe50dcc3ba47fd46519904648",
+                "url": "https://api.github.com/repos/MammatusPHP/queue-attributes/zipball/97868da621dd7a4b0f51c8d0a1e8eb79d4665750",
+                "reference": "97868da621dd7a4b0f51c8d0a1e8eb79d4665750",
                 "shasum": ""
             },
             "require": {
-                "mammatus/kubernetes-contracts": "^1",
-                "php": "^8.2"
+                "mammatus/kubernetes-contracts": "^1.0.0",
+                "php": "^8.4"
             },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^5.6"
+                "wyrihaximus/makefiles": "^0.9.0",
+                "wyrihaximus/test-utilities": "^12.0"
             },
             "type": "library",
             "autoload": {
@@ -1584,7 +1585,7 @@
             "description": "🪆 Queue attributes",
             "support": {
                 "issues": "https://github.com/MammatusPHP/queue-attributes/issues",
-                "source": "https://github.com/MammatusPHP/queue-attributes/tree/0.1.0"
+                "source": "https://github.com/MammatusPHP/queue-attributes/tree/0.2.0"
             },
             "funding": [
                 {
@@ -1592,7 +1593,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-04T18:47:04+00:00"
+            "time": "2026-02-20T19:46:53+00:00"
         },
         {
             "name": "mammatus/queue-contracts",
@@ -7223,16 +7224,16 @@
         },
         {
             "name": "infection/infection",
-            "version": "0.32.4",
+            "version": "0.32.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infection/infection.git",
-                "reference": "a2b0a3e47b56bd2f27ca13caecae47baa7e5abe8"
+                "reference": "932fc7aa7a03bdbe387e42f8c8bd17d9d347653e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infection/infection/zipball/a2b0a3e47b56bd2f27ca13caecae47baa7e5abe8",
-                "reference": "a2b0a3e47b56bd2f27ca13caecae47baa7e5abe8",
+                "url": "https://api.github.com/repos/infection/infection/zipball/932fc7aa7a03bdbe387e42f8c8bd17d9d347653e",
+                "reference": "932fc7aa7a03bdbe387e42f8c8bd17d9d347653e",
                 "shasum": ""
             },
             "require": {
@@ -7343,7 +7344,7 @@
             ],
             "support": {
                 "issues": "https://github.com/infection/infection/issues",
-                "source": "https://github.com/infection/infection/tree/0.32.4"
+                "source": "https://github.com/infection/infection/tree/0.32.5"
             },
             "funding": [
                 {
@@ -7355,7 +7356,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2026-02-09T13:24:18+00:00"
+            "time": "2026-02-20T07:59:31+00:00"
         },
         {
             "name": "infection/mutator",
@@ -8969,16 +8970,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.5.12",
+            "version": "12.5.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "418e06b3b46b0d54bad749ff4907fc7dfb530199"
+                "reference": "47283cfd98d553edcb1353591f4e255dc1bb61f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/418e06b3b46b0d54bad749ff4907fc7dfb530199",
-                "reference": "418e06b3b46b0d54bad749ff4907fc7dfb530199",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/47283cfd98d553edcb1353591f4e255dc1bb61f0",
+                "reference": "47283cfd98d553edcb1353591f4e255dc1bb61f0",
                 "shasum": ""
             },
             "require": {
@@ -9047,7 +9048,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.12"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.5.14"
             },
             "funding": [
                 {
@@ -9071,7 +9072,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-16T08:34:36+00:00"
+            "time": "2026-02-18T12:38:40+00:00"
         },
         {
             "name": "react/cache",
@@ -9303,16 +9304,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "2.3.6",
+            "version": "2.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "ca9ebb81d280cd362ea39474dabd42679e32ca6b"
+                "reference": "9c46ad17f57963932c9788fd1b0f1d07ff450370"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/ca9ebb81d280cd362ea39474dabd42679e32ca6b",
-                "reference": "ca9ebb81d280cd362ea39474dabd42679e32ca6b",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/9c46ad17f57963932c9788fd1b0f1d07ff450370",
+                "reference": "9c46ad17f57963932c9788fd1b0f1d07ff450370",
                 "shasum": ""
             },
             "require": {
@@ -9351,7 +9352,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.3.6"
+                "source": "https://github.com/rectorphp/rector/tree/2.3.7"
             },
             "funding": [
                 {
@@ -9359,7 +9360,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-06T14:25:06+00:00"
+            "time": "2026-02-19T14:44:16+00:00"
         },
         {
             "name": "revolt/event-loop",
@@ -12056,16 +12057,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "b39f1870fc7c3e9e4a26106df5053354b9260a33"
+                "reference": "79155f94852fa27e2f73b459f6503f5e87e2c188"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/b39f1870fc7c3e9e4a26106df5053354b9260a33",
-                "reference": "b39f1870fc7c3e9e4a26106df5053354b9260a33",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/79155f94852fa27e2f73b459f6503f5e87e2c188",
+                "reference": "79155f94852fa27e2f73b459f6503f5e87e2c188",
                 "shasum": ""
             },
             "require": {
@@ -12112,9 +12113,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/2.1.4"
+                "source": "https://github.com/webmozarts/assert/tree/2.1.5"
             },
-            "time": "2026-02-17T12:17:51+00:00"
+            "time": "2026-02-18T14:09:36+00:00"
         },
         {
             "name": "webmozart/glob",

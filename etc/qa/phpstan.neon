@@ -11,9 +11,6 @@ parameters:
 	ignoreErrors:
 		- '#Method Mammatus\\Queue\\Consumer::__construct\(\) has a parameter \$container with a type declaration of Psr\\Container\\ContainerInterface, but containers should not be injected.#'
 		-
-			identifier: wyrihaximus.reactphp.blocking.function.filePutContents
-			path: ../../src/Composer/Plugin.php
-		-
 			message: '#Variable method call on Mammatus\\Queue\\Contracts\\Worker.#'
 			path: ../../src/Consumer.php
 		-

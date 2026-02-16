@@ -25,7 +25,7 @@ final class MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMes
             Bar::class,
             'round',
             EmptyMessage::class,
-            json_decode('[]', true),
+            json_decode('[{"type":"pod","helper":"mammatus.pod.priorityClassName","arguments":{"priorityClassName":"run-forest-run"}}]', true),
         );
     }
 }
