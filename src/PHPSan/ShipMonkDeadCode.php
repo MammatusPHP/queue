@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mammatus\Queue\PHPSan;
 
+use Mammatus\Queue\Contracts\Work;
 use Mammatus\Queue\Contracts\Worker;
 use Override;
 use ReflectionMethod;
@@ -17,6 +18,10 @@ final class ShipMonkDeadCode extends ReflectionBasedMemberUsageProvider
     {
         if ($method->getDeclaringClass()->implementsInterface(Worker::class)) {
             return VirtualUsageData::withNote('Class is a Queue Worker');
+        }
+
+        if ($method->getDeclaringClass()->implementsInterface(Work::class)) {
+            return VirtualUsageData::withNote('Class is a Queue Work');
         }
 
         return null;

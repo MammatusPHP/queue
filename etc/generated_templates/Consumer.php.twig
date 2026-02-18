@@ -11,11 +11,12 @@ use Mammatus\Queue\Generated\WorkerFactory;
 #[\Mammatus\Groups\Attributes\Group(\Mammatus\Groups\Type::Normal, '{{ worker.groupName }}')]
 final class {{ worker.generateClassesClassNameSuffix }} implements \Mammatus\Groups\Contracts\LifeCycleHandler
 {
+    /** @var ?\React\Promise\PromiseInterface<mixed> */
     private ?\React\Promise\PromiseInterface $promise = null;
 
     public function __construct(
         private readonly \Mammatus\Queue\Consumer $consumer,
-        private readonly \Psr\Log\LoggerInterface $logger,
+//        private readonly \Psr\Log\LoggerInterface $logger,
     ) {
     }
 

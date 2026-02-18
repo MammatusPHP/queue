@@ -10,9 +10,9 @@ use OpenTelemetry\API\Instrumentation\SpanAttribute;
 final readonly class Worker
 {
     /**
-     * @param class-string<WorkerContract> $class
-     * @param class-string                 $dtoClass
-     * @param array<string, mixed>         $addOns
+     * @param class-string<WorkerContract>                                                $class
+     * @param class-string                                                                $dtoClass
+     * @param array<array{helper: string, type: string, arguments: array<string, mixed>}> $addOns
      */
     public function __construct(
         #[SpanAttribute]

@@ -6,7 +6,7 @@ parameters:
 		- ../../tests
 		- ../dev-app
 	excludePaths:
-		- ../../src/Generated/*
+		- ../../src/Generated/Hydrator.php
 		- ../../tests/Composer/ExpectedAbstractList.php (?)
 	ignoreErrors:
 		- '#Method Mammatus\\Queue\\Consumer::__construct\(\) has a parameter \$container with a type declaration of Psr\\Container\\ContainerInterface, but containers should not be injected.#'

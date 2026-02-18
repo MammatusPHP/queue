@@ -30,7 +30,11 @@ final class JSON implements Encoder
     {
         /** @var array<string, mixed> $json */
         $json = json_decode($payload, true);
-        /** @phpstan-ignore-next-line */
+        /**
+         * Sure it's already narrowed but the above call return type is still mixed
+         *
+         * @phpstan-ignore function.alreadyNarrowedType
+         */
         if (! is_array($json)) {
             throw new InvalidJSON('Message is not valid JSON: ' . json_last_error_msg());
         }

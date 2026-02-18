@@ -86,7 +86,6 @@ final class Collector implements ItemCollector
                     );
                     $hash                           = md5($generateClassesClassNameSuffix);
 
-                    /** @psalm-suppress ArgumentTypeCoercion */
                     yield new Item(
                         $hash,
                         $class->getName(),
