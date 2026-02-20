@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06276691530720dab12dd2516b30ee22",
+    "content-hash": "e1bffba12166c0ff360719c2cd6ca99a",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -1552,24 +1552,25 @@
         },
         {
             "name": "mammatus/queue-attributes",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MammatusPHP/queue-attributes.git",
-                "reference": "5d01dba9841c2b6fe50dcc3ba47fd46519904648"
+                "reference": "97868da621dd7a4b0f51c8d0a1e8eb79d4665750"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MammatusPHP/queue-attributes/zipball/5d01dba9841c2b6fe50dcc3ba47fd46519904648",
-                "reference": "5d01dba9841c2b6fe50dcc3ba47fd46519904648",
+                "url": "https://api.github.com/repos/MammatusPHP/queue-attributes/zipball/97868da621dd7a4b0f51c8d0a1e8eb79d4665750",
+                "reference": "97868da621dd7a4b0f51c8d0a1e8eb79d4665750",
                 "shasum": ""
             },
             "require": {
-                "mammatus/kubernetes-contracts": "^1",
-                "php": "^8.2"
+                "mammatus/kubernetes-contracts": "^1.0.0",
+                "php": "^8.4"
             },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^5.6"
+                "wyrihaximus/makefiles": "^0.9.0",
+                "wyrihaximus/test-utilities": "^12.0"
             },
             "type": "library",
             "autoload": {
@@ -1584,7 +1585,7 @@
             "description": "🪆 Queue attributes",
             "support": {
                 "issues": "https://github.com/MammatusPHP/queue-attributes/issues",
-                "source": "https://github.com/MammatusPHP/queue-attributes/tree/0.1.0"
+                "source": "https://github.com/MammatusPHP/queue-attributes/tree/0.2.0"
             },
             "funding": [
                 {
@@ -1592,7 +1593,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-04T18:47:04+00:00"
+            "time": "2026-02-20T19:46:53+00:00"
         },
         {
             "name": "mammatus/queue-contracts",

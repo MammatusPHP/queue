@@ -14,7 +14,7 @@
     "mammatus/kubernetes-contracts": "^1.0.0",
     "mammatus/kubernetes-events": "^3.0",
     "mammatus/life-cycle-events": "^2.3.0",
-    "mammatus/queue-attributes": "^0.1.0",
+    "mammatus/queue-attributes": "^0.1.0 || ^0.2.0",
     "mammatus/queue-contracts": "^0.1.0",
     "open-telemetry/api": "^1.4.0",
     "psr/container": "^1.1.2 || ^2",
