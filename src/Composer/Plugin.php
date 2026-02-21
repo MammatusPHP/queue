@@ -11,14 +11,16 @@ use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\ImplementsInterfac
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\IsInstantiable;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Package\ComposerJsonHasItemWithSpecificValue;
 use WyriHaximus\Composer\GenerativePluginTooling\GenerativePlugin;
+use WyriHaximus\Composer\GenerativePluginTooling\Helper\File;
 use WyriHaximus\Composer\GenerativePluginTooling\Helper\Remove;
 use WyriHaximus\Composer\GenerativePluginTooling\Helper\TwigFile;
 use WyriHaximus\Composer\GenerativePluginTooling\Item as ItemContract;
 use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
 
-use function file_put_contents;
 use function md5;
 use function serialize;
+
+use const PHP_EOL;
 
 final class Plugin implements GenerativePlugin
 {
@@ -94,8 +96,9 @@ final class Plugin implements GenerativePlugin
             ['workers' => $workers],
         );
 
-        $hydratorGenerator = new ObjectMapperCodeGenerator();
-        $code              = $hydratorGenerator->dump($dtos, Hydrator::class);
-        file_put_contents($rootPath . '/src/Generated/Hydrator.php', $code);
+        File::write(
+            $rootPath . '/src/Generated/Hydrator.php',
+            new ObjectMapperCodeGenerator()->dump($dtos, Hydrator::class) . PHP_EOL,
+        );
     }
 }

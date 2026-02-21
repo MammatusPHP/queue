@@ -6,6 +6,7 @@ namespace Mammatus\Queue\Composer;
 
 use Mammatus\Kubernetes\Attributes\SplitOut;
 use Mammatus\Queue\Attributes\Consumer;
+use Mammatus\Queue\Attributes\Consumers;
 use Mammatus\Queue\Contracts\Work;
 use Mammatus\Queue\Worker\Type;
 use Realodix\ChangeCase\ChangeCase;
@@ -31,12 +32,31 @@ final class Collector implements ItemCollector
     {
         $attributes = [];
         foreach (new \ReflectionClass($class->getName())->getAttributes() as $attributeReflection) {
-            $attribute                       = $attributeReflection->newInstance();
-            $attributes[$attribute::class][] = $attribute;
+            $attributeSpiegel                       = $attributeReflection->newInstance();
+            $attributes[$attributeSpiegel::class][] = $attributeSpiegel;
         }
 
-        if (! array_key_exists(Consumer::class, $attributes)) {
+        if (! array_key_exists(Consumer::class, $attributes) && ! array_key_exists(Consumers::class, $attributes)) {
             return;
+        }
+
+        /** @var array<Consumer> $consumerAttributes */
+        $consumerAttributes = [];
+
+        if (array_key_exists(Consumer::class, $attributes)) {
+            foreach ($attributes[Consumer::class] as $consumerAttribute) {
+                assert($consumerAttribute instanceof Consumer);
+                $consumerAttributes[] = $consumerAttribute;
+            }
+        }
+
+        if (array_key_exists(Consumers::class, $attributes)) {
+            foreach ($attributes[Consumers::class] as $consumersAttribute) {
+                assert($consumersAttribute instanceof Consumers);
+                foreach ($consumersAttribute->consumers as $consumerAttribute) {
+                    $consumerAttributes[] = $consumerAttribute;
+                }
+            }
         }
 
         foreach ($class->getMethods() as $method) {
@@ -74,9 +94,7 @@ final class Collector implements ItemCollector
                     continue;
                 }
 
-                foreach ($attributes[Consumer::class] as $attribute) {
-                    assert($attribute instanceof Consumer);
-
+                foreach ($consumerAttributes as $attribute) {
                     if ($attribute->dtoClass !== $messageDTO) {
                         continue;
                     }

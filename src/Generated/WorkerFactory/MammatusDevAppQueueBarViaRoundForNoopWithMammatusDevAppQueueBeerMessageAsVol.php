@@ -25,7 +25,7 @@ final class MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMess
             Bar::class,
             'round',
             BeerMessage::class,
-            json_decode('{"addOns":{"type":"container","helper":"mammatus.container.resources","arguments":{"cpu":"1000m","memory":"2048Mi"}}}', true),
+            json_decode('[{"type":"container","helper":"mammatus.container.resources","arguments":{"cpu":"1000m","memory":"2048Mi"}},{"type":"pod","helper":"mammatus.pod.priorityClassName","arguments":{"priorityClassName":"run-forest-run"}}]', true),
         );
     }
 }

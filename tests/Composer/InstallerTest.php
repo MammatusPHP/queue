@@ -68,6 +68,7 @@ final class InstallerTest extends TestCase
         $sneakyFile = $this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR . 'Generated' . DIRECTORY_SEPARATOR . 'sneaky.file';
         touch($sneakyFile);
 
+        $fileNameGroupAddons   = $this->getTmpDir() . 'src/Generated/Kubernetes/Helm/GroupAddons.php';
         $fileNameWorkerFactory = $this->getTmpDir() . 'src/Generated/WorkerFactory/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php';
 
         self::assertFileExists($sneakyFile);
@@ -84,6 +85,7 @@ final class InstallerTest extends TestCase
         self::assertStringContainsString('<info>mammatus/queue:</info> Generated static abstract queue manager and queue list in ', $output);
         self::assertStringContainsString('<info>mammatus/queue:</info> Found 5 action(s)', $output);
 
+        $fileContentsGroupAddons   = file_get_contents($fileNameGroupAddons);
         $fileContentsWorkerFactory = file_get_contents($fileNameWorkerFactory);
 
         self::assertStringContainsStringIgnoringCase('/** @see \\' . Noop::class, $fileContentsWorkerFactory);
