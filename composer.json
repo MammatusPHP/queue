@@ -37,12 +37,12 @@
   "require-dev": {
     "bbqueue/bunny": "dev-main",
     "bunny/bunny": "0.6.0-alpha.2@dev",
-    "shipmonk/dead-code-detector": "^0.14.1",
+    "shipmonk/dead-code-detector": "^0.14.1 || ^0.15.0",
     "wyrihaximus/async-test-utilities": "^12.0.0",
     "wyrihaximus/makefiles": "^0.10.2"
   },
   "suggest": {
-    "shipmonk/dead-code-detector": "This package supports ^0.14.1 by hooking in and marking all listeners as alive"
+    "shipmonk/dead-code-detector": "This package supports ^0.15 || ^0.14.1 by hooking in and marking all listeners as alive"
   },
   "autoload": {
     "psr-4": {
