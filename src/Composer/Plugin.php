@@ -6,7 +6,7 @@ namespace Mammatus\Queue\Composer;
 
 use EventSauce\ObjectHydrator\ObjectMapperCodeGenerator;
 use Mammatus\Queue\Contracts\Worker;
-use Mammatus\Queue\Generated\Hydrator;
+use Mammatus\Queue\Hydrator;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\ImplementsInterface;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Class\IsInstantiable;
 use WyriHaximus\Composer\GenerativePluginTooling\Filter\Package\ComposerJsonHasItemWithSpecificValue;
@@ -55,7 +55,10 @@ final class Plugin implements GenerativePlugin
 
     public function compile(string $rootPath, ItemContract ...$items): void
     {
-        Remove::directoryContents($rootPath . '/src/Generated');
+        Remove::directoryContents($rootPath . '/src/Consumer');
+        Remove::directoryContents($rootPath . '/src/Kubernetes');
+        Remove::file($rootPath . '/src/Hydrator.php');
+        Remove::file($rootPath . '/src/Producer.php');
 
         $map     = [];
         $workers = [];
@@ -74,30 +77,30 @@ final class Plugin implements GenerativePlugin
 
             TwigFile::render(
                 $rootPath . '/etc/generated_templates/Consumer.php.twig',
-                $rootPath . '/src/Generated/Consumer/' . $item->generateClassesClassNameSuffix . '.php',
+                $rootPath . '/src/Consumer/' . $item->generateClassesClassNameSuffix . '.php',
                 ['worker' => $item],
             );
             TwigFile::render(
                 $rootPath . '/etc/generated_templates/WorkerFactory.php.twig',
-                $rootPath . '/src/Generated/WorkerFactory/' . $item->generateClassesClassNameSuffix . '.php',
+                $rootPath . '/src/Consumer/WorkerFactory/' . $item->generateClassesClassNameSuffix . '.php',
                 ['worker' => $item],
             );
         }
 
         TwigFile::render(
-            $rootPath . '/etc/generated_templates/WorkQueueMap.php.twig',
-            $rootPath . '/src/Generated/WorkQueueMap.php',
+            $rootPath . '/etc/generated_templates/Producer.php.twig',
+            $rootPath . '/src/Producer.php',
             ['items' => $map],
         );
 
         TwigFile::render(
             $rootPath . '/etc/generated_templates/GroupAddons.php.twig',
-            $rootPath . '/src/Generated/Kubernetes/Helm/GroupAddons.php',
+            $rootPath . '/src/Kubernetes/Helm/GroupAddons.php',
             ['workers' => $workers],
         );
 
         File::write(
-            $rootPath . '/src/Generated/Hydrator.php',
+            $rootPath . '/src/Hydrator.php',
             new ObjectMapperCodeGenerator()->dump($dtos, Hydrator::class) . PHP_EOL,
         );
     }

@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Mammatus\Queue\Generated\Consumer;
+namespace Mammatus\Queue\Consumer;
 
 use Mammatus\Groups\Attributes\Group;
 use Mammatus\Groups\Contracts\LifeCycleHandler;
 use Mammatus\Groups\Type;
 use Mammatus\Queue\Consumer;
-use Mammatus\Queue\Generated\WorkerFactory;
 use React\Promise\PromiseInterface;
 
 /**
