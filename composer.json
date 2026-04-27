@@ -9,7 +9,7 @@
     "composer-plugin-api": "^2.0",
     "eventsauce/object-hydrator": "^1.6.1",
     "mammatus/app": "dev-master",
-    "mammatus/groups": "^0.1.4",
+    "mammatus/groups": "^0.1.4 || ^0.2.0",
     "mammatus/kubernetes-attributes": "^1.1.0",
     "mammatus/kubernetes-contracts": "^1.1.0",
     "mammatus/kubernetes-events": "^3.0.1",
