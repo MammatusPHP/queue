@@ -7,7 +7,7 @@ namespace Mammatus\Tests\Queue;
 use Interop\Queue\Producer as InteropProducer;
 use Mammatus\DevApp\Queue\BeerMessage;
 use Mammatus\Queue\Encoder\JSON;
-use Mammatus\Queue\Generated\Hydrator;
+use Mammatus\Queue\Hydrator;
 use Mammatus\Queue\Message;
 use Mammatus\Queue\Producer;
 use Mammatus\Queue\Queue;

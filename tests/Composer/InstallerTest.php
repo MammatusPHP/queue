@@ -65,11 +65,11 @@ final class InstallerTest extends TestCase
 
         $this->recurseCopy(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR, $this->getTmpDir());
 
-        $sneakyFile = $this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR . 'Generated' . DIRECTORY_SEPARATOR . 'sneaky.file';
+        $sneakyFile = $this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR . 'Consumer' . DIRECTORY_SEPARATOR . 'sneaky.file';
         touch($sneakyFile);
 
-        $fileNameGroupAddons   = $this->getTmpDir() . 'src/Generated/Kubernetes/Helm/GroupAddons.php';
-        $fileNameWorkerFactory = $this->getTmpDir() . 'src/Generated/WorkerFactory/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php';
+        $fileNameGroupAddons   = $this->getTmpDir() . 'src/Kubernetes/Helm/GroupAddons.php';
+        $fileNameWorkerFactory = $this->getTmpDir() . 'src/Consumer/WorkerFactory/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php';
 
         self::assertFileExists($sneakyFile);
 

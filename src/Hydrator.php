@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Mammatus\Queue\Generated;
+namespace Mammatus\Queue;
 
 use EventSauce\ObjectHydrator\IterableList;
 use EventSauce\ObjectHydrator\ObjectMapper;

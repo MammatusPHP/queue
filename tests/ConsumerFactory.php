@@ -7,7 +7,7 @@ namespace Mammatus\Tests\Queue;
 use Interop\Queue as QueueInterop;
 use Mammatus\Queue\Consumer;
 use Mammatus\Queue\Encoder\JSON;
-use Mammatus\Queue\Generated\Hydrator;
+use Mammatus\Queue\Hydrator;
 use Mockery;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;

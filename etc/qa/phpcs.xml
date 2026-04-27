@@ -13,6 +13,6 @@
 
     <rule ref="WyriHaximus-OSS" />
 
-    <exclude-pattern>src/Generated/Hydrator.php</exclude-pattern>
+    <exclude-pattern>src/Hydrator.php</exclude-pattern>
     <exclude-pattern>tests/Composer/ExpectedAbstractList.php</exclude-pattern>
 </ruleset>

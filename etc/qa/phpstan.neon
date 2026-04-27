@@ -6,7 +6,7 @@ parameters:
 		- ../../tests
 		- ../dev-app
 	excludePaths:
-		- ../../src/Generated/Hydrator.php
+		- ../../src/Hydrator.php
 		- ../../tests/Composer/ExpectedAbstractList.php (?)
 	ignoreErrors:
 		- '#Method Mammatus\\Queue\\Consumer::__construct\(\) has a parameter \$container with a type declaration of Psr\\Container\\ContainerInterface, but containers should not be injected.#'
@@ -22,8 +22,8 @@ parameters:
 			classesAllowedToBeExtended:
 				- Composer\IO\NullIO
 				- ShipMonk\PHPStan\DeadCode\Provider\ReflectionBasedMemberUsageProvider
-				- Mammatus\Queue\Generated\AbstractList
-				- Mammatus\Queue\Generated\WorkQueueMap
+				- Mammatus\Queue\AbstractList
+				- Mammatus\Queue\WorkQueueMap
 				- RuntimeException
 includes:
     - ../../extension.neon
