@@ -6,6 +6,7 @@ namespace Mammatus\DevApp\Queue;
 
 use Mammatus\Queue\Contracts\Work;
 
+/** @api */
 final readonly class BeerMessage implements Work
 {
     public function __construct(
