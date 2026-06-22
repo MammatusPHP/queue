@@ -39,7 +39,7 @@
     "bunny/bunny": "0.6.0-alpha.2@dev",
     "shipmonk/dead-code-detector": "^0.14.1 || ^0.15.0 || ^1.0.0",
     "wyrihaximus/async-test-utilities": "^12.2.0",
-    "wyrihaximus/makefiles": "^0.10.6"
+    "wyrihaximus/makefiles": "^0.12.0"
   },
   "suggest": {
     "shipmonk/dead-code-detector": "This package supports ^1 || ^0.15 || ^0.14.1 by hooking in and marking all listeners as alive"
