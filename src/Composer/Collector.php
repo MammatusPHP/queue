@@ -113,7 +113,7 @@ final class Collector implements ItemCollector
                         $generateClassesClassNameSuffix,
                         str_replace(['.', '_'], '-', 'queue-worker-' . $attribute->queue . '-' . ($attribute->friendlyName !== '' ? $attribute->friendlyName : $hash)),
                         $attribute,
-                        array_key_exists(SplitOut::class, $attributes) ? Type::Kubernetes : Type::Internal,
+                        array_key_exists(SplitOut::class, $attributes) ? Type::Kubernetes : Type::Daemon,
                     );
                 }
             }
