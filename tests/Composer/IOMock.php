@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Mammatus\Tests\Queue\Composer;
 
 use Composer\IO\NullIO;
+use RuntimeException;
 use Symfony\Component\Console\Output\StreamOutput;
 
+use function fopen;
 use function fseek;
-use function Safe\fopen;
-use function Safe\stream_get_contents;
+use function is_resource;
+use function stream_get_contents;
 
 final class IOMock extends NullIO
 {
@@ -17,7 +19,13 @@ final class IOMock extends NullIO
 
     public function __construct()
     {
-        $this->output = new StreamOutput(fopen('php://memory', 'rw'), decorated: false);
+        /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.fopen */
+        $resource = fopen('php://memory', 'rw');
+        if (! is_resource($resource)) {
+            throw new RuntimeException('Could not open memory stream');
+        }
+
+        $this->output = new StreamOutput($resource, decorated: false);
     }
 
     public function output(): string
@@ -27,10 +35,7 @@ final class IOMock extends NullIO
         return stream_get_contents($this->output->getStream());
     }
 
-            /**
-             * @inheritDoc
-             * @phpstan-ignore typeCoverage.paramTypeCoverage
-             */
+    /** @inheritDoc */
     public function write($messages, bool $newline = true, int $verbosity = self::NORMAL): void
     {
         $this->output->write($messages, $newline, $verbosity & StreamOutput::OUTPUT_RAW);

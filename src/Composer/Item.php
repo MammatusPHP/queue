@@ -25,7 +25,7 @@ final readonly class Item implements ItemContract, JsonSerializable
     ) {
     }
 
-    /** @return array{hash: string, class: string, method: string, dtoClass: string, generateClassesClassNameSuffix: string, groupName: string, consumer: Consumer, type: string} */
+    /** @return array{hash: string, class: class-string, method: string, dtoClass: string, generatedIndex: string, generateClassesClassNameSuffix: string, groupName: string, consumer: Consumer, type: string} */
     public function jsonSerialize(): array
     {
         return [

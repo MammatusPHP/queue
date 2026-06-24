@@ -13,6 +13,7 @@ use Mammatus\Queue\Contracts\Worker;
 use function React\Async\await;
 use function WyriHaximus\React\timedPromise;
 
+/** @api */
 #[Consumers(
     new Consumer(friendlyName: 'leeg', queue: 'noop', dtoClass: EmptyMessage::class, concurrency: 1),
     new Consumer(

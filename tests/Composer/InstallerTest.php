@@ -17,18 +17,20 @@ use Mammatus\DevApp\Queue\Noop;
 use Mammatus\Queue\Composer\CodeGenerator;
 use Mockery;
 use PHPUnit\Framework\Attributes\Test;
+use RuntimeException;
 use WyriHaximus\TestUtilities\TestCase;
 
 use function closedir;
+use function copy;
 use function dirname;
 use function file_exists;
+use function file_get_contents;
 use function is_dir;
 use function is_file;
+use function is_resource;
+use function mkdir;
+use function opendir;
 use function readdir;
-use function Safe\copy;
-use function Safe\file_get_contents;
-use function Safe\mkdir;
-use function Safe\opendir;
 use function touch;
 
 use const DIRECTORY_SEPARATOR;
@@ -85,8 +87,9 @@ final class InstallerTest extends TestCase
         self::assertStringContainsString('<info>mammatus/queue:</info> Generated static abstract queue manager and queue list in ', $output);
         self::assertStringContainsString('<info>mammatus/queue:</info> Found 5 action(s)', $output);
 
-        $fileContentsGroupAddons   = file_get_contents($fileNameGroupAddons);
+        /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.fileGetContents */
         $fileContentsWorkerFactory = file_get_contents($fileNameWorkerFactory);
+        self::assertIsString($fileContentsWorkerFactory);
 
         self::assertStringContainsStringIgnoringCase('/** @see \\' . Noop::class, $fileContentsWorkerFactory);
         self::assertStringContainsStringIgnoringCase('EmptyMessage::class,', $fileContentsWorkerFactory);
@@ -140,8 +143,13 @@ final class InstallerTest extends TestCase
     private function recurseCopy(string $src, string $dst): void
     {
         $dir = opendir($src);
+        if (! is_resource($dir)) {
+            throw new RuntimeException('Could not open directory');
+        }
+
         /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.fileExists */
         if (! file_exists($dst)) {
+            /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.mkdir */
             mkdir($dst);
         }
 
