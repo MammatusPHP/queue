@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Mammatus\Queue\Composer;
 
+use Mammatus\Groups\Type;
 use Mammatus\Kubernetes\Attributes\SplitOut;
 use Mammatus\Queue\Attributes\Consumer;
 use Mammatus\Queue\Attributes\Consumers;
 use Mammatus\Queue\Contracts\Work;
-use Mammatus\Queue\Worker\Type;
 use Realodix\ChangeCase\ChangeCase;
 use Roave\BetterReflection\Reflection\ReflectionClass;
 use Roave\BetterReflection\Reflection\ReflectionIntersectionType;
@@ -113,7 +113,7 @@ final class Collector implements ItemCollector
                         $generateClassesClassNameSuffix,
                         str_replace(['.', '_'], '-', 'queue-worker-' . $attribute->queue . '-' . ($attribute->friendlyName !== '' ? $attribute->friendlyName : $hash)),
                         $attribute,
-                        array_key_exists(SplitOut::class, $attributes) ? Type::Kubernetes : Type::Daemon,
+                        array_key_exists(SplitOut::class, $attributes) ? Type::Normal : Type::Daemon,
                     );
                 }
             }

@@ -6,10 +6,10 @@ namespace Mammatus\Tests\Queue\Composer;
 
 use Mammatus\DevApp\Queue\EmptyMessage;
 use Mammatus\DevApp\Queue\Noop;
+use Mammatus\Groups\Type;
 use Mammatus\Kubernetes\Attributes\Resources;
 use Mammatus\Queue\Attributes\Consumer;
 use Mammatus\Queue\Composer\Item;
-use Mammatus\Queue\Worker\Type;
 use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\TestUtilities\TestCase;
 
@@ -38,10 +38,10 @@ final class ItemTest extends TestCase
                     memory: 3,
                 ),
             ),
-            Type::Kubernetes,
+            Type::Normal,
         );
         self::assertSame(
-            '{"hash":"brownie","class":"Mammatus\\\\DevApp\\\\Queue\\\\Noop","method":"perform","dtoClass":"Mammatus\\\\DevApp\\\\Queue\\\\EmptyMessage","generatedIndex":"queue-worker-space-cake","generateClassesClassNameSuffix":"SpaceCake","groupName":"queue-worker-space-cake","consumer":{"addOns":[{"type":"container","helper":"mammatus.container.resources","arguments":{"cpu":"666m","memory":"3072Mi"}}],"friendlyName":"test","queue":"test","dtoClass":"Mammatus\\\\DevApp\\\\Queue\\\\EmptyMessage","concurrency":1337},"type":"kubernetes"}',
+            '{"hash":"brownie","class":"Mammatus\\\\DevApp\\\\Queue\\\\Noop","method":"perform","dtoClass":"Mammatus\\\\DevApp\\\\Queue\\\\EmptyMessage","generatedIndex":"queue-worker-space-cake","generateClassesClassNameSuffix":"SpaceCake","groupName":"queue-worker-space-cake","consumer":{"addOns":[{"type":"container","helper":"mammatus.container.resources","arguments":{"cpu":"666m","memory":"3072Mi"}}],"friendlyName":"test","queue":"test","dtoClass":"Mammatus\\\\DevApp\\\\Queue\\\\EmptyMessage","concurrency":1337},"type":"normal"}',
             json_encode($item),
         );
     }

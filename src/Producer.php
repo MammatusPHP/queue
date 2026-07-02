@@ -73,8 +73,8 @@ final class Producer implements ProducerContract
     private function lookUp(Work $work): string
     {
         return match ($work::class) {
-                        BeerMessage::class => 'noop',
                         EmptyMessage::class => 'noop',
+                        BeerMessage::class => 'noop',
                         default => throw new RuntimeException('Unknown work: ' . $work::class),
         };
     }
