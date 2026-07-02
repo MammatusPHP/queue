@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Mammatus\Queue\Composer;
 
 use JsonSerializable;
+use Mammatus\Groups\Type;
 use Mammatus\Queue\Attributes\Consumer;
-use Mammatus\Queue\Worker\Type;
 use WyriHaximus\Composer\GenerativePluginTooling\Item as ItemContract;
 
 final readonly class Item implements ItemContract, JsonSerializable
