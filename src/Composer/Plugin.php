@@ -17,6 +17,7 @@ use WyriHaximus\Composer\GenerativePluginTooling\Helper\TwigFile;
 use WyriHaximus\Composer\GenerativePluginTooling\Item as ItemContract;
 use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
 
+use function ksort;
 use function md5;
 use function serialize;
 
@@ -86,6 +87,10 @@ final class Plugin implements GenerativePlugin
                 ['worker' => $item],
             );
         }
+
+        ksort($map);
+        ksort($workers);
+        ksort($dtos);
 
         TwigFile::render(
             $rootPath . '/etc/generated_templates/Producer.php.twig',
