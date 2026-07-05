@@ -15,7 +15,7 @@ final class GroupAddons implements Listener
 {
     public function values(Values $values): void
     {
-        $values->addToGroup(new Group(Type::Normal, 'queue-worker-noop-vol'), MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol::create()->addOns);
         $values->addToGroup(new Group(Type::Normal, 'queue-worker-noop-leeg'), MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg::create()->addOns);
+        $values->addToGroup(new Group(Type::Normal, 'queue-worker-noop-vol'), MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol::create()->addOns);
     }
 }
