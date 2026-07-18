@@ -56,10 +56,10 @@ final class Plugin implements GenerativePlugin
 
     public function compile(string $rootPath, ItemContract ...$items): void
     {
-        Remove::directoryContents($rootPath . '/src/Consumer');
-        Remove::directoryContents($rootPath . '/src/Kubernetes');
-        Remove::file($rootPath . '/src/Hydrator.php');
-        Remove::file($rootPath . '/src/Producer.php');
+        Remove::directoryContentsOnlyIfItExists($rootPath . '/src/Consumer');
+        Remove::directoryContentsOnlyIfItExists($rootPath . '/src/Kubernetes');
+        Remove::fileOnlyIfItExists($rootPath . '/src/Hydrator.php');
+        Remove::fileOnlyIfItExists($rootPath . '/src/Producer.php');
 
         $map     = [];
         $workers = [];
