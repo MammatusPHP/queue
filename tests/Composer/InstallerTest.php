@@ -18,6 +18,9 @@ use Mammatus\Queue\Composer\CodeGenerator;
 use Mockery;
 use PHPUnit\Framework\Attributes\Test;
 use RuntimeException;
+use WyriHaximus\Composer\GenerativePluginTooling\Cache\CacheFilePath;
+use WyriHaximus\Composer\GenerativePluginTooling\Cache\Store;
+use WyriHaximus\Composer\GenerativePluginTooling\Composer\CacheLocator;
 use WyriHaximus\TestUtilities\TestCase;
 
 use function closedir;
@@ -31,12 +34,25 @@ use function is_resource;
 use function mkdir;
 use function opendir;
 use function readdir;
+use function symlink;
 use function touch;
+use function unlink;
 
 use const DIRECTORY_SEPARATOR;
 
 final class InstallerTest extends TestCase
 {
+    private string|null $vendorSymlink = null;
+
+    protected function tearDown(): void
+    {
+        if ($this->vendorSymlink !== null) {
+            unlink($this->vendorSymlink);
+        }
+
+        parent::tearDown();
+    }
+
     #[Test]
     public function getSubscribedEvents(): void
     {
@@ -65,7 +81,7 @@ final class InstallerTest extends TestCase
         $installer->deactivate($composer, $io);
         $installer->uninstall($composer, $io);
 
-        $this->recurseCopy(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR, $this->getTmpDir());
+        $this->seedTmpProject(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR, $this->getTmpDir());
 
         $sneakyFile = $this->getTmpDir() . 'src' . DIRECTORY_SEPARATOR . 'Consumer' . DIRECTORY_SEPARATOR . 'sneaky.file';
         touch($sneakyFile);
@@ -74,6 +90,11 @@ final class InstallerTest extends TestCase
         $fileNameWorkerFactory = $this->getTmpDir() . 'src/Consumer/WorkerFactory/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php';
 
         self::assertFileExists($sneakyFile);
+
+        $cacheLocation = CacheLocator::locate($composer);
+        if ($cacheLocation instanceof CacheFilePath) {
+            Store::setUp($cacheLocation, $composer->getConfig()->get('vendor-dir'));
+        }
 
         // Do the actual generating
         CodeGenerator::findActions($event);
@@ -115,6 +136,9 @@ final class InstallerTest extends TestCase
             'mammatus' => [
                 'queue' => ['has-workers' => true],
             ],
+            'wyrihaximus' => [
+                'generative-composer-plugin-tooling' => ['cache' => 'etc/state/generative-composer-plugin-tooling.cache.json'],
+            ],
         ]);
         $rootPackage->setAutoload([
             'psr-4' => [
@@ -140,6 +164,26 @@ final class InstallerTest extends TestCase
         return $composer;
     }
 
+    private function seedTmpProject(string $projectRoot, string $tmpDir): void
+    {
+        foreach (
+            [
+                'src',
+                'etc',
+            ] as $path
+        ) {
+            $this->recurseCopy(
+                $projectRoot . $path . DIRECTORY_SEPARATOR,
+                $tmpDir . $path . DIRECTORY_SEPARATOR,
+            );
+        }
+
+        copy($projectRoot . 'composer.json', $tmpDir . 'composer.json');
+
+        $this->vendorSymlink = $tmpDir . 'vendor';
+        symlink($projectRoot . 'vendor', $this->vendorSymlink);
+    }
+
     private function recurseCopy(string $src, string $dst): void
     {
         $dir = opendir($src);
@@ -150,7 +194,7 @@ final class InstallerTest extends TestCase
         /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.fileExists */
         if (! file_exists($dst)) {
             /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.mkdir */
-            mkdir($dst);
+            mkdir($dst, 0777, true);
         }
 
         while (( $file = readdir($dir)) !== false) {
