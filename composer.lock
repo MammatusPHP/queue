@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "715c28bd6af042c6b836db2cdea14048",
+    "content-hash": "98fd1d22996df6a4e93be3545fbbd3bc",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -5797,16 +5797,16 @@
         },
         {
             "name": "bunny/bunny",
-            "version": "v0.6.0-alpha.2",
+            "version": "v0.6.0-alpha.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakubkulhan/bunny.git",
-                "reference": "b0e9af0303af18e0dd272b7a959b25ccbaae1abc"
+                "reference": "113cc8c174e7dcdd74cb71e13d025a61901d1f3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/b0e9af0303af18e0dd272b7a959b25ccbaae1abc",
-                "reference": "b0e9af0303af18e0dd272b7a959b25ccbaae1abc",
+                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/113cc8c174e7dcdd74cb71e13d025a61901d1f3b",
+                "reference": "113cc8c174e7dcdd74cb71e13d025a61901d1f3b",
                 "shasum": ""
             },
             "require": {
@@ -5821,7 +5821,7 @@
                 "doctrine/coding-standard": "^13.0",
                 "ext-pcntl": "*",
                 "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "^9.6",
+                "phpunit/phpunit": "^10.5",
                 "react/child-process": "^0.6.5",
                 "react/promise-stream": "^1.7",
                 "react/promise-timer": "^1.11",
@@ -5864,9 +5864,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jakubkulhan/bunny/issues",
-                "source": "https://github.com/jakubkulhan/bunny/tree/v0.6.0-alpha.2"
+                "source": "https://github.com/jakubkulhan/bunny/tree/v0.6.0-alpha.3"
             },
-            "time": "2025-11-09T12:58:13+00:00"
+            "time": "2026-07-13T05:47:21+00:00"
         },
         {
             "name": "colinodell/json5",
