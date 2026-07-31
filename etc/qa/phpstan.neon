@@ -13,10 +13,6 @@ parameters:
 		-
 			message: '#Variable method call on Mammatus\\Queue\\Contracts\\Worker.#'
 			path: ../../src/Consumer.php
-		-
-			identifier: psr3.interpolated
-			path: ../../src/Consumer.php
-			count: 4
 	ergebnis:
 		noExtends:
 			classesAllowedToBeExtended:

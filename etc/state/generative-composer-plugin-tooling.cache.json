@@ -1,0 +1,466 @@
+{
+    "installedJsonHash": "b306056c57f399624beb63fc3ddd29f4",
+    "fileHashes": {
+        "etc\/dev-app\/Bar.php": "df3c795171ee007014350ba1cdbaff46",
+        "etc\/dev-app\/BeerMessage.php": "9d81e54819f08af62cddf677eb60219c",
+        "etc\/dev-app\/Noop.php": "f76260f7bf0ae94970504c5539a5e37b",
+        "etc\/dev-app\/EmptyMessage.php": "7a75a4573a3190b03b0b2100cfe92795",
+        "etc\/dev-app\/OHellNo.php": "3a8c7834b33f15436af5d868efa4a43e",
+        "src\/Queue.php": "c6756b066b4dd4530a591927c96f60dc",
+        "src\/Consumer\/MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol.php": "e65e1f64a9a49b4e7b86fd6f0d68d8b0",
+        "src\/Consumer\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop2.php": "2cbcefde457d9be0bb7404b9f6ec007f",
+        "src\/Consumer\/MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg.php": "f86f762426775cef9d3eab9e77508c92",
+        "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol.php": "85786b0e37ccabb9b77331adcfa1ad86",
+        "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop2.php": "e15184b1a0b73f1882f3aa8494590f82",
+        "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg.php": "eec5235d6468ed483664cb35867800dd",
+        "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3.php": "2d25177bf2b563463f5fb969d37b9fd3",
+        "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php": "a2118950736a7a616e609d2a0da5b0c9",
+        "src\/Consumer\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3.php": "3b300a67dc8c90a0d3f81e0b069cb655",
+        "src\/Consumer\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php": "e87ecdbeddee13e399f0941b98a9646f",
+        "src\/Kubernetes\/Helm\/GroupAddons.php": "f2b18c23f91d475d861b0fc96d4bfab9",
+        "src\/Producer.php": "c847451419e8876cd76ce076271c8beb",
+        "src\/LifeCycle\/CloseContext.php": "d5f3bcfe74f64363b257d852b9d52bfd",
+        "src\/Encoder\/JSON.php": "8729fd9756696866130567e5f81fa671",
+        "src\/Hydrator.php": "d61742456e3d4fabf2544a4ad773f262",
+        "src\/Worker.php": "3273363b4a5f89ad96d7f285b845264c",
+        "src\/Message.php": "b256ad5e533130b92d429e11051df9e7",
+        "src\/Terraform\/Queues.php": "befe4d4b66b0ed6b8b6731e1893739e4",
+        "src\/Consumer.php": "bb46e98766e5172fb4839f8819ffd63b",
+        "src\/Composer\/Collector.php": "c7eef8cac7254f9c0b243df5d2a1f65d",
+        "src\/Composer\/Item.php": "440616b66b6d868e31cff2ac8c23c711",
+        "src\/Composer\/Plugin.php": "ea1a2186f461c836306ff583fd672050",
+        "src\/Composer\/CodeGenerator.php": "12568608c45a0d453e255121d0ea9cc8",
+        "src\/PHPSan\/ShipMonkDeadCode.php": "cd0a404b7d814ed4c17d090ed69afaa7",
+        "vendor\/mammatus\/app\/src\/Boot.php": "2a8640f3d3f2fbefadefa47dff6c78f8",
+        "vendor\/mammatus\/app\/src\/App.php": "cc68805fd3bd51275889d8a92fa743fd",
+        "vendor\/mammatus\/app\/src\/App\/Group.php": "cd34173e59d4b29c6ac9ecc2c3071a8b",
+        "vendor\/mammatus\/app\/src\/LifeCycle\/Output.php": "7c771f6a3293360c0391b9f99edfd2b8",
+        "vendor\/mammatus\/app\/src\/LifeCycle\/Signals.php": "e516360daa307b95ae405c71c04040bb",
+        "vendor\/mammatus\/app\/src\/LifeCycle\/Container.php": "0305fef0bc48d181b68d77521b757887",
+        "vendor\/mammatus\/app\/src\/Boot\/FallBackToEchoWhenEventLoopCompletesItsLoop.php": "da267ae29b611e9393d72fa208749072",
+        "vendor\/mammatus\/app\/src\/ConfigurationLocator.php": "b21e4687a1fe0d16d18c22731c688a1a",
+        "vendor\/mammatus\/app\/src\/Build.php": "c0761c8f5da04514f1df6e3065c1733e",
+        "vendor\/mammatus\/app\/src\/Composer\/Installer.php": "a2a98e96c31f054ed87d6a8ec1b18663",
+        "vendor\/mammatus\/app\/src\/Contracts\/Argv.php": "1a1e4e79c87a167401b45fd3533cf0f8",
+        "vendor\/mammatus\/app\/src\/Contracts\/Bootable.php": "cd4c975b8d1e22aabfbc9b0aa77f5d6e",
+        "vendor\/mammatus\/app\/src\/Run.php": "0fa8a2f3f0a2734bb1801a42f2d1f4e4",
+        "vendor\/mammatus\/app\/src\/Container\/Factory.php": "e94e51ca290c48627340ba226785c761",
+        "vendor\/mammatus\/app\/src\/Container\/Defaults.php": "c5945c02053e87a5293a3c0be048afe1",
+        "vendor\/mammatus\/groups\/src\/SpawnDaemons.php": "efe95059ebe9008f4c442a288368e4c6",
+        "vendor\/mammatus\/groups\/src\/Groups.php": "443d5bf01bef4aed4fa95e18e66d4552",
+        "vendor\/mammatus\/groups\/src\/Fallback\/DealingWIthLife.php": "a204e15a4b3c05e743fc64cecd91c563",
+        "vendor\/mammatus\/groups\/src\/Attributes\/Group.php": "1159739f275dc8ea824f6fd04e85890a",
+        "vendor\/mammatus\/groups\/src\/Composer\/Collector.php": "f1d749f47bd0a06f11e737b7a2e5160e",
+        "vendor\/mammatus\/groups\/src\/Composer\/Plugin.php": "d0494fc56d46d527dc6348eaef654c52",
+        "vendor\/mammatus\/groups\/src\/Composer\/LifeCycleHandler.php": "46de6d94b4b24b44589a51f4053560ee",
+        "vendor\/mammatus\/groups\/src\/Composer\/Installer.php": "0a2209944eef3253da6b509b9569d782",
+        "vendor\/mammatus\/groups\/src\/Composer\/Group.php": "2fd8fc941a2fde4eebe75a1f15a09123",
+        "vendor\/mammatus\/groups\/src\/Contracts\/LifeCycleHandler.php": "1f39df26c218f4c6f9d937a586921fe9",
+        "vendor\/mammatus\/groups\/src\/PHPSan\/ShipMonkDeadCode.php": "7c4ae3abfb33687be93ead4fb88a5342",
+        "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Groups.php": "c2db45949d9367fa04a695e04284fc45",
+        "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Registry\/Service.php": "72c2c6ec8b539d5c836afe26f56caee5",
+        "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Registry\/CronJob.php": "ae8692f462a2a005aa6b7ee1427132d2",
+        "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Registry\/Deployment.php": "e642dff38341f92f930826c751f4aaae",
+        "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Groups\/Group.php": "cb3a3cadeb72100f69c609be6e32d56d",
+        "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Registry.php": "46e2a42f6bfe735222b298769e662794",
+        "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/ValuesFile.php": "5be72e3d32361b881c6e7d8c683fbe07",
+        "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values.php": "e5ed4c3d5f4cc5975d5ab6f041be1b50",
+        "vendor\/wyrihaximus\/broadcast\/src\/Dispatcher.php": "f94d3d20d52f5b5c8524f01638bf67ee",
+        "vendor\/wyrihaximus\/broadcast\/src\/ContainerListenerProvider.php": "0babebfe9a8b654e053823ecc7cdf882",
+        "vendor\/wyrihaximus\/broadcast\/src\/Generated\/AbstractListenerProvider.php": "0255cda49b1fe90ce74ab8be4f60198a",
+        "vendor\/wyrihaximus\/broadcast\/src\/Dummy\/Listener.php": "5233f4f45b2017ab27c3b06cb470f3a7",
+        "vendor\/wyrihaximus\/broadcast\/src\/Dummy\/Event.php": "eee7243b959b042edda703bee019fb49",
+        "vendor\/wyrihaximus\/broadcast\/src\/Dummy\/AsyncListener.php": "637ba799e7ae0795a0d3bbb8042dd60c",
+        "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Collector.php": "aa8b640b230819d9f48f13eb1316272e",
+        "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Plugin.php": "5cd58e92ce8ff278cb96f7ead315244d",
+        "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Listener.php": "be8a4afceed894ba7b3ae1ad947b3433",
+        "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Installer.php": "9d053f9c4413356e2174a91e0c3eef17",
+        "vendor\/wyrihaximus\/broadcast\/src\/ArrayListenerProvider.php": "6c5a8090d4b3addb52d5abdd260349f7",
+        "vendor\/wyrihaximus\/broadcast\/src\/PHPSan\/ShipMonkDeadCode.php": "b84f4bdbbd1605b7f6eefe6011a816f1"
+    },
+    "classFilterOutcome": {
+        "c3ab155a55ede2aac7bfac17b7a7a13c": true,
+        "57f4c3fff0a985c598205adff8be8566": true,
+        "e5745b32b85d096a5fc5887c6ca3dc9c": false,
+        "a87699c81df048c0024daf3c0848ea36": true,
+        "2caada726ac3fa29cc289b53659a0c27": true,
+        "e4805d40b0154b87694b79f653693cc2": false,
+        "b3810093e277b6a86c86da492a8d2d0c": true,
+        "367fdcef372dc99468c2b8d5d71508b3": true,
+        "823e27e90635298b2c3be37ca26df416": false,
+        "1df543998747da24325dcccc30bd6eaf": false,
+        "da50f545c527c8c2311f996c0c388686": false,
+        "5b29a6baa4e05a62883b4aa30a28b1e6": false,
+        "52c20d90359461414d7ba2472e875923": false,
+        "76a29818136f5e5aaa7123044faf5b6b": false,
+        "eb81ab954a8059959c6bd43810abc502": false,
+        "91a26349f7193aef33fc52babd12ce78": false,
+        "fd1714c78d54b56044811bc69a0b6ed5": false,
+        "ad537a4630642cbe2bbb9ac854c95db7": false,
+        "b0f11c06604db821bee8776012dc9aee": false,
+        "a67bb19104bf74c9ffe89abbc5fc6997": false,
+        "2f68866b14328db05af81c9110184e9b": false,
+        "fed9abc2b3c2616339de30c642d3e069": false,
+        "4cb136c11ecb8d258c52f0eb819bfe95": false,
+        "5ce6c6f6c2a9d4ec6e079d66e2b16cc4": false,
+        "024df95ecb36877999bf56d5be1a713f": false,
+        "db8b995a3b0491cd42646c065ce03b3e": false,
+        "09cc193b0edf4430a2b3daa5aaa057af": false,
+        "e69c07cde688e56e33dd9a3ff6e41bf1": false,
+        "70380296f42a6e650813cabf9da8bd3a": false,
+        "fe14fe6bf1f21b5657078aaecc47c525": false,
+        "d10a817b323156e48bc1bb27011432c9": false,
+        "9baa9cdf8c7b218e3f7455ab1ac26735": false,
+        "99b31cf07dfd43b41016a4451f17abf2": false,
+        "b6c84cf08d4372dfbfc385524cade807": false,
+        "eca9a87e838b9bddcf2f01e41d457755": false,
+        "942a4a9ede1e817655313c448ea04f80": false,
+        "dd8f31942f947f7f84ca274be11b92de": false,
+        "79168f854d69dc861b3c3a85f5f85d30": false,
+        "7eafb919a43d36b39051cc6118e66d08": false,
+        "4fd1f2f9af6c5d2707f04d7d84e35e5b": true,
+        "1c5a0bac9e9b9a6ac9a995a9342075c8": true,
+        "3f103fdda1d16988838e2ed919e38bf2": true,
+        "009b2e97f121d8d0c21fe1cf59d2a33f": false,
+        "dca0b2275638659150d326e3de548966": false,
+        "489878b03dd04d2831cb1342d100c50b": false,
+        "96623d3ec8535b6e322172a3e6a6ace2": false,
+        "f356caed3d3c6cd24bc484f233ce1942": false,
+        "541894e08f26d90edf6da6d1f1b9bedd": true,
+        "3631b099a4658734073e630bc2ea776e": true,
+        "cb7061ef90c6d0a1615a1d968fedffe6": false,
+        "86ba1ea7270975018aae07eef49b593a": false,
+        "e827875db4f1d83227fcf8fe60a3856b": false,
+        "ce90240e96146c2aa01cd5f4877dc809": false,
+        "df53be3a5b51ae7890a03517f66ed96c": false,
+        "bbb0b8b1f6ba006bf51aa8152c076703": false,
+        "f2d2fb4fc9d7485f1d8bc823e5a93f29": false,
+        "e0cc25707e473cd8480bc12a6bcc5bf5": false,
+        "696c2b891861a3aa39ff6dd537d8b566": false,
+        "081431876079ded3c43a1db81f411fd8": false,
+        "ff375c827ba4897f0816d961ec073c19": false,
+        "89815f87b9ef17bed8ad007bec562b96": false,
+        "a7ed1342e4f42ab7ec3bb2f792342044": false,
+        "8b386e90c679f4fa6c5fc246fabbb8b7": false,
+        "73b34dad566aae0f4110a8e4cc25cd3f": false,
+        "68b9bf9454147e6fb02cca1fd4f6c7f0": false,
+        "fe9441d9a69d06867f8e443f93996a76": false,
+        "8caf57da29e0e005f67a29a604b76274": false,
+        "c67615f517d831725ed8f138cb8b4a74": false,
+        "b8876ed352f129dc49b0c43b4b3725e6": false,
+        "1dd0ce136c1875a77327a5e9e8afd6b4": false,
+        "b1a9c370c5e841646ef67cb770c4020e": false,
+        "7509ae8756e34d211977a6298e562aed": false,
+        "072190d731e8b6819e1ced9a5b0b455d": false,
+        "c6f551c09b9ff3f4b2b8d9ace7a44fce": false,
+        "ab989ee8f9138f906c1591aea67197f0": false,
+        "03d8ca958e10e68649721e0ee18292b1": false,
+        "6ae08e415d68cf8aa5923093ad4c3232": false,
+        "2f88e5c9c6d2ad3b1fa9bf03cd54b17d": false,
+        "96fa684720fc83bc51be0d9506a3b29a": false,
+        "c90d25112ebd8de70464168a7db93b4d": false,
+        "b5607ac8912a77536ec65014dec68b85": true,
+        "f710eec58fa1f5809cd85abe47337421": false,
+        "742df92516dbf03fb1b5e70fec906f0f": false,
+        "f68cd8a334d8a4bd3cb5d0e48cc7b001": false,
+        "698c9b7e70806544c9c9edf042b797b4": false,
+        "3d63123a869d34614411b28ab34a17e1": false,
+        "0010639581869923af40385bdd230fa5": false,
+        "dbbc1f8eae58a05bf56c0ee207c71a81": false,
+        "f5a145f3556f72404d1cfadd9562c98a": false,
+        "512a9f2e302bd25e45bcb3dda268541b": false,
+        "e6b13fd235928f340a3f3f6beb420b47": false,
+        "b1b7060b98aeb1683d73164d77e1cfc4": false,
+        "3f0c93fa168cdf649f65394f39f9afcc": false,
+        "3a3f23e705d66eff99cde13c0ad8b6f9": false,
+        "f15ae521c2568b83855c6a271dbc6ed1": false,
+        "0663d5c03a2abfa004194d5a5ec659bc": false,
+        "02470c9767de789328b519f8aa8733a9": false,
+        "99baada49b1c789b9621238f6cb7fd9c": false,
+        "8e9c3d449049f6d2253094f4e84f965b": false,
+        "f4300ff89c5e29a0fdc0fd8e0a52d534": false,
+        "6212656ad8cea30120d7e73b427aa2d2": false,
+        "77159a94d8d0e5bec5d9103707fc19eb": false,
+        "0a822d36f0801ef87b2400a89dc69346": false,
+        "d109d754ea0fb11e5551816e23faa729": false,
+        "c6ecb1676fbc536673a5e007161477c6": false,
+        "de10fbe93289c85fd708e7ba4cc574f2": true,
+        "79678f5f1e429f060b6877cfbcd4cc52": true,
+        "3a57fd27312dc3ff1dc4a1b306ba4b80": false,
+        "6623aa5b490a8d7ef261dc47433979f2": true,
+        "024ad1349f8aef080c4acee0184f4061": true,
+        "a0977c130029ab92d3d84bd13cab948b": false,
+        "00a8ce638620ceee8501bb0ec01f6b4f": false,
+        "72342090724c3eadf37e209c917ac4e3": false,
+        "5fec2087202fea1c68f19503f1c92d80": false,
+        "38276f2d05661ba5066962edbecc29ee": true,
+        "7da6bc9c5a276f2012ebe711aaf6c3f5": true,
+        "7607ff06c1469ec943bdc7f01165fcca": true,
+        "77ef35c21251e980430b93f472bfe8f7": true,
+        "2f54ff4ddbc7f8783ca1694484f90e80": false,
+        "fd76753d70d3ffc53009a75604a78dca": false,
+        "43318a7f7ff6eec318f6861f8f86c4de": false,
+        "d707694e387827ea42209ac4f4dc8e31": false,
+        "583250cbeeb88d929caccd7d1f3ce2df": false,
+        "8c1db486a293fcb45e49dbb2ad3b8cf0": false,
+        "c7ff4c1151d630c887db8f8fd0a43aa8": false,
+        "f506f61b91c566ef5e28c3ceffddaabd": false,
+        "fbb4bd2d5cddda60d6d5fdf95a92fdaf": true,
+        "36e78fc9bfa70ba5fbe084a0fb7c6117": true,
+        "13e58447e2eacf1e3f77521aa07ddee4": true,
+        "40a11302617bf083043f5363ec83bbae": true,
+        "056a6b2ae9453a2e8b837387ba0f8f3e": true,
+        "57d8536957b68a0b46c8912d5e0ce302": true,
+        "0fc50668b012a025dfe32c2c32e27c98": false,
+        "eb3ae9111668d580014099b43d527def": false,
+        "185a6e514546ba785932344bf91e336d": false,
+        "ddf5a59eaadf9f6ccbc682d54a3211f2": false,
+        "ada6e130accb41fc520a39024bc4c305": false,
+        "ff19d0d027e4c6b11ae5cb7d9c9d1073": false,
+        "0ea15e56bf5ca702a91e7aa8cf48cacd": false,
+        "e67971c08c304ee08f47105a1bc6ad82": false,
+        "9fabefb6c7fdde0144c6a1ca5649e27b": false,
+        "cac380169fb6207717f8238509435fe6": true,
+        "e9925cda5f064f2032fbb9f3e3627aab": true,
+        "497c5e1fcd6a1ccc610ad8632051aa6e": true,
+        "d7166e52a48275390b78147f86eea1ae": true,
+        "f1aec461dccc39223f889713d5a4a373": false,
+        "2e310282ec9eca86f427b1b49a2a202d": false,
+        "3df0e3e80decb3f1d695a3a1ef5f1026": false,
+        "d7f16da012f266329a142d0ae5eb0a4b": false,
+        "840eacbe88fbc13fb9f4931607b141e4": false,
+        "cbd113ef3e2502406982e22face7c454": false,
+        "45e2c828d162ce8eeb241e62beccc10c": false,
+        "565b5a16a7b93847562bddf3456903d2": false,
+        "5bceaf0046f8fbb65f2499d41bb7a404": false,
+        "ad25dfb48531970873a47ed1bc634fa1": false,
+        "a05fb067db93b7826e1d46bfd160b683": false,
+        "c6ab90c46dcf54b8023398cb6bc03264": false,
+        "82e96172a59d36eb133046483917c6c6": false,
+        "f5aceadf374f47ca8b06c3e503a597ff": false,
+        "2cbca0c6df58c2c1341f1b6371020599": false,
+        "3d00ab67dddae403d1d047e2b83ae479": false,
+        "b4eedf21e19f0d169ea4057cdea36f68": false,
+        "d68b7960e2d7610d49af8e5d70d8582c": false,
+        "f0725c80a5b5dadbacd9bfc9ddc6b00d": false,
+        "375b528f2c8895e4746e1ca57f785925": false,
+        "1cab3b15e88d63debac579cbf69adedd": true,
+        "92fdabd42362b12a1fc0d6b30539098b": true,
+        "e538191ce0f8c72672c1a41081878fdb": false,
+        "2baf08494162989c4d4bfe853fe5ef74": true,
+        "705f3ec85a04bc2101b331189411d615": true,
+        "c75b98a3c6e47b8cc968adb5e9d1cb8b": false,
+        "d9457e427c76d6c028d35e928436c05d": false,
+        "0947b611be248d1f3c62ebbcfec81ee1": false,
+        "94388e1741039b779592fca11e9500bc": false,
+        "3adcbb888ab9b08c711f500a645ef78c": false,
+        "1ef1881023760dbc8d7377a3eb19cb0a": false
+    },
+    "classFilePaths": {
+        "Mammatus\\DevApp\\Queue\\Bar": "etc\/dev-app\/Bar.php",
+        "Mammatus\\DevApp\\Queue\\BeerMessage": "etc\/dev-app\/BeerMessage.php",
+        "Mammatus\\DevApp\\Queue\\Noop": "etc\/dev-app\/Noop.php",
+        "Mammatus\\DevApp\\Queue\\EmptyMessage": "etc\/dev-app\/EmptyMessage.php",
+        "Mammatus\\DevApp\\Queue\\OHellNo": "etc\/dev-app\/OHellNo.php",
+        "Mammatus\\Queue\\Queue": "src\/Queue.php",
+        "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol": "src\/Consumer\/MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol.php",
+        "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop2": "src\/Consumer\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop2.php",
+        "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg": "src\/Consumer\/MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg.php",
+        "Mammatus\\Queue\\Consumer\\WorkerFactory\\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol": "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol.php",
+        "Mammatus\\Queue\\Consumer\\WorkerFactory\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop2": "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop2.php",
+        "Mammatus\\Queue\\Consumer\\WorkerFactory\\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg": "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg.php",
+        "Mammatus\\Queue\\Consumer\\WorkerFactory\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3": "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3.php",
+        "Mammatus\\Queue\\Consumer\\WorkerFactory\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage": "src\/Consumer\/WorkerFactory\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php",
+        "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3": "src\/Consumer\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3.php",
+        "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage": "src\/Consumer\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php",
+        "Mammatus\\Queue\\Kubernetes\\Helm\\GroupAddons": "src\/Kubernetes\/Helm\/GroupAddons.php",
+        "Mammatus\\Queue\\Producer": "src\/Producer.php",
+        "Mammatus\\Queue\\LifeCycle\\CloseContext": "src\/LifeCycle\/CloseContext.php",
+        "Mammatus\\Queue\\Encoder\\JSON": "src\/Encoder\/JSON.php",
+        "Mammatus\\Queue\\Hydrator": "src\/Hydrator.php",
+        "Mammatus\\Queue\\Worker": "src\/Worker.php",
+        "Mammatus\\Queue\\Message": "src\/Message.php",
+        "Mammatus\\Queue\\Terraform\\Queues": "src\/Terraform\/Queues.php",
+        "Mammatus\\Queue\\Consumer": "src\/Consumer.php",
+        "Mammatus\\Queue\\Composer\\Collector": "src\/Composer\/Collector.php",
+        "Mammatus\\Queue\\Composer\\Item": "src\/Composer\/Item.php",
+        "Mammatus\\Queue\\Composer\\Plugin": "src\/Composer\/Plugin.php",
+        "Mammatus\\Queue\\Composer\\CodeGenerator": "src\/Composer\/CodeGenerator.php",
+        "Mammatus\\Queue\\PHPSan\\ShipMonkDeadCode": "src\/PHPSan\/ShipMonkDeadCode.php",
+        "Mammatus\\Boot": "vendor\/mammatus\/app\/src\/Boot.php",
+        "Mammatus\\App": "vendor\/mammatus\/app\/src\/App.php",
+        "Mammatus\\App\\Group": "vendor\/mammatus\/app\/src\/App\/Group.php",
+        "Mammatus\\LifeCycle\\Output": "vendor\/mammatus\/app\/src\/LifeCycle\/Output.php",
+        "Mammatus\\LifeCycle\\Signals": "vendor\/mammatus\/app\/src\/LifeCycle\/Signals.php",
+        "Mammatus\\LifeCycle\\Container": "vendor\/mammatus\/app\/src\/LifeCycle\/Container.php",
+        "Mammatus\\Boot\\FallBackToEchoWhenEventLoopCompletesItsLoop": "vendor\/mammatus\/app\/src\/Boot\/FallBackToEchoWhenEventLoopCompletesItsLoop.php",
+        "Mammatus\\ConfigurationLocator": "vendor\/mammatus\/app\/src\/ConfigurationLocator.php",
+        "Mammatus\\Build": "vendor\/mammatus\/app\/src\/Build.php",
+        "Mammatus\\Composer\\Installer": "vendor\/mammatus\/app\/src\/Composer\/Installer.php",
+        "Mammatus\\Contracts\\Argv": "vendor\/mammatus\/app\/src\/Contracts\/Argv.php",
+        "Mammatus\\Contracts\\Bootable": "vendor\/mammatus\/app\/src\/Contracts\/Bootable.php",
+        "Mammatus\\Run": "vendor\/mammatus\/app\/src\/Run.php",
+        "Mammatus\\Container\\Factory": "vendor\/mammatus\/app\/src\/Container\/Factory.php",
+        "Mammatus\\Container\\Defaults": "vendor\/mammatus\/app\/src\/Container\/Defaults.php",
+        "Mammatus\\Groups\\SpawnDaemons": "vendor\/mammatus\/groups\/src\/SpawnDaemons.php",
+        "Mammatus\\Groups\\Groups": "vendor\/mammatus\/groups\/src\/Groups.php",
+        "Mammatus\\Groups\\Fallback\\DealingWIthLife": "vendor\/mammatus\/groups\/src\/Fallback\/DealingWIthLife.php",
+        "Mammatus\\Groups\\Attributes\\Group": "vendor\/mammatus\/groups\/src\/Attributes\/Group.php",
+        "Mammatus\\Groups\\Composer\\Collector": "vendor\/mammatus\/groups\/src\/Composer\/Collector.php",
+        "Mammatus\\Groups\\Composer\\Plugin": "vendor\/mammatus\/groups\/src\/Composer\/Plugin.php",
+        "Mammatus\\Groups\\Composer\\LifeCycleHandler": "vendor\/mammatus\/groups\/src\/Composer\/LifeCycleHandler.php",
+        "Mammatus\\Groups\\Composer\\Installer": "vendor\/mammatus\/groups\/src\/Composer\/Installer.php",
+        "Mammatus\\Groups\\Composer\\Group": "vendor\/mammatus\/groups\/src\/Composer\/Group.php",
+        "Mammatus\\Groups\\Contracts\\LifeCycleHandler": "vendor\/mammatus\/groups\/src\/Contracts\/LifeCycleHandler.php",
+        "Mammatus\\Groups\\PHPSan\\ShipMonkDeadCode": "vendor\/mammatus\/groups\/src\/PHPSan\/ShipMonkDeadCode.php",
+        "Mammatus\\Kubernetes\\Events\\Helm\\Values\\Groups": "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Groups.php",
+        "Mammatus\\Kubernetes\\Events\\Helm\\Values\\Registry\\Service": "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Registry\/Service.php",
+        "Mammatus\\Kubernetes\\Events\\Helm\\Values\\Registry\\CronJob": "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Registry\/CronJob.php",
+        "Mammatus\\Kubernetes\\Events\\Helm\\Values\\Registry\\Deployment": "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Registry\/Deployment.php",
+        "Mammatus\\Kubernetes\\Events\\Helm\\Values\\Groups\\Group": "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Groups\/Group.php",
+        "Mammatus\\Kubernetes\\Events\\Helm\\Values\\Registry": "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Registry.php",
+        "Mammatus\\Kubernetes\\Events\\Helm\\Values\\ValuesFile": "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/ValuesFile.php",
+        "Mammatus\\Kubernetes\\Events\\Helm\\Values": "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values.php",
+        "WyriHaximus\\Broadcast\\Dispatcher": "vendor\/wyrihaximus\/broadcast\/src\/Dispatcher.php",
+        "WyriHaximus\\Broadcast\\ContainerListenerProvider": "vendor\/wyrihaximus\/broadcast\/src\/ContainerListenerProvider.php",
+        "WyriHaximus\\Broadcast\\Generated\\AbstractListenerProvider": "vendor\/wyrihaximus\/broadcast\/src\/Generated\/AbstractListenerProvider.php",
+        "WyriHaximus\\Broadcast\\Dummy\\Listener": "vendor\/wyrihaximus\/broadcast\/src\/Dummy\/Listener.php",
+        "WyriHaximus\\Broadcast\\Dummy\\Event": "vendor\/wyrihaximus\/broadcast\/src\/Dummy\/Event.php",
+        "WyriHaximus\\Broadcast\\Dummy\\AsyncListener": "vendor\/wyrihaximus\/broadcast\/src\/Dummy\/AsyncListener.php",
+        "WyriHaximus\\Broadcast\\Composer\\Collector": "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Collector.php",
+        "WyriHaximus\\Broadcast\\Composer\\Plugin": "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Plugin.php",
+        "WyriHaximus\\Broadcast\\Composer\\Listener": "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Listener.php",
+        "WyriHaximus\\Broadcast\\Composer\\Installer": "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Installer.php",
+        "WyriHaximus\\Broadcast\\ArrayListenerProvider": "vendor\/wyrihaximus\/broadcast\/src\/ArrayListenerProvider.php",
+        "WyriHaximus\\Broadcast\\PHPSan\\ShipMonkDeadCode": "vendor\/wyrihaximus\/broadcast\/src\/PHPSan\/ShipMonkDeadCode.php"
+    },
+    "failedReflections": [
+        "Mammatus\\Queue\\Encoder\\InvalidJSONArray",
+        "Mammatus\\Queue\\Encoder\\InvalidJSON",
+        "Mammatus\\ExitCode",
+        "MammatusGeneratedCompiledContainer",
+        "Mammatus\\Groups\\Type",
+        "Mammatus\\Kubernetes\\Events\\Helm\\Values\\Registry\\Section"
+    ],
+    "collectedItems": {
+        "mammatus\/queue": {
+            "Mammatus\\DevApp\\Queue\\Bar": {
+                "Mammatus\\Queue\\Composer\\Collector": [
+                    "TzoyODoiTWFtbWF0dXNcUXVldWVcQ29tcG9zZXJcSXRlbSI6OTp7czo0OiJoYXNoIjtzOjMyOiJlNTQyNDRkNWFmOGUwMTY2NThkYWE5MjlkMzZjMTkzNSI7czo1OiJjbGFzcyI7czoyNToiTWFtbWF0dXNcRGV2QXBwXFF1ZXVlXEJhciI7czo2OiJtZXRob2QiO3M6NToicm91bmQiO3M6ODoiZHRvQ2xhc3MiO3M6MzM6Ik1hbW1hdHVzXERldkFwcFxRdWV1ZVxCZWVyTWVzc2FnZSI7czoxNDoiZ2VuZXJhdGVkSW5kZXgiO3M6OTc6Im1hbW1hdHVzLWRldi1hcHAtcXVldWUtYmFyLXZpYS1yb3VuZC1mb3Itbm9vcC13aXRoLW1hbW1hdHVzLWRldi1hcHAtcXVldWUtYmVlci1tZXNzYWdlLWFzLXZvbC12b2wiO3M6MzA6ImdlbmVyYXRlQ2xhc3Nlc0NsYXNzTmFtZVN1ZmZpeCI7czo3NjoiTWFtbWF0dXNEZXZBcHBRdWV1ZUJhclZpYVJvdW5kRm9yTm9vcFdpdGhNYW1tYXR1c0RldkFwcFF1ZXVlQmVlck1lc3NhZ2VBc1ZvbCI7czo5OiJncm91cE5hbWUiO3M6MjE6InF1ZXVlLXdvcmtlci1ub29wLXZvbCI7czo4OiJjb25zdW1lciI7TzozNDoiTWFtbWF0dXNcUXVldWVcQXR0cmlidXRlc1xDb25zdW1lciI6NTp7czo2OiJhZGRPbnMiO2E6Mjp7aTowO086NDA6Ik1hbW1hdHVzXEt1YmVybmV0ZXNcQXR0cmlidXRlc1xSZXNvdXJjZXMiOjI6e3M6MzoiY3B1IjtpOjE7czo2OiJtZW1vcnkiO2k6Mjt9aToxO086NDg6Ik1hbW1hdHVzXEt1YmVybmV0ZXNcQXR0cmlidXRlc1xQcmlvcml0eUNsYXNzTmFtZSI6MTp7czoxNzoicHJpb3JpdHlDbGFzc05hbWUiO3M6MTQ6InJ1bi1mb3Jlc3QtcnVuIjt9fXM6MTI6ImZyaWVuZGx5TmFtZSI7czozOiJ2b2wiO3M6NToicXVldWUiO3M6NDoibm9vcCI7czo4OiJkdG9DbGFzcyI7czozMzoiTWFtbWF0dXNcRGV2QXBwXFF1ZXVlXEJlZXJNZXNzYWdlIjtzOjExOiJjb25jdXJyZW5jeSI7aToxO31zOjQ6InR5cGUiO0U6Mjc6Ik1hbW1hdHVzXEdyb3Vwc1xUeXBlOkRhZW1vbiI7fQ==",
+                    "TzoyODoiTWFtbWF0dXNcUXVldWVcQ29tcG9zZXJcSXRlbSI6OTp7czo0OiJoYXNoIjtzOjMyOiI1MGEzYTEyNDU4OTAyYzRmNGU1NmMyM2E0MzUzODg4NCI7czo1OiJjbGFzcyI7czoyNToiTWFtbWF0dXNcRGV2QXBwXFF1ZXVlXEJhciI7czo2OiJtZXRob2QiO3M6NToicm91bmQiO3M6ODoiZHRvQ2xhc3MiO3M6MzQ6Ik1hbW1hdHVzXERldkFwcFxRdWV1ZVxFbXB0eU1lc3NhZ2UiO3M6MTQ6ImdlbmVyYXRlZEluZGV4IjtzOjEwMDoibWFtbWF0dXMtZGV2LWFwcC1xdWV1ZS1iYXItdmlhLXJvdW5kLWZvci1ub29wLXdpdGgtbWFtbWF0dXMtZGV2LWFwcC1xdWV1ZS1lbXB0eS1tZXNzYWdlLWFzLWxlZWctbGVlZyI7czozMDoiZ2VuZXJhdGVDbGFzc2VzQ2xhc3NOYW1lU3VmZml4IjtzOjc4OiJNYW1tYXR1c0RldkFwcFF1ZXVlQmFyVmlhUm91bmRGb3JOb29wV2l0aE1hbW1hdHVzRGV2QXBwUXVldWVFbXB0eU1lc3NhZ2VBc0xlZWciO3M6OToiZ3JvdXBOYW1lIjtzOjIyOiJxdWV1ZS13b3JrZXItbm9vcC1sZWVnIjtzOjg6ImNvbnN1bWVyIjtPOjM0OiJNYW1tYXR1c1xRdWV1ZVxBdHRyaWJ1dGVzXENvbnN1bWVyIjo1OntzOjY6ImFkZE9ucyI7YToxOntpOjA7Tzo0ODoiTWFtbWF0dXNcS3ViZXJuZXRlc1xBdHRyaWJ1dGVzXFByaW9yaXR5Q2xhc3NOYW1lIjoxOntzOjE3OiJwcmlvcml0eUNsYXNzTmFtZSI7czoxNDoicnVuLWZvcmVzdC1ydW4iO319czoxMjoiZnJpZW5kbHlOYW1lIjtzOjQ6ImxlZWciO3M6NToicXVldWUiO3M6NDoibm9vcCI7czo4OiJkdG9DbGFzcyI7czozNDoiTWFtbWF0dXNcRGV2QXBwXFF1ZXVlXEVtcHR5TWVzc2FnZSI7czoxMToiY29uY3VycmVuY3kiO2k6MTt9czo0OiJ0eXBlIjtFOjI3OiJNYW1tYXR1c1xHcm91cHNcVHlwZTpEYWVtb24iO30="
+                ]
+            },
+            "Mammatus\\DevApp\\Queue\\Noop": {
+                "Mammatus\\Queue\\Composer\\Collector": [
+                    "TzoyODoiTWFtbWF0dXNcUXVldWVcQ29tcG9zZXJcSXRlbSI6OTp7czo0OiJoYXNoIjtzOjMyOiIzNGJjMzVjM2IyNWZmNTRjNTk5NWY4NzllNzhiNGQzZiI7czo1OiJjbGFzcyI7czoyNjoiTWFtbWF0dXNcRGV2QXBwXFF1ZXVlXE5vb3AiO3M6NjoibWV0aG9kIjtzOjc6InBlcmZvcm0iO3M6ODoiZHRvQ2xhc3MiO3M6MzQ6Ik1hbW1hdHVzXERldkFwcFxRdWV1ZVxFbXB0eU1lc3NhZ2UiO3M6MTQ6ImdlbmVyYXRlZEluZGV4IjtzOjEyMzoibWFtbWF0dXMtZGV2LWFwcC1xdWV1ZS1ub29wLXZpYS1wZXJmb3JtLWZvci1ub29wLXdpdGgtbWFtbWF0dXMtZGV2LWFwcC1xdWV1ZS1lbXB0eS1tZXNzYWdlLTM0YmMzNWMzYjI1ZmY1NGM1OTk1Zjg3OWU3OGI0ZDNmIjtzOjMwOiJnZW5lcmF0ZUNsYXNzZXNDbGFzc05hbWVTdWZmaXgiO3M6NzU6Ik1hbW1hdHVzRGV2QXBwUXVldWVOb29wVmlhUGVyZm9ybUZvck5vb3BXaXRoTWFtbWF0dXNEZXZBcHBRdWV1ZUVtcHR5TWVzc2FnZSI7czo5OiJncm91cE5hbWUiO3M6NTA6InF1ZXVlLXdvcmtlci1ub29wLTM0YmMzNWMzYjI1ZmY1NGM1OTk1Zjg3OWU3OGI0ZDNmIjtzOjg6ImNvbnN1bWVyIjtPOjM0OiJNYW1tYXR1c1xRdWV1ZVxBdHRyaWJ1dGVzXENvbnN1bWVyIjo1OntzOjY6ImFkZE9ucyI7YTowOnt9czoxMjoiZnJpZW5kbHlOYW1lIjtzOjA6IiI7czo1OiJxdWV1ZSI7czo0OiJub29wIjtzOjg6ImR0b0NsYXNzIjtzOjM0OiJNYW1tYXR1c1xEZXZBcHBcUXVldWVcRW1wdHlNZXNzYWdlIjtzOjExOiJjb25jdXJyZW5jeSI7aToxO31zOjQ6InR5cGUiO0U6Mjc6Ik1hbW1hdHVzXEdyb3Vwc1xUeXBlOkRhZW1vbiI7fQ==",
+                    "TzoyODoiTWFtbWF0dXNcUXVldWVcQ29tcG9zZXJcSXRlbSI6OTp7czo0OiJoYXNoIjtzOjMyOiJkY2U2ZGE3N2U5ZWNjNmQ5MDQyMzJkMmYzYWNhZTdiNSI7czo1OiJjbGFzcyI7czoyNjoiTWFtbWF0dXNcRGV2QXBwXFF1ZXVlXE5vb3AiO3M6NjoibWV0aG9kIjtzOjc6InBlcmZvcm0iO3M6ODoiZHRvQ2xhc3MiO3M6MzQ6Ik1hbW1hdHVzXERldkFwcFxRdWV1ZVxFbXB0eU1lc3NhZ2UiO3M6MTQ6ImdlbmVyYXRlZEluZGV4IjtzOjEwNjoibWFtbWF0dXMtZGV2LWFwcC1xdWV1ZS1ub29wLXZpYS1wZXJmb3JtLWZvci1ub29wLXdpdGgtbWFtbWF0dXMtZGV2LWFwcC1xdWV1ZS1lbXB0eS1tZXNzYWdlLWFzLW5vb3AyLW5vb3AtMiI7czozMDoiZ2VuZXJhdGVDbGFzc2VzQ2xhc3NOYW1lU3VmZml4IjtzOjgyOiJNYW1tYXR1c0RldkFwcFF1ZXVlTm9vcFZpYVBlcmZvcm1Gb3JOb29wV2l0aE1hbW1hdHVzRGV2QXBwUXVldWVFbXB0eU1lc3NhZ2VBc05vb3AyIjtzOjk6Imdyb3VwTmFtZSI7czoyNDoicXVldWUtd29ya2VyLW5vb3Atbm9vcC0yIjtzOjg6ImNvbnN1bWVyIjtPOjM0OiJNYW1tYXR1c1xRdWV1ZVxBdHRyaWJ1dGVzXENvbnN1bWVyIjo1OntzOjY6ImFkZE9ucyI7YTowOnt9czoxMjoiZnJpZW5kbHlOYW1lIjtzOjY6Im5vb3BfMiI7czo1OiJxdWV1ZSI7czo0OiJub29wIjtzOjg6ImR0b0NsYXNzIjtzOjM0OiJNYW1tYXR1c1xEZXZBcHBcUXVldWVcRW1wdHlNZXNzYWdlIjtzOjExOiJjb25jdXJyZW5jeSI7aToyO31zOjQ6InR5cGUiO0U6Mjc6Ik1hbW1hdHVzXEdyb3Vwc1xUeXBlOkRhZW1vbiI7fQ==",
+                    "TzoyODoiTWFtbWF0dXNcUXVldWVcQ29tcG9zZXJcSXRlbSI6OTp7czo0OiJoYXNoIjtzOjMyOiIxODZjNzgwMWI0ZjdiZjFjYzkwNzVmMDg5MjBkN2I3ZCI7czo1OiJjbGFzcyI7czoyNjoiTWFtbWF0dXNcRGV2QXBwXFF1ZXVlXE5vb3AiO3M6NjoibWV0aG9kIjtzOjc6InBlcmZvcm0iO3M6ODoiZHRvQ2xhc3MiO3M6MzQ6Ik1hbW1hdHVzXERldkFwcFxRdWV1ZVxFbXB0eU1lc3NhZ2UiO3M6MTQ6ImdlbmVyYXRlZEluZGV4IjtzOjEwNjoibWFtbWF0dXMtZGV2LWFwcC1xdWV1ZS1ub29wLXZpYS1wZXJmb3JtLWZvci1ub29wLXdpdGgtbWFtbWF0dXMtZGV2LWFwcC1xdWV1ZS1lbXB0eS1tZXNzYWdlLWFzLW5vb3AzLW5vb3AtMyI7czozMDoiZ2VuZXJhdGVDbGFzc2VzQ2xhc3NOYW1lU3VmZml4IjtzOjgyOiJNYW1tYXR1c0RldkFwcFF1ZXVlTm9vcFZpYVBlcmZvcm1Gb3JOb29wV2l0aE1hbW1hdHVzRGV2QXBwUXVldWVFbXB0eU1lc3NhZ2VBc05vb3AzIjtzOjk6Imdyb3VwTmFtZSI7czoyNDoicXVldWUtd29ya2VyLW5vb3Atbm9vcC0zIjtzOjg6ImNvbnN1bWVyIjtPOjM0OiJNYW1tYXR1c1xRdWV1ZVxBdHRyaWJ1dGVzXENvbnN1bWVyIjo1OntzOjY6ImFkZE9ucyI7YTowOnt9czoxMjoiZnJpZW5kbHlOYW1lIjtzOjY6Im5vb3BfMyI7czo1OiJxdWV1ZSI7czo0OiJub29wIjtzOjg6ImR0b0NsYXNzIjtzOjM0OiJNYW1tYXR1c1xEZXZBcHBcUXVldWVcRW1wdHlNZXNzYWdlIjtzOjExOiJjb25jdXJyZW5jeSI7aTozO31zOjQ6InR5cGUiO0U6Mjc6Ik1hbW1hdHVzXEdyb3Vwc1xUeXBlOkRhZW1vbiI7fQ=="
+                ]
+            },
+            "Mammatus\\DevApp\\Queue\\OHellNo": {
+                "Mammatus\\Queue\\Composer\\Collector": []
+            }
+        },
+        "mammatus\/groups": {
+            "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueBeerMessageAsVol": {
+                "Mammatus\\Groups\\Composer\\Collector": [
+                    "TzozMDoiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXEdyb3VwIjoxOntzOjU6Imdyb3VwIjtPOjMyOiJNYW1tYXR1c1xHcm91cHNcQXR0cmlidXRlc1xHcm91cCI6Mjp7czo0OiJ0eXBlIjtFOjI3OiJNYW1tYXR1c1xHcm91cHNcVHlwZTpEYWVtb24iO3M6NDoibmFtZSI7czoyMToicXVldWUtd29ya2VyLW5vb3Atdm9sIjt9fQ==",
+                    "Tzo0MToiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXExpZmVDeWNsZUhhbmRsZXIiOjE6e3M6MTY6ImxpZmVDeWNsZUhhbmRsZXIiO3M6MTAwOiJNYW1tYXR1c1xRdWV1ZVxDb25zdW1lclxNYW1tYXR1c0RldkFwcFF1ZXVlQmFyVmlhUm91bmRGb3JOb29wV2l0aE1hbW1hdHVzRGV2QXBwUXVldWVCZWVyTWVzc2FnZUFzVm9sIjt9"
+                ]
+            },
+            "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop2": {
+                "Mammatus\\Groups\\Composer\\Collector": [
+                    "TzozMDoiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXEdyb3VwIjoxOntzOjU6Imdyb3VwIjtPOjMyOiJNYW1tYXR1c1xHcm91cHNcQXR0cmlidXRlc1xHcm91cCI6Mjp7czo0OiJ0eXBlIjtFOjI3OiJNYW1tYXR1c1xHcm91cHNcVHlwZTpEYWVtb24iO3M6NDoibmFtZSI7czoyNDoicXVldWUtd29ya2VyLW5vb3Atbm9vcC0yIjt9fQ==",
+                    "Tzo0MToiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXExpZmVDeWNsZUhhbmRsZXIiOjE6e3M6MTY6ImxpZmVDeWNsZUhhbmRsZXIiO3M6MTA2OiJNYW1tYXR1c1xRdWV1ZVxDb25zdW1lclxNYW1tYXR1c0RldkFwcFF1ZXVlTm9vcFZpYVBlcmZvcm1Gb3JOb29wV2l0aE1hbW1hdHVzRGV2QXBwUXVldWVFbXB0eU1lc3NhZ2VBc05vb3AyIjt9"
+                ]
+            },
+            "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueBarViaRoundForNoopWithMammatusDevAppQueueEmptyMessageAsLeeg": {
+                "Mammatus\\Groups\\Composer\\Collector": [
+                    "TzozMDoiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXEdyb3VwIjoxOntzOjU6Imdyb3VwIjtPOjMyOiJNYW1tYXR1c1xHcm91cHNcQXR0cmlidXRlc1xHcm91cCI6Mjp7czo0OiJ0eXBlIjtFOjI3OiJNYW1tYXR1c1xHcm91cHNcVHlwZTpEYWVtb24iO3M6NDoibmFtZSI7czoyMjoicXVldWUtd29ya2VyLW5vb3AtbGVlZyI7fX0=",
+                    "Tzo0MToiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXExpZmVDeWNsZUhhbmRsZXIiOjE6e3M6MTY6ImxpZmVDeWNsZUhhbmRsZXIiO3M6MTAyOiJNYW1tYXR1c1xRdWV1ZVxDb25zdW1lclxNYW1tYXR1c0RldkFwcFF1ZXVlQmFyVmlhUm91bmRGb3JOb29wV2l0aE1hbW1hdHVzRGV2QXBwUXVldWVFbXB0eU1lc3NhZ2VBc0xlZWciO30="
+                ]
+            },
+            "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3": {
+                "Mammatus\\Groups\\Composer\\Collector": [
+                    "TzozMDoiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXEdyb3VwIjoxOntzOjU6Imdyb3VwIjtPOjMyOiJNYW1tYXR1c1xHcm91cHNcQXR0cmlidXRlc1xHcm91cCI6Mjp7czo0OiJ0eXBlIjtFOjI3OiJNYW1tYXR1c1xHcm91cHNcVHlwZTpEYWVtb24iO3M6NDoibmFtZSI7czoyNDoicXVldWUtd29ya2VyLW5vb3Atbm9vcC0zIjt9fQ==",
+                    "Tzo0MToiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXExpZmVDeWNsZUhhbmRsZXIiOjE6e3M6MTY6ImxpZmVDeWNsZUhhbmRsZXIiO3M6MTA2OiJNYW1tYXR1c1xRdWV1ZVxDb25zdW1lclxNYW1tYXR1c0RldkFwcFF1ZXVlTm9vcFZpYVBlcmZvcm1Gb3JOb29wV2l0aE1hbW1hdHVzRGV2QXBwUXVldWVFbXB0eU1lc3NhZ2VBc05vb3AzIjt9"
+                ]
+            },
+            "Mammatus\\Queue\\Consumer\\MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage": {
+                "Mammatus\\Groups\\Composer\\Collector": [
+                    "TzozMDoiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXEdyb3VwIjoxOntzOjU6Imdyb3VwIjtPOjMyOiJNYW1tYXR1c1xHcm91cHNcQXR0cmlidXRlc1xHcm91cCI6Mjp7czo0OiJ0eXBlIjtFOjI3OiJNYW1tYXR1c1xHcm91cHNcVHlwZTpEYWVtb24iO3M6NDoibmFtZSI7czo1MDoicXVldWUtd29ya2VyLW5vb3AtMzRiYzM1YzNiMjVmZjU0YzU5OTVmODc5ZTc4YjRkM2YiO319",
+                    "Tzo0MToiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXExpZmVDeWNsZUhhbmRsZXIiOjE6e3M6MTY6ImxpZmVDeWNsZUhhbmRsZXIiO3M6OTk6Ik1hbW1hdHVzXFF1ZXVlXENvbnN1bWVyXE1hbW1hdHVzRGV2QXBwUXVldWVOb29wVmlhUGVyZm9ybUZvck5vb3BXaXRoTWFtbWF0dXNEZXZBcHBRdWV1ZUVtcHR5TWVzc2FnZSI7fQ=="
+                ]
+            },
+            "Mammatus\\Groups\\Fallback\\DealingWIthLife": {
+                "Mammatus\\Groups\\Composer\\Collector": [
+                    "Tzo0MToiTWFtbWF0dXNcR3JvdXBzXENvbXBvc2VyXExpZmVDeWNsZUhhbmRsZXIiOjE6e3M6MTY6ImxpZmVDeWNsZUhhbmRsZXIiO3M6NDA6Ik1hbW1hdHVzXEdyb3Vwc1xGYWxsYmFja1xEZWFsaW5nV0l0aExpZmUiO30="
+                ]
+            }
+        },
+        "wyrihaximus\/broadcast": {
+            "Mammatus\\Queue\\Kubernetes\\Helm\\GroupAddons": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjM4OiJNYW1tYXR1c1xLdWJlcm5ldGVzXEV2ZW50c1xIZWxtXFZhbHVlcyI7czo1OiJjbGFzcyI7czo0MjoiTWFtbWF0dXNcUXVldWVcS3ViZXJuZXRlc1xIZWxtXEdyb3VwQWRkb25zIjtzOjY6Im1ldGhvZCI7czo2OiJ2YWx1ZXMiO3M6Njoic3RhdGljIjtiOjA7czo1OiJhc3luYyI7YjowO30="
+                ]
+            },
+            "Mammatus\\Queue\\LifeCycle\\CloseContext": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMzOiJNYW1tYXR1c1xMaWZlQ3ljbGVFdmVudHNcU2h1dGRvd24iO3M6NToiY2xhc3MiO3M6Mzc6Ik1hbW1hdHVzXFF1ZXVlXExpZmVDeWNsZVxDbG9zZUNvbnRleHQiO3M6NjoibWV0aG9kIjtzOjg6InNodXRkb3duIjtzOjY6InN0YXRpYyI7YjowO3M6NToiYXN5bmMiO2I6MTt9"
+                ]
+            },
+            "Mammatus\\Queue\\Terraform\\Queues": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjM1OiJNYW1tYXR1c1xUZXJyYWZvcm1cRXZlbnRzXFZhcmlhYmxlcyI7czo1OiJjbGFzcyI7czozMToiTWFtbWF0dXNcUXVldWVcVGVycmFmb3JtXFF1ZXVlcyI7czo2OiJtZXRob2QiO3M6NDoidmFycyI7czo2OiJzdGF0aWMiO2I6MDtzOjU6ImFzeW5jIjtiOjA7fQ=="
+                ]
+            },
+            "Mammatus\\Queue\\Consumer": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjIxOiJNYW1tYXR1c1xRdWV1ZVxXb3JrZXIiO3M6NToiY2xhc3MiO3M6MjM6Ik1hbW1hdHVzXFF1ZXVlXENvbnN1bWVyIjtzOjY6Im1ldGhvZCI7czoxMzoic2V0dXBDb25zdW1lciI7czo2OiJzdGF0aWMiO2I6MDtzOjU6ImFzeW5jIjtiOjA7fQ=="
+                ]
+            },
+            "Mammatus\\LifeCycle\\Output": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjM1OiJNYW1tYXR1c1xMaWZlQ3ljbGVFdmVudHNcSW5pdGlhbGl6ZSI7czo1OiJjbGFzcyI7czoyNToiTWFtbWF0dXNcTGlmZUN5Y2xlXE91dHB1dCI7czo2OiJtZXRob2QiO3M6NjoiaGFuZGxlIjtzOjY6InN0YXRpYyI7YjowO3M6NToiYXN5bmMiO2I6MDt9"
+                ]
+            },
+            "Mammatus\\LifeCycle\\Signals": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjM1OiJNYW1tYXR1c1xMaWZlQ3ljbGVFdmVudHNcSW5pdGlhbGl6ZSI7czo1OiJjbGFzcyI7czoyNjoiTWFtbWF0dXNcTGlmZUN5Y2xlXFNpZ25hbHMiO3M6NjoibWV0aG9kIjtzOjY6ImhhbmRsZSI7czo2OiJzdGF0aWMiO2I6MDtzOjU6ImFzeW5jIjtiOjA7fQ=="
+                ]
+            },
+            "Mammatus\\LifeCycle\\Container": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMwOiJNYW1tYXR1c1xMaWZlQ3ljbGVFdmVudHNcQnVpbGQiO3M6NToiY2xhc3MiO3M6Mjg6Ik1hbW1hdHVzXExpZmVDeWNsZVxDb250YWluZXIiO3M6NjoibWV0aG9kIjtzOjY6ImhhbmRsZSI7czo2OiJzdGF0aWMiO2I6MDtzOjU6ImFzeW5jIjtiOjA7fQ=="
+                ]
+            },
+            "Mammatus\\Groups\\SpawnDaemons": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjI5OiJNYW1tYXR1c1xMaWZlQ3ljbGVFdmVudHNcQm9vdCI7czo1OiJjbGFzcyI7czoyODoiTWFtbWF0dXNcR3JvdXBzXFNwYXduRGFlbW9ucyI7czo2OiJtZXRob2QiO3M6NDoiYm9vdCI7czo2OiJzdGF0aWMiO2I6MDtzOjU6ImFzeW5jIjtiOjE7fQ==",
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMwOiJNYW1tYXR1c1xMaWZlQ3ljbGVFdmVudHNcU3RhcnQiO3M6NToiY2xhc3MiO3M6Mjg6Ik1hbW1hdHVzXEdyb3Vwc1xTcGF3bkRhZW1vbnMiO3M6NjoibWV0aG9kIjtzOjQ6ImJvb3QiO3M6Njoic3RhdGljIjtiOjA7czo1OiJhc3luYyI7YjoxO30=",
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMzOiJNYW1tYXR1c1xMaWZlQ3ljbGVFdmVudHNcU2h1dGRvd24iO3M6NToiY2xhc3MiO3M6Mjg6Ik1hbW1hdHVzXEdyb3Vwc1xTcGF3bkRhZW1vbnMiO3M6NjoibWV0aG9kIjtzOjg6InNodXRkb3duIjtzOjY6InN0YXRpYyI7YjowO3M6NToiYXN5bmMiO2I6MTt9"
+                ]
+            },
+            "Mammatus\\Groups\\Groups": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMzOiJNYW1tYXR1c1xMaWZlQ3ljbGVFdmVudHNcU2h1dGRvd24iO3M6NToiY2xhc3MiO3M6MjI6Ik1hbW1hdHVzXEdyb3Vwc1xHcm91cHMiO3M6NjoibWV0aG9kIjtzOjg6InNodXRkb3duIjtzOjY6InN0YXRpYyI7YjowO3M6NToiYXN5bmMiO2I6MTt9"
+                ]
+            },
+            "WyriHaximus\\Broadcast\\Dummy\\Listener": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMzOiJXeXJpSGF4aW11c1xCcm9hZGNhc3RcRHVtbXlcRXZlbnQiO3M6NToiY2xhc3MiO3M6MzY6Ild5cmlIYXhpbXVzXEJyb2FkY2FzdFxEdW1teVxMaXN0ZW5lciI7czo2OiJtZXRob2QiO3M6NjoiaGFuZGxlIjtzOjY6InN0YXRpYyI7YjowO3M6NToiYXN5bmMiO2I6MDt9",
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMzOiJXeXJpSGF4aW11c1xCcm9hZGNhc3RcRHVtbXlcRXZlbnQiO3M6NToiY2xhc3MiO3M6MzY6Ild5cmlIYXhpbXVzXEJyb2FkY2FzdFxEdW1teVxMaXN0ZW5lciI7czo2OiJtZXRob2QiO3M6MTA6ImhhbmRsZUJvdGgiO3M6Njoic3RhdGljIjtiOjA7czo1OiJhc3luYyI7YjowO30=",
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjg6InN0ZENsYXNzIjtzOjU6ImNsYXNzIjtzOjM2OiJXeXJpSGF4aW11c1xCcm9hZGNhc3RcRHVtbXlcTGlzdGVuZXIiO3M6NjoibWV0aG9kIjtzOjEwOiJoYW5kbGVCb3RoIjtzOjY6InN0YXRpYyI7YjowO3M6NToiYXN5bmMiO2I6MDt9",
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMzOiJXeXJpSGF4aW11c1xCcm9hZGNhc3RcRHVtbXlcRXZlbnQiO3M6NToiY2xhc3MiO3M6MzY6Ild5cmlIYXhpbXVzXEJyb2FkY2FzdFxEdW1teVxMaXN0ZW5lciI7czo2OiJtZXRob2QiO3M6MTg6ImhhbmRsZUJvdGhTdGF0aWNseSI7czo2OiJzdGF0aWMiO2I6MTtzOjU6ImFzeW5jIjtiOjA7fQ==",
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjg6InN0ZENsYXNzIjtzOjU6ImNsYXNzIjtzOjM2OiJXeXJpSGF4aW11c1xCcm9hZGNhc3RcRHVtbXlcTGlzdGVuZXIiO3M6NjoibWV0aG9kIjtzOjE4OiJoYW5kbGVCb3RoU3RhdGljbHkiO3M6Njoic3RhdGljIjtiOjE7czo1OiJhc3luYyI7YjowO30="
+                ]
+            },
+            "WyriHaximus\\Broadcast\\Dummy\\AsyncListener": {
+                "WyriHaximus\\Broadcast\\Composer\\Collector": [
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMzOiJXeXJpSGF4aW11c1xCcm9hZGNhc3RcRHVtbXlcRXZlbnQiO3M6NToiY2xhc3MiO3M6NDE6Ild5cmlIYXhpbXVzXEJyb2FkY2FzdFxEdW1teVxBc3luY0xpc3RlbmVyIjtzOjY6Im1ldGhvZCI7czo2OiJoYW5kbGUiO3M6Njoic3RhdGljIjtiOjA7czo1OiJhc3luYyI7YjoxO30=",
+                    "TzozOToiV3lyaUhheGltdXNcQnJvYWRjYXN0XENvbXBvc2VyXExpc3RlbmVyIjo1OntzOjU6ImV2ZW50IjtzOjMzOiJXeXJpSGF4aW11c1xCcm9hZGNhc3RcRHVtbXlcRXZlbnQiO3M6NToiY2xhc3MiO3M6NDE6Ild5cmlIYXhpbXVzXEJyb2FkY2FzdFxEdW1teVxBc3luY0xpc3RlbmVyIjtzOjY6Im1ldGhvZCI7czoxMjoiaGFuZGxlU3RhdGljIjtzOjY6InN0YXRpYyI7YjoxO3M6NToiYXN5bmMiO2I6MTt9"
+                ]
+            }
+        }
+    }
+}

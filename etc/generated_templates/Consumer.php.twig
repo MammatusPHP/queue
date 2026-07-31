@@ -11,13 +11,22 @@ use Mammatus\Queue\Consumer\WorkerFactory;
 #[\Mammatus\Groups\Attributes\Group(\Mammatus\Groups\Type::{{ worker.type.name }}, '{{ worker.groupName }}')]
 final class {{ worker.generateClassesClassNameSuffix }} implements \Mammatus\Groups\Contracts\LifeCycleHandler
 {
+    private const string QUEUE = '{{ worker.consumer.queue }}';
+    private const string DTO_CLASS = \{{ worker.dtoClass }}::class;
+
     /** @var ?\React\Promise\PromiseInterface<mixed> */
     private ?\React\Promise\PromiseInterface $promise = null;
 
+    private readonly \Psr\Log\LoggerInterface $logger;
+
     public function __construct(
         private readonly \Mammatus\Queue\Consumer $consumer,
-//        private readonly \Psr\Log\LoggerInterface $logger,
+        \Psr\Log\LoggerInterface $logger,
     ) {
+        $this->logger = new \WyriHaximus\PSR3\ContextLogger\ContextLogger($logger, [
+            'queue' => self::QUEUE,
+            'dtoClass' => self::DTO_CLASS,
+        ]);
     }
 
     public static function group(): string
@@ -27,15 +36,15 @@ final class {{ worker.generateClassesClassNameSuffix }} implements \Mammatus\Gro
 
     public function start(): void
     {
-//        $this->logger->debug('Starting consumer: {serverName}', ['serverName' => self::NAME]);
+        $this->logger->debug('Starting consumer for queue {queue} with DTO {dtoClass}');
         $this->promise = $this->consumer->setupConsumer(WorkerFactory\{{ worker.generateClassesClassNameSuffix }}::create());
-//        $this->logger->debug('Started server: {serverName}', ['serverName' => self::NAME]);
+        $this->logger->debug('Started consumer for queue {queue} with DTO {dtoClass}');
     }
 
     public function stop(): void
     {
-//        $this->logger->debug('Stopping server: {serverName}', ['serverName' => self::NAME]);
+        $this->logger->debug('Stopping consumer for queue {queue} with DTO {dtoClass}');
         $this->promise?->cancel();
-//        $this->logger->debug('Stopped server: {serverName}', ['serverName' => self::NAME]);
+        $this->logger->debug('Stopped consumer for queue {queue} with DTO {dtoClass}');
     }
 }

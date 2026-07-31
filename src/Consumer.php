@@ -46,10 +46,16 @@ final class Consumer implements Listener
     /** @return PromiseInterface<mixed> */
     public function setupConsumer(Worker $worker): PromiseInterface
     {
-        $this->logger->debug('Setting up logger for ' . $worker->class);
-        $logger = new ContextLogger($this->logger, ['worker' => $worker->class, 'method' => $worker->method]);
+        $logger = new ContextLogger($this->logger, [
+            'worker' => $worker->class,
+            'method' => $worker->method,
+            'queue' => $worker->queue,
+            'dtoClass' => $worker->dtoClass,
+        ]);
 
-        $this->logger->debug('Getting worker instance for ' . $worker->class);
+        $logger->debug('Setting up logger for {worker}');
+
+        $logger->debug('Getting worker instance for {worker}');
         $workerInstance = $this->container->get($worker->class);
         if (! ($workerInstance instanceof WorkerContract)) {
             throw new RuntimeException('Worker instance must be instance of ' . WorkerContract::class);
@@ -58,9 +64,14 @@ final class Consumer implements Listener
         $promises = [
             sleep(1),
         ];
-        $this->logger->debug('Starting ' . $worker->concurrency . ' workers for ' . $worker->class);
+        $logger->debug('Starting {concurrency} workers for queue {queue} with DTO {dtoClass}', [
+            'concurrency' => $worker->concurrency,
+        ]);
         for ($i = 0; $i < $worker->concurrency; $i++) {
-            $this->logger->info('Starting consumer ' . ($i + 1) . ' of ' . $worker->concurrency . ' for ' . $worker->class);
+            $logger->info('Starting consumer {index} of {concurrency} for queue {queue} with DTO {dtoClass}', [
+                'index' => $i + 1,
+                'concurrency' => $worker->concurrency,
+            ]);
             $promises[] = async(fn (): bool => $this->consume($worker, $workerInstance, new ContextLogger($logger, ['fiber' => $i])))();
         }
 
@@ -73,7 +84,7 @@ final class Consumer implements Listener
         while ($this->running) {
             $message = $consumer->receiveNoWait();
             if (! $message instanceof Message) {
-                await(sleep(1));
+                await(futurePromise());
                 continue;
             }
 
@@ -87,24 +98,22 @@ final class Consumer implements Listener
     #[WithSpan]
     private function handleMessage(Message $message, \Interop\Queue\Consumer $consumer, Worker $worker, WorkerContract $workerInstance, LoggerInterface $baseLogger): void
     {
-        $logger = new ContextLogger($baseLogger, ['dtoClass' => $worker->dtoClass]);
-
         try {
-            $this->logger->debug('Hydrating message');
+            $baseLogger->debug('Hydrating message');
             $dto = $this->hydrateMessage(
                 $worker,
                 $this->decodeMessage($message),
             );
 
-            $this->logger->debug('Invoking worker');
+            $baseLogger->debug('Invoking worker');
             $workerInstance->{$worker->method}($dto);
 
-            $this->logger->debug('Acknowledging message');
+            $baseLogger->debug('Acknowledging message');
             $consumer->acknowledge($message);
         } catch (Throwable $error) {
-            $this->logger->debug('Rejecting message');
+            $baseLogger->debug('Rejecting message');
             $consumer->reject($message);
-            CallableThrowableLogger::create($logger)($error);
+            CallableThrowableLogger::create($baseLogger)($error);
         }
     }
 
