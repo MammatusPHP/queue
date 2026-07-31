@@ -29,13 +29,36 @@ final class ConsumerTest extends AsyncTestCase
         $workerInstance                                               = Mockery::mock(WorkerContract::class);
         $workerInstance->expects('perform')->once()->with(Mockery::type(EmptyMessage::class));
         $container->expects('get')->with(Noop::class)->once()->andReturn($workerInstance);
-        $logger->expects('debug')->with('Setting up logger for ' . Noop::class)->once();
-        $logger->expects('debug')->with('Getting worker instance for ' . Noop::class)->once();
-        $logger->expects('debug')->with('Starting 1 workers for ' . Noop::class)->once();
-        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->atLeast()->once();
-        $logger->expects('debug')->with('Hydrating message')->once();
-        $logger->expects('debug')->with('Invoking worker')->once();
-        $logger->expects('debug')->with('Acknowledging message')->once();
+        $workerContext = Mockery::subset([
+            'worker' => Noop::class,
+            'method' => 'perform',
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]);
+        $fiberContext  = Mockery::subset([
+            'worker' => Noop::class,
+            'method' => 'perform',
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+            'fiber' => 0,
+        ]);
+
+        $logger->expects('log')->with('debug', 'Setting up logger for {worker}', $workerContext)->once();
+        $logger->expects('log')->with('debug', 'Getting worker instance for {worker}', $workerContext)->once();
+        $logger->expects('log')->with('debug', 'Starting {concurrency} workers for queue {queue} with DTO {dtoClass}', Mockery::subset([
+            'concurrency' => 1,
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]))->once();
+        $logger->expects('log')->with('info', 'Starting consumer {index} of {concurrency} for queue {queue} with DTO {dtoClass}', Mockery::subset([
+            'index' => 1,
+            'concurrency' => 1,
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]))->atLeast()->once();
+        $logger->expects('log')->with('debug', 'Hydrating message', $fiberContext)->once();
+        $logger->expects('log')->with('debug', 'Invoking worker', $fiberContext)->once();
+        $logger->expects('log')->with('debug', 'Acknowledging message', $fiberContext)->once();
 
         $message = new Message();
         $message->setBody('[]');
@@ -63,13 +86,36 @@ final class ConsumerTest extends AsyncTestCase
             ConsumerFactory::CREATE_CONSUMER_EXPECTED,
         );
         $container->expects('get')->with(Noop::class)->once()->andReturn(Mockery::mock(WorkerContract::class));
-        $logger->expects('debug')->with('Setting up logger for ' . Noop::class)->once();
-        $logger->expects('debug')->with('Getting worker instance for ' . Noop::class)->once();
-        $logger->expects('debug')->with('Starting 1 workers for ' . Noop::class)->once();
-        $logger->expects('info')->with('Starting consumer 1 of 1 for ' . Noop::class)->once();
-        $logger->expects('debug')->with('Hydrating message')->once();
-        $logger->expects('debug')->with('Invoking worker')->never();
-        $logger->expects('debug')->with('Rejecting message')->once();
+        $workerContext = Mockery::subset([
+            'worker' => Noop::class,
+            'method' => 'perform',
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]);
+        $fiberContext  = Mockery::subset([
+            'worker' => Noop::class,
+            'method' => 'perform',
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+            'fiber' => 0,
+        ]);
+
+        $logger->expects('log')->with('debug', 'Setting up logger for {worker}', $workerContext)->once();
+        $logger->expects('log')->with('debug', 'Getting worker instance for {worker}', $workerContext)->once();
+        $logger->expects('log')->with('debug', 'Starting {concurrency} workers for queue {queue} with DTO {dtoClass}', Mockery::subset([
+            'concurrency' => 1,
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]))->once();
+        $logger->expects('log')->with('info', 'Starting consumer {index} of {concurrency} for queue {queue} with DTO {dtoClass}', Mockery::subset([
+            'index' => 1,
+            'concurrency' => 1,
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]))->once();
+        $logger->expects('log')->with('debug', 'Hydrating message', $fiberContext)->once();
+        $logger->expects('log')->with('debug', 'Invoking worker', $fiberContext)->never();
+        $logger->expects('log')->with('debug', 'Rejecting message', $fiberContext)->once();
         $logger->expects('log')->withArgs(static function (string $type, string $error): bool {
             if ($type !== 'error') {
                 return false;

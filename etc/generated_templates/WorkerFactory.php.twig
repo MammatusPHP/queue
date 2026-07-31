@@ -19,7 +19,7 @@ final class {{ worker.generateClassesClassNameSuffix }}
             \{{ worker.class }}::class,
             '{{ worker.method }}',
             \{{ worker.dtoClass }}::class,
-            \json_decode('{{ worker.consumer.addOns|json_encode()|raw }}', true), /** @phpstan-ignore-line */
+            \json_decode('{{ worker.consumer.addOns|json_encode()|raw }}', true),
         );
     }
 }
