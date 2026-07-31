@@ -17,6 +17,7 @@ use WyriHaximus\Composer\GenerativePluginTooling\Helper\TwigFile;
 use WyriHaximus\Composer\GenerativePluginTooling\Item as ItemContract;
 use WyriHaximus\Composer\GenerativePluginTooling\LogStages;
 
+use function array_values;
 use function ksort;
 use function md5;
 use function serialize;
@@ -61,6 +62,7 @@ final class Plugin implements GenerativePlugin
         Remove::fileOnlyIfItExists($rootPath . '/src/Hydrator.php');
         Remove::fileOnlyIfItExists($rootPath . '/src/Producer.php');
 
+        $queues  = [];
         $map     = [];
         $workers = [];
         $dtos    = [];
@@ -69,6 +71,7 @@ final class Plugin implements GenerativePlugin
                 continue;
             }
 
+            $queues[$item->consumer->queue] = $item->consumer->queue;
             $map[$item->dtoClass]           = [
                 'dtoClass' => $item->dtoClass,
                 'queue' => $item->consumer->queue,
@@ -88,6 +91,7 @@ final class Plugin implements GenerativePlugin
             );
         }
 
+        ksort($queues);
         ksort($map);
         ksort($workers);
         ksort($dtos);
@@ -102,6 +106,12 @@ final class Plugin implements GenerativePlugin
             $rootPath . '/etc/generated_templates/GroupAddons.php.twig',
             $rootPath . '/src/Kubernetes/Helm/GroupAddons.php',
             ['workers' => $workers],
+        );
+
+        TwigFile::render(
+            $rootPath . '/etc/generated_templates/TerraformQueueList.php.twig',
+            $rootPath . '/src/Terraform/Queues.php',
+            ['queues' => array_values($queues)],
         );
 
         File::write(
