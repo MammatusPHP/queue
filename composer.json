@@ -39,7 +39,7 @@
     "bbqueue/bunny": "dev-main",
     "bunny/bunny": "0.6.0-alpha.3@dev",
     "shipmonk/dead-code-detector": "^0.14.1 || ^0.15.0 || ^1.0.0",
-    "wyrihaximus/async-test-utilities": "^13.5.0",
+    "wyrihaximus/async-test-utilities": "^14.0.0",
     "wyrihaximus/makefiles": "^0.13.3"
   },
   "suggest": {
