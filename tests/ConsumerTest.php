@@ -62,6 +62,7 @@ final class ConsumerTest extends AsyncTestCase
 
         $message = new Message();
         $message->setBody('[]');
+        $message->setHeaders([]);
 
         $worker = new Worker(
             'noop',
@@ -126,6 +127,7 @@ final class ConsumerTest extends AsyncTestCase
 
         $message = new Message();
         $message->setBody('{]');
+        $message->setHeaders([]);
 
         $worker = new Worker(
             'noop',

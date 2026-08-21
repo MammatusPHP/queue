@@ -88,7 +88,13 @@ final class Consumer implements Listener
                 continue;
             }
 
-            $this->handleMessage($message, $consumer, $worker, $workerInstance, $baseLogger);
+            $detach = TraceHeaders::activate($message->getHeaders());
+            try {
+                $this->handleMessage($message, $consumer, $worker, $workerInstance, $baseLogger);
+            } finally {
+                $detach();
+            }
+
             await(futurePromise());
         }
 

@@ -36,7 +36,7 @@ final class Producer implements ProducerContract
     {
         $message = new Message();
         $message->setBody($this->encodeMessage($this->serializeMessage($work)));
-        $message->setHeaders([]);
+        $message->setHeaders(TraceHeaders::inject());
 
         $this->producer->send(
             new Queue($this->lookUp($work)),
