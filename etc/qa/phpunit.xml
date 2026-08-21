@@ -9,6 +9,13 @@
         <include>
             <directory suffix=".php">../../src/</directory>
         </include>
+        <exclude>
+            <directory suffix=".php">../../src/Consumer</directory>
+            <directory suffix=".php">../../src/Kubernetes</directory>
+            <directory suffix=".php">../../src/Terraform</directory>
+            <file>../../src/Hydrator.php</file>
+            <file>../../src/Producer.php</file>
+        </exclude>
     </source>
     <extensions>
         <bootstrap class="Ergebnis\PHPUnit\SlowTestDetector\Extension"/>

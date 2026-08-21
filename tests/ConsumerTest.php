@@ -11,6 +11,8 @@ use Mammatus\Queue\Contracts\Worker as WorkerContract;
 use Mammatus\Queue\Worker;
 use Mockery;
 use PHPUnit\Framework\Attributes\Test;
+use RuntimeException;
+use stdClass;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use WyriHaximus\React\PHPUnit\TimeOut;
 
@@ -140,6 +142,83 @@ final class ConsumerTest extends AsyncTestCase
         $internalConsumer->expects('receiveNoWait')->once()->andReturn($message);
         $internalConsumer->expects('reject')->with($message)->once()->andReturnUsing(static function () use ($consumer): void {
             $consumer->close();
+        });
+
+        await($consumer->setupConsumer($worker));
+    }
+
+    #[Test]
+    public function invalidWorkerInstance(): void
+    {
+        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+            ConsumerFactory::CREATE_CONSUMER_NOT_EXPECTED,
+        );
+        $container->expects('get')->with(Noop::class)->once()->andReturn(new stdClass());
+        $workerContext = Mockery::subset([
+            'worker' => Noop::class,
+            'method' => 'perform',
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]);
+
+        $logger->expects('log')->with('debug', 'Setting up logger for {worker}', $workerContext)->once();
+        $logger->expects('log')->with('debug', 'Getting worker instance for {worker}', $workerContext)->once();
+
+        $worker = new Worker(
+            'noop',
+            1,
+            Noop::class,
+            'perform',
+            EmptyMessage::class,
+            [],
+        );
+
+        self::expectException(RuntimeException::class);
+        self::expectExceptionMessageIsOrContains('Worker instance must be instance of ' . WorkerContract::class);
+
+        await($consumer->setupConsumer($worker));
+    }
+
+    #[Test]
+    public function consumeWithoutMessage(): void
+    {
+        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+            ConsumerFactory::CREATE_CONSUMER_EXPECTED,
+        );
+        $container->expects('get')->with(Noop::class)->once()->andReturn(Mockery::mock(WorkerContract::class));
+        $workerContext = Mockery::subset([
+            'worker' => Noop::class,
+            'method' => 'perform',
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]);
+
+        $logger->expects('log')->with('debug', 'Setting up logger for {worker}', $workerContext)->once();
+        $logger->expects('log')->with('debug', 'Getting worker instance for {worker}', $workerContext)->once();
+        $logger->expects('log')->with('debug', 'Starting {concurrency} workers for queue {queue} with DTO {dtoClass}', Mockery::subset([
+            'concurrency' => 1,
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]))->once();
+        $logger->expects('log')->with('info', 'Starting consumer {index} of {concurrency} for queue {queue} with DTO {dtoClass}', Mockery::subset([
+            'index' => 1,
+            'concurrency' => 1,
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+        ]))->once();
+
+        $worker = new Worker(
+            'noop',
+            1,
+            Noop::class,
+            'perform',
+            EmptyMessage::class,
+            [],
+        );
+        $internalConsumer->expects('receiveNoWait')->once()->andReturnUsing(static function () use ($consumer): null {
+            $consumer->close();
+
+            return null;
         });
 
         await($consumer->setupConsumer($worker));
