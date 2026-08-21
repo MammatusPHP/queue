@@ -18,14 +18,14 @@
         "src\/Consumer\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3.php": "3b300a67dc8c90a0d3f81e0b069cb655",
         "src\/Consumer\/MammatusDevAppQueueNoopViaPerformForNoopWithMammatusDevAppQueueEmptyMessage.php": "e87ecdbeddee13e399f0941b98a9646f",
         "src\/Kubernetes\/Helm\/GroupAddons.php": "f2b18c23f91d475d861b0fc96d4bfab9",
-        "src\/Producer.php": "c847451419e8876cd76ce076271c8beb",
+        "src\/Producer.php": "451efb076e7544283b29b5ffb6aeb481",
         "src\/LifeCycle\/CloseContext.php": "d5f3bcfe74f64363b257d852b9d52bfd",
         "src\/Encoder\/JSON.php": "8729fd9756696866130567e5f81fa671",
         "src\/Hydrator.php": "d61742456e3d4fabf2544a4ad773f262",
         "src\/Worker.php": "3273363b4a5f89ad96d7f285b845264c",
         "src\/Message.php": "b256ad5e533130b92d429e11051df9e7",
         "src\/Terraform\/Queues.php": "befe4d4b66b0ed6b8b6731e1893739e4",
-        "src\/Consumer.php": "bb46e98766e5172fb4839f8819ffd63b",
+        "src\/Consumer.php": "fd146aead09c1c01f6d90f718b0a1cb0",
         "src\/Composer\/Collector.php": "c7eef8cac7254f9c0b243df5d2a1f65d",
         "src\/Composer\/Item.php": "440616b66b6d868e31cff2ac8c23c711",
         "src\/Composer\/Plugin.php": "ea1a2186f461c836306ff583fd672050",
@@ -76,7 +76,8 @@
         "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Listener.php": "be8a4afceed894ba7b3ae1ad947b3433",
         "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Installer.php": "9d053f9c4413356e2174a91e0c3eef17",
         "vendor\/wyrihaximus\/broadcast\/src\/ArrayListenerProvider.php": "6c5a8090d4b3addb52d5abdd260349f7",
-        "vendor\/wyrihaximus\/broadcast\/src\/PHPSan\/ShipMonkDeadCode.php": "b84f4bdbbd1605b7f6eefe6011a816f1"
+        "vendor\/wyrihaximus\/broadcast\/src\/PHPSan\/ShipMonkDeadCode.php": "b84f4bdbbd1605b7f6eefe6011a816f1",
+        "src\/TraceHeaders.php": "57db364e8e091f4c478c52c25473ed04"
     },
     "classFilterOutcome": {
         "c3ab155a55ede2aac7bfac17b7a7a13c": true,
@@ -254,7 +255,10 @@
         "0947b611be248d1f3c62ebbcfec81ee1": false,
         "94388e1741039b779592fca11e9500bc": false,
         "3adcbb888ab9b08c711f500a645ef78c": false,
-        "1ef1881023760dbc8d7377a3eb19cb0a": false
+        "1ef1881023760dbc8d7377a3eb19cb0a": false,
+        "c45af52a9432bc493ee29762d43978ce": false,
+        "47eb5c29f85253f46ced13293aa24cf1": false,
+        "e106e648f60bcc4e3ea1d4d43279fd2b": false
     },
     "classFilePaths": {
         "Mammatus\\DevApp\\Queue\\Bar": "etc\/dev-app\/Bar.php",
@@ -332,7 +336,8 @@
         "WyriHaximus\\Broadcast\\Composer\\Listener": "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Listener.php",
         "WyriHaximus\\Broadcast\\Composer\\Installer": "vendor\/wyrihaximus\/broadcast\/src\/Composer\/Installer.php",
         "WyriHaximus\\Broadcast\\ArrayListenerProvider": "vendor\/wyrihaximus\/broadcast\/src\/ArrayListenerProvider.php",
-        "WyriHaximus\\Broadcast\\PHPSan\\ShipMonkDeadCode": "vendor\/wyrihaximus\/broadcast\/src\/PHPSan\/ShipMonkDeadCode.php"
+        "WyriHaximus\\Broadcast\\PHPSan\\ShipMonkDeadCode": "vendor\/wyrihaximus\/broadcast\/src\/PHPSan\/ShipMonkDeadCode.php",
+        "Mammatus\\Queue\\TraceHeaders": "src\/TraceHeaders.php"
     },
     "failedReflections": [
         "Mammatus\\Queue\\Encoder\\InvalidJSONArray",
