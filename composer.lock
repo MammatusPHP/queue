@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fc4ace755a94b0ee7b31a935b0be730",
+    "content-hash": "aed50bc9a10e2277282dae64f0fd207d",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -7268,16 +7268,16 @@
         },
         {
             "name": "infection/infection",
-            "version": "0.34.2",
+            "version": "0.35.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/infection/infection.git",
-                "reference": "18d9bef39fae250f202920d1453ab96e793e6637"
+                "reference": "3ad1715fdfb9026ce87c17a33029fdfc58d98244"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/infection/infection/zipball/18d9bef39fae250f202920d1453ab96e793e6637",
-                "reference": "18d9bef39fae250f202920d1453ab96e793e6637",
+                "url": "https://api.github.com/repos/infection/infection/zipball/3ad1715fdfb9026ce87c17a33029fdfc58d98244",
+                "reference": "3ad1715fdfb9026ce87c17a33029fdfc58d98244",
                 "shasum": ""
             },
             "require": {
@@ -7298,7 +7298,7 @@
                 "ondram/ci-detector": "^4.1.0",
                 "php": "^8.3",
                 "psr/log": "^2.0 || ^3.0",
-                "sanmai/di-container": "^0.1.16",
+                "sanmai/di-container": "^0.1.23 || ^0.2",
                 "sanmai/duoclock": "^0.1.0",
                 "sanmai/later": "^0.1.7",
                 "sanmai/pipeline": "^7.2",
@@ -7313,7 +7313,8 @@
             },
             "conflict": {
                 "antecedent/patchwork": "<2.1.25",
-                "dg/bypass-finals": "<1.4.1"
+                "dg/bypass-finals": "<1.4.1",
+                "marc-mabe/php-enum": "<4.4"
             },
             "require-dev": {
                 "carthage-software/mago": "^1.20",
@@ -7391,7 +7392,7 @@
             ],
             "support": {
                 "issues": "https://github.com/infection/infection/issues",
-                "source": "https://github.com/infection/infection/tree/0.34.2"
+                "source": "https://github.com/infection/infection/tree/0.35.3"
             },
             "funding": [
                 {
@@ -7403,7 +7404,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2026-08-07T12:59:47+00:00"
+            "time": "2026-08-27T20:02:05+00:00"
         },
         {
             "name": "infection/mutator",
@@ -8320,11 +8321,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.2.8",
+            "version": "2.2.12",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e285254e60f33c21902efef4a926ca0987c06804",
-                "reference": "e285254e60f33c21902efef4a926ca0987c06804",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/174b0d88710f00a42598886504dd7a146f91ace5",
+                "reference": "174b0d88710f00a42598886504dd7a146f91ace5",
                 "shasum": ""
             },
             "require": {
@@ -8380,7 +8381,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-04T22:21:45+00:00"
+            "time": "2026-08-31T19:09:43+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -12557,16 +12558,16 @@
         },
         {
             "name": "wyrihaximus/async-test-utilities",
-            "version": "14.0.0",
+            "version": "14.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-async-test-utilities.git",
-                "reference": "4ee086fdf2d62528d40bb83b9a925def8a40647d"
+                "reference": "0ec7e369addb6f50208e91d1b33d3d3f7ed622d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/4ee086fdf2d62528d40bb83b9a925def8a40647d",
-                "reference": "4ee086fdf2d62528d40bb83b9a925def8a40647d",
+                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/0ec7e369addb6f50208e91d1b33d3d3f7ed622d7",
+                "reference": "0ec7e369addb6f50208e91d1b33d3d3f7ed622d7",
                 "shasum": ""
             },
             "require": {
@@ -12577,14 +12578,14 @@
                 "react/promise": "^3.3.0",
                 "wyrihaximus/phpstan-react": "^2.0.0",
                 "wyrihaximus/react-phpunit-run-tests-in-fiber": "^4.0.0",
-                "wyrihaximus/test-utilities": "^14.0.0"
+                "wyrihaximus/test-utilities": "^14.1.0"
             },
             "conflict": {
                 "composer/compoer": "<2.6.0"
             },
             "require-dev": {
                 "react/promise-timer": "^1.11.0",
-                "wyrihaximus/makefiles": "^0.14.0"
+                "wyrihaximus/makefiles": "^0.14.2"
             },
             "type": "library",
             "extra": {
@@ -12612,7 +12613,7 @@
             "description": "Test utilities for api-clients packages",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-async-test-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-async-test-utilities/tree/14.0.0"
+                "source": "https://github.com/WyriHaximus/php-async-test-utilities/tree/14.1.0"
             },
             "funding": [
                 {
@@ -12620,7 +12621,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-15T16:05:04+00:00"
+            "time": "2026-08-23T08:44:37+00:00"
         },
         {
             "name": "wyrihaximus/coding-standard",
@@ -12676,16 +12677,16 @@
         },
         {
             "name": "wyrihaximus/makefiles",
-            "version": "0.14.1",
+            "version": "0.14.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/Makefiles.git",
-                "reference": "775a18e71e1913d4167c72829710a67bdf2dc346"
+                "reference": "fadcb1109c119db9746a9679b40588db90baa106"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/775a18e71e1913d4167c72829710a67bdf2dc346",
-                "reference": "775a18e71e1913d4167c72829710a67bdf2dc346",
+                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/fadcb1109c119db9746a9679b40588db90baa106",
+                "reference": "fadcb1109c119db9746a9679b40588db90baa106",
                 "shasum": ""
             },
             "require": {
@@ -12697,7 +12698,7 @@
                 "infection/infection": "<0.32.0"
             },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^14.0.0"
+                "wyrihaximus/test-utilities": "^14.1.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -12726,7 +12727,7 @@
             "description": "🧱 Makefile building blocks",
             "support": {
                 "issues": "https://github.com/WyriHaximus/Makefiles/issues",
-                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.14.1"
+                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.14.7"
             },
             "funding": [
                 {
@@ -12734,7 +12735,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-16T18:06:55+00:00"
+            "time": "2026-09-01T06:26:20+00:00"
         },
         {
             "name": "wyrihaximus/phpstan-no-safe",
@@ -12846,23 +12847,23 @@
         },
         {
             "name": "wyrihaximus/phpstan-rules-wrapper",
-            "version": "14.4.0",
+            "version": "14.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-phpstan-rules-wrapper.git",
-                "reference": "cc172e81ff4a11b7b3d1c918dbc55b69e5871a10"
+                "reference": "24c4878d3410c845a269d12311083aac766a4a1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-phpstan-rules-wrapper/zipball/cc172e81ff4a11b7b3d1c918dbc55b69e5871a10",
-                "reference": "cc172e81ff4a11b7b3d1c918dbc55b69e5871a10",
+                "url": "https://api.github.com/repos/WyriHaximus/php-phpstan-rules-wrapper/zipball/24c4878d3410c845a269d12311083aac766a4a1c",
+                "reference": "24c4878d3410c845a269d12311083aac766a4a1c",
                 "shasum": ""
             },
             "require": {
                 "ergebnis/phpstan-rules": "^2.13.1",
                 "php": "^8.4",
                 "phpstan/extension-installer": "^1.4.3",
-                "phpstan/phpstan": "^2.2.8",
+                "phpstan/phpstan": "^2.2.9",
                 "phpstan/phpstan-deprecation-rules": "^2.0.5",
                 "phpstan/phpstan-mockery": "^2.0.0",
                 "phpstan/phpstan-phpunit": "^2.0.18",
@@ -12871,8 +12872,8 @@
                 "shipmonk/phpstan-rules": "^4.4.0",
                 "staabm/phpstan-psr3": "^1.0.3",
                 "symplify/phpstan-extensions": "^12.0.2",
-                "tomasvotruba/type-coverage": "^2.3.0",
-                "wyrihaximus/phpstan-no-safe": "^1.0.0",
+                "tomasvotruba/type-coverage": "^2.3.4",
+                "wyrihaximus/phpstan-no-safe": "^1.1.0",
                 "yamadashy/phpstan-friendly-formatter": "^1.4.0"
             },
             "type": "library",
@@ -12896,7 +12897,7 @@
             "description": "🌯 PHPStan rules wrapper",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-phpstan-rules-wrapper/issues",
-                "source": "https://github.com/WyriHaximus/php-phpstan-rules-wrapper/tree/14.4.0"
+                "source": "https://github.com/WyriHaximus/php-phpstan-rules-wrapper/tree/14.5.0"
             },
             "funding": [
                 {
@@ -12904,35 +12905,35 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-07T13:38:30+00:00"
+            "time": "2026-08-22T12:54:27+00:00"
         },
         {
             "name": "wyrihaximus/qa-tooling-wrapper",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-qa-tooling-wrapper.git",
-                "reference": "4b5477ee312c9e06920e0bb5d92f57631f337198"
+                "reference": "3288524403ce4dd0d98e892906154edad146f010"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-qa-tooling-wrapper/zipball/4b5477ee312c9e06920e0bb5d92f57631f337198",
-                "reference": "4b5477ee312c9e06920e0bb5d92f57631f337198",
+                "url": "https://api.github.com/repos/WyriHaximus/php-qa-tooling-wrapper/zipball/3288524403ce4dd0d98e892906154edad146f010",
+                "reference": "3288524403ce4dd0d98e892906154edad146f010",
                 "shasum": ""
             },
             "require": {
                 "ergebnis/composer-normalize": "^2.52.0",
                 "ergebnis/phpunit-slow-test-detector": "^2.24.0",
                 "icanhazstring/composer-unused": "^0.9.6",
-                "infection/infection": "^0.34.2",
+                "infection/infection": "^0.35.2",
                 "maglnet/composer-require-checker": "^4.20.0",
-                "mockery/mockery": "^1.6.12",
+                "mockery/mockery": "^1.6.15",
                 "php": "^8.4",
                 "php-parallel-lint/php-console-highlighter": "^1.0.0",
                 "php-parallel-lint/php-parallel-lint": "^1.4.0",
-                "phpstan/phpstan": "^2.2.8",
-                "phpunit/phpunit": "^13.3.0",
-                "rector/rector": "^2.6.1",
+                "phpstan/phpstan": "^2.2.9",
+                "phpunit/phpunit": "^13.3.1",
+                "rector/rector": "^2.6.3",
                 "roave/backward-compatibility-check": "^8.19.0",
                 "shipmonk/coverage-guard": "^1.1.0",
                 "squizlabs/php_codesniffer": "^4.0.4",
@@ -12945,7 +12946,7 @@
                 "sanmai/pipeline": "<7.9"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.13.3"
+                "wyrihaximus/makefiles": "^0.14.2"
             },
             "type": "library",
             "extra": {
@@ -12971,7 +12972,7 @@
             "description": "🌯 QA tooling wrapper for `wyrihaximus/test-utilities`",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-qa-tooling-wrapper/issues",
-                "source": "https://github.com/WyriHaximus/php-qa-tooling-wrapper/tree/2.0.0"
+                "source": "https://github.com/WyriHaximus/php-qa-tooling-wrapper/tree/2.1.0"
             },
             "funding": [
                 {
@@ -12979,7 +12980,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-08T13:32:46+00:00"
+            "time": "2026-08-22T17:18:43+00:00"
         },
         {
             "name": "wyrihaximus/react-phpunit-run-tests-in-fiber",
@@ -13085,16 +13086,16 @@
         },
         {
             "name": "wyrihaximus/test-utilities",
-            "version": "14.0.0",
+            "version": "14.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-test-utilities.git",
-                "reference": "13da2cbc7d321c75341e3dcfea41a584632df0aa"
+                "reference": "95d72fdedbfc7c17c1a89a6c508f06926ae4b115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/13da2cbc7d321c75341e3dcfea41a584632df0aa",
-                "reference": "13da2cbc7d321c75341e3dcfea41a584632df0aa",
+                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/95d72fdedbfc7c17c1a89a6c508f06926ae4b115",
+                "reference": "95d72fdedbfc7c17c1a89a6c508f06926ae4b115",
                 "shasum": ""
             },
             "require": {
@@ -13102,9 +13103,9 @@
                 "ext-hash": "^8.4",
                 "ext-json": "^8.4",
                 "php": "^8.4",
-                "phpunit/phpunit": "^13.3",
-                "wyrihaximus/phpstan-rules-wrapper": "^14.4.0",
-                "wyrihaximus/qa-tooling-wrapper": "^2.0.0",
+                "phpunit/phpunit": "^13.3.1",
+                "wyrihaximus/phpstan-rules-wrapper": "^14.5.0",
+                "wyrihaximus/qa-tooling-wrapper": "^2.1.0",
                 "wyrihaximus/rector-config": "^1.0.0"
             },
             "conflict": {
@@ -13116,7 +13117,7 @@
                 "wyrihaximus/makefiles": "<0.5.0"
             },
             "require-dev": {
-                "wyrihaximus/makefiles": "^0.13.3"
+                "wyrihaximus/makefiles": "^0.14.2"
             },
             "suggest": {
                 "wyrihaximus/async-test-utilities": "The recommended addition to this package when building ReactPHP packages and projects.",
@@ -13149,7 +13150,7 @@
             "description": "🛠️ Test utilities for api-clients packages",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-test-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/14.0.0"
+                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/14.1.0"
             },
             "funding": [
                 {
@@ -13157,7 +13158,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-09T21:33:10+00:00"
+            "time": "2026-08-22T23:29:54+00:00"
         },
         {
             "name": "yamadashy/phpstan-friendly-formatter",
