@@ -40,6 +40,16 @@ final class Collector implements ItemCollector
             return;
         }
 
+        yield from $this->collectWithAttributes($class, $attributes);
+    }
+
+    /**
+     * @param array<class-string, list<object>> $attributes
+     *
+     * @return iterable<ItemContract>
+     */
+    private function collectWithAttributes(ReflectionClass $class, array $attributes): iterable
+    {
         /** @var array<Consumer> $consumerAttributes */
         $consumerAttributes = [];
 

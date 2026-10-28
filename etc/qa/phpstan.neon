@@ -13,6 +13,9 @@ parameters:
 		-
 			message: '#Variable method call on Mammatus\\Queue\\Contracts\\Worker.#'
 			path: ../../src/Consumer.php
+		-
+			message: '#Call to internal static method OpenTelemetry\\Context\\Context::getRoot\(\) from outside its root namespace OpenTelemetry.#'
+			path: ../../tests/ProducerTest.php
 	ergebnis:
 		noExtends:
 			classesAllowedToBeExtended:

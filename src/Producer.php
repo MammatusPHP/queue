@@ -13,7 +13,6 @@ use Mammatus\Queue\Contracts\Work;
 use OpenTelemetry\API\Instrumentation\WithSpan;
 use RuntimeException;
 
-use function gettype;
 use function is_array;
 
 /**
@@ -57,7 +56,7 @@ final class Producer implements ProducerContract
          * @phpstan-ignore function.alreadyNarrowedType
          */
         if (! is_array($array)) {
-            throw new RuntimeException('Message isn\'t translated into an array but ' . gettype($array) . ' instead');
+            throw new RuntimeException('Message isn\'t translated into an array');
         }
 
         return $array;
