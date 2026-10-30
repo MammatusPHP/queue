@@ -25,7 +25,7 @@ final class ConsumerTest extends AsyncTestCase
     #[Test]
     public function consumeHappy(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+        [$consumer, $container, , $internalConsumer, $logger] = ConsumerFactory::create(
             ConsumerFactory::CREATE_CONSUMER_EXPECTED,
         );
         $workerInstance                                               = Mockery::mock(WorkerContract::class);
@@ -85,7 +85,7 @@ final class ConsumerTest extends AsyncTestCase
     #[Test]
     public function invalidJson(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+        [$consumer, $container, , $internalConsumer, $logger] = ConsumerFactory::create(
             ConsumerFactory::CREATE_CONSUMER_EXPECTED,
         );
         $container->expects('get')->with(Noop::class)->once()->andReturn(Mockery::mock(WorkerContract::class));
@@ -150,7 +150,7 @@ final class ConsumerTest extends AsyncTestCase
     #[Test]
     public function invalidWorkerInstance(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+        [$consumer, $container, , , $logger] = ConsumerFactory::create(
             ConsumerFactory::CREATE_CONSUMER_NOT_EXPECTED,
         );
         $container->expects('get')->with(Noop::class)->once()->andReturn(new stdClass());
@@ -182,7 +182,7 @@ final class ConsumerTest extends AsyncTestCase
     #[Test]
     public function consumeWithoutMessage(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+        [$consumer, $container, , $internalConsumer, $logger] = ConsumerFactory::create(
             ConsumerFactory::CREATE_CONSUMER_EXPECTED,
         );
         $container->expects('get')->with(Noop::class)->once()->andReturn(Mockery::mock(WorkerContract::class));

@@ -32,7 +32,7 @@ final readonly class OHellNo implements Worker
     }
 
     /** @phpstan-ignore method.unused */
-    private function prut(BeerMessage $work): void
+    private function prut(): void
     {
         await(timedPromise(3, true));
     }
