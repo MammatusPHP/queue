@@ -11,10 +11,8 @@ use Mammatus\Queue\Contracts\Encoder;
 use Mammatus\Queue\Contracts\Producer as ProducerContract;
 use Mammatus\Queue\Contracts\Work;
 use OpenTelemetry\API\Instrumentation\WithSpan;
-use React\EventLoop\LoopInterface;
 use RuntimeException;
 
-use function gettype;
 use function is_array;
 
 /**
@@ -52,8 +50,7 @@ final class Producer implements ProducerContract
     ): array {
         $serialized = $this->hydrator->serializeObject($work);
         if (! is_array($serialized)) {
-            $type = $serialized instanceof LoopInterface ? 'object' : gettype($serialized);
-            throw new RuntimeException('Message isn\'t translated into an array but ' . $type . ' instead');
+            throw new RuntimeException('Message isn\'t translated into an array');
         }
 
         /** @var array<string, mixed> $array */
