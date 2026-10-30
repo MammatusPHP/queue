@@ -11,6 +11,7 @@ use Mammatus\Queue\Contracts\Worker as WorkerContract;
 use Mammatus\Queue\Worker;
 use Mockery;
 use PHPUnit\Framework\Attributes\Test;
+use React\EventLoop\Loop;
 use RuntimeException;
 use stdClass;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
@@ -25,7 +26,7 @@ final class ConsumerTest extends AsyncTestCase
     #[Test]
     public function consumeHappy(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+        [$consumer, $container, , $internalConsumer, $logger] = ConsumerFactory::create(
             ConsumerFactory::CREATE_CONSUMER_EXPECTED,
         );
         $workerInstance                                               = Mockery::mock(WorkerContract::class);
@@ -85,7 +86,7 @@ final class ConsumerTest extends AsyncTestCase
     #[Test]
     public function invalidJson(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+        [$consumer, $container, , $internalConsumer, $logger] = ConsumerFactory::create(
             ConsumerFactory::CREATE_CONSUMER_EXPECTED,
         );
         $container->expects('get')->with(Noop::class)->once()->andReturn(Mockery::mock(WorkerContract::class));
@@ -150,7 +151,7 @@ final class ConsumerTest extends AsyncTestCase
     #[Test]
     public function invalidWorkerInstance(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+        [$consumer, $container, , , $logger] = ConsumerFactory::create(
             ConsumerFactory::CREATE_CONSUMER_NOT_EXPECTED,
         );
         $container->expects('get')->with(Noop::class)->once()->andReturn(new stdClass());
@@ -180,17 +181,26 @@ final class ConsumerTest extends AsyncTestCase
     }
 
     #[Test]
-    public function consumeWithoutMessage(): void
+    public function consumeAfterInitiallyMissingMessage(): void
     {
-        [$consumer, $container, $context, $internalConsumer, $logger] = ConsumerFactory::create(
+        [$consumer, $container, , $internalConsumer, $logger] = ConsumerFactory::create(
             ConsumerFactory::CREATE_CONSUMER_EXPECTED,
         );
-        $container->expects('get')->with(Noop::class)->once()->andReturn(Mockery::mock(WorkerContract::class));
+        $workerInstance = Mockery::mock(WorkerContract::class);
+        $workerInstance->expects('perform')->once()->with(Mockery::type(EmptyMessage::class));
+        $container->expects('get')->with(Noop::class)->once()->andReturn($workerInstance);
         $workerContext = Mockery::subset([
             'worker' => Noop::class,
             'method' => 'perform',
             'queue' => 'noop',
             'dtoClass' => EmptyMessage::class,
+        ]);
+        $fiberContext  = Mockery::subset([
+            'worker' => Noop::class,
+            'method' => 'perform',
+            'queue' => 'noop',
+            'dtoClass' => EmptyMessage::class,
+            'fiber' => 0,
         ]);
 
         $logger->expects('log')->with('debug', 'Setting up logger for {worker}', $workerContext)->once();
@@ -206,6 +216,9 @@ final class ConsumerTest extends AsyncTestCase
             'queue' => 'noop',
             'dtoClass' => EmptyMessage::class,
         ]))->once();
+        $logger->expects('log')->with('debug', 'Hydrating message', $fiberContext)->once();
+        $logger->expects('log')->with('debug', 'Invoking worker', $fiberContext)->once();
+        $logger->expects('log')->with('debug', 'Acknowledging message', $fiberContext)->once();
 
         $worker = new Worker(
             'noop',
@@ -215,12 +228,55 @@ final class ConsumerTest extends AsyncTestCase
             EmptyMessage::class,
             [],
         );
-        $internalConsumer->expects('receiveNoWait')->once()->andReturnUsing(static function () use ($consumer): null {
-            $consumer->close();
+        $message = new Message();
+        $message->setBody('[]');
+        $message->setHeaders([]);
+        $ready = false;
+        $readyScheduled = false;
+        $stop = false;
+        $acknowledgementScheduled = false;
+        $startedAt = microtime(true);
+        $internalConsumer->expects('receiveNoWait')->atLeast()->twice()->andReturnUsing(
+            static function () use (&$ready, &$readyScheduled, &$stop, &$acknowledgementScheduled, $message, $consumer): ?Message {
+                if (! $ready) {
+                    if ($readyScheduled) {
+                        throw new RuntimeException('Consumer did not yield while polling');
+                    }
 
-            return null;
-        });
+                    $readyScheduled = true;
+                    Loop::futureTick(static function () use (&$ready): void {
+                        $ready = true;
+                    });
+
+                    return null;
+                }
+
+                if ($acknowledgementScheduled && ! $stop) {
+                    throw new RuntimeException('Consumer did not yield after handling a message');
+                }
+
+                if (! $stop) {
+                    return $message;
+                }
+
+                $consumer->close();
+
+                return null;
+            },
+        );
+        $internalConsumer->expects('acknowledge')->with($message)->once()->andReturnUsing(
+            static function () use (&$stop, &$acknowledgementScheduled): void {
+                $acknowledgementScheduled = true;
+                Loop::futureTick(static function () use (&$stop): void {
+                    $stop = true;
+                });
+            },
+        );
 
         await($consumer->setupConsumer($worker));
+
+        $elapsed = microtime(true) - $startedAt;
+        self::assertGreaterThanOrEqual(1.0, $elapsed);
+        self::assertLessThan(2.0, $elapsed);
     }
 }

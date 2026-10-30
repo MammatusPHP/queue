@@ -13,7 +13,6 @@ use Mammatus\Queue\Contracts\Work;
 use OpenTelemetry\API\Instrumentation\WithSpan;
 use RuntimeException;
 
-use function gettype;
 use function is_array;
 
 /**
@@ -49,16 +48,13 @@ final class Producer implements ProducerContract
     private function serializeMessage(
         Work $work,
     ): array {
-        /** @var array<string, mixed> $array */
-        $array = $this->hydrator->serializeObject($work);
-        /**
-         * Sure it's already narrowed but the above call return type is still mixed
-         *
-         * @phpstan-ignore function.alreadyNarrowedType
-         */
-        if (! is_array($array)) {
-            throw new RuntimeException('Message isn\'t translated into an array but ' . gettype($array) . ' instead');
+        $serialized = $this->hydrator->serializeObject($work);
+        if (! is_array($serialized)) {
+            throw new RuntimeException('Message isn\'t translated into an array');
         }
+
+        /** @var array<string, mixed> $array */
+        $array = $serialized;
 
         return $array;
     }

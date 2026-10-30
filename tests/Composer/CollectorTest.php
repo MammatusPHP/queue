@@ -20,6 +20,7 @@ use Mammatus\Tests\Queue\Composer\Fixture\MultiMethodWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\NoAttributes;
 use Mammatus\Tests\Queue\Composer\Fixture\NonWorkDtoWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\OnlyConsumersWorker;
+use Mammatus\Tests\Queue\Composer\Fixture\SanitizedGroupNameWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\SplitOutWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\TwoParameterBeforeOneParameterWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\UnionNonWorkFirstWorker;
@@ -84,5 +85,14 @@ final class CollectorTest extends TestCase
         self::assertSame($expectedSuffix, $item->generateClassesClassNameSuffix);
         self::assertSame('perform', $item->method);
         self::assertSame('split', $item->consumer->friendlyName);
+    }
+
+    #[Test]
+    public function collectGeneratesSanitizedGroupName(): void
+    {
+        $items = [...(new Collector())->collect(ReflectionClass::createFromName(SanitizedGroupNameWorker::class))];
+
+        self::assertCount(1, $items);
+        self::assertSame('queue-worker-queue-name-friendly-name', $items[0]->groupName);
     }
 }
