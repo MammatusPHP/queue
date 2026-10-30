@@ -49,11 +49,13 @@ final class ProducerTest extends AsyncTestCase
     #[Test]
     public function sendInjectsTraceHeadersWhenSpanIsActive(): void
     {
+        $rootContext = Context::getRoot();
+        $rootScope = $rootContext->activate();
         $scope = Span::wrap(SpanContext::create(
             '4bf92f3577b34da6a3ce929d0e0e4736',
             '00f067aa0ba902b7',
             TraceFlags::SAMPLED,
-        ))->storeInContext(Context::getCurrent())->activate();
+        ))->storeInContext($rootContext)->activate();
 
         try {
             $interOpProducer = Mockery::mock(InteropProducer::class);
@@ -80,6 +82,7 @@ final class ProducerTest extends AsyncTestCase
             ));
         } finally {
             $scope->detach();
+            $rootScope->detach();
         }
     }
 }

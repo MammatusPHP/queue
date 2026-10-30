@@ -36,10 +36,14 @@ final class Collector implements ItemCollector
             $attributes[$attributeSpiegel::class][] = $attributeSpiegel;
         }
 
-        if (! array_key_exists(Consumer::class, $attributes) && ! array_key_exists(Consumers::class, $attributes)) {
-            return;
+        if (array_key_exists(Consumer::class, $attributes) || array_key_exists(Consumers::class, $attributes)) {
+            yield from $this->collectWithAttributes($class, $attributes);
         }
+    }
 
+    /** @param array<class-string, list<object>> $attributes */
+    private function collectWithAttributes(ReflectionClass $class, array $attributes): iterable
+    {
         /** @var array<Consumer> $consumerAttributes */
         $consumerAttributes = [];
 

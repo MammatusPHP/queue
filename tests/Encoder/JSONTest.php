@@ -31,14 +31,14 @@ final class JSONTest extends TestCase
     #[Test]
     public function decode(): void
     {
-        self::assertSame(['a' => 1], new JSON()->decode('{"a":1}'));
+        self::assertSame(['a' => 1, 'b' => 2], new JSON()->decode('{"a":1,"b":2}'));
     }
 
     #[Test]
     public function decodeInvalid(): void
     {
         self::expectException(InvalidJSON::class);
-        self::expectExceptionMessageIsOrContains('Message is not valid JSON');
+        self::expectExceptionMessageIsOrContains('Message is not valid JSON: Syntax error');
 
         new JSON()->decode('{]');
     }
