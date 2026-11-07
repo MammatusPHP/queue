@@ -16,6 +16,14 @@
     "minCoveredMsi": 100,
     "ignoreMsiWithNoMutations": true,
     "mutators": {
-        "@default": true
-    }
+        "@default": true,
+        "Concat": false,
+        "ConcatOperandRemoval": false,
+        "FunctionCallRemoval": false,
+        "ReturnRemoval": false,
+        "Continue_": false,
+        "ArrayItemRemoval": false,
+        "UnwrapArrayValues": false
+    },
+    "threads": 64
 }

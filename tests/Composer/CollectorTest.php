@@ -13,13 +13,16 @@ use Mammatus\Groups\Type;
 use Mammatus\Queue\Composer\Collector;
 use Mammatus\Queue\Composer\Item;
 use Mammatus\Tests\Queue\Composer\Fixture\BothConsumerAttributesWorker;
+use Mammatus\Tests\Queue\Composer\Fixture\ConstructorWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\DestructorBeforeMethodWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\IntersectionWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\MultiConsumerWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\MultiMethodWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\NoAttributes;
+use Mammatus\Tests\Queue\Composer\Fixture\NoFriendlyNameWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\NonWorkDtoWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\OnlyConsumersWorker;
+use Mammatus\Tests\Queue\Composer\Fixture\SanitizedGroupNameWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\SplitOutWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\TwoParameterBeforeOneParameterWorker;
 use Mammatus\Tests\Queue\Composer\Fixture\UnionNonWorkFirstWorker;
@@ -28,6 +31,9 @@ use PHPUnit\Framework\Attributes\Test;
 use Realodix\ChangeCase\ChangeCase;
 use Roave\BetterReflection\Reflection\ReflectionClass;
 use WyriHaximus\TestUtilities\TestCase;
+
+use function md5;
+use function str_replace;
 
 final class CollectorTest extends TestCase
 {
@@ -48,6 +54,7 @@ final class CollectorTest extends TestCase
         yield 'multi-consumer' => [MultiConsumerWorker::class, 1, Type::Daemon];
         yield 'two-parameter-before-one-parameter' => [TwoParameterBeforeOneParameterWorker::class, 1, Type::Daemon];
         yield 'destructor-before-method' => [DestructorBeforeMethodWorker::class, 1, Type::Daemon];
+        yield 'constructor-worker' => [ConstructorWorker::class, 1, Type::Daemon];
     }
 
     /** @param class-string $className */
@@ -84,5 +91,71 @@ final class CollectorTest extends TestCase
         self::assertSame($expectedSuffix, $item->generateClassesClassNameSuffix);
         self::assertSame('perform', $item->method);
         self::assertSame('split', $item->consumer->friendlyName);
+    }
+
+    #[Test]
+    public function collectGeneratesSanitizedGroupName(): void
+    {
+        $items = [...(new Collector())->collect(ReflectionClass::createFromName(SanitizedGroupNameWorker::class))];
+
+        self::assertCount(1, $items);
+        /** @var Item $item */
+        $item = $items[0];
+        self::assertSame('queue-worker-queue-name-friendly-name', $item->groupName);
+        self::assertSame(
+            'mammatus-tests-queue-composer-fixture-sanitized-group-name-worker-via-perform-for-queue-name-with-mammatus-dev-app-queue-empty-message-as-friendly-name-friendly-name',
+            $item->generatedIndex,
+        );
+    }
+
+    #[Test]
+    public function collectGeneratesGroupNameWithFriendlyName(): void
+    {
+        $items = [...(new Collector())->collect(ReflectionClass::createFromName(SplitOutWorker::class))];
+
+        self::assertCount(1, $items);
+        /** @var Item $item */
+        $item = $items[0];
+
+        $expectedSuffix = ChangeCase::pascal(
+            SplitOutWorker::class . '_Via_perform_For_noop_With_' . EmptyMessage::class . '_As_split',
+        );
+
+        self::assertSame(
+            str_replace(['.', '_'], '-', ChangeCase::snake($expectedSuffix) . '-split'),
+            $item->generatedIndex,
+        );
+        self::assertSame(
+            str_replace(['.', '_'], '-', 'queue-worker-noop-split'),
+            $item->groupName,
+        );
+    }
+
+    #[Test]
+    public function collectGeneratesGroupNameWithHashWhenNoFriendlyName(): void
+    {
+        $items = [...(new Collector())->collect(ReflectionClass::createFromName(NoFriendlyNameWorker::class))];
+
+        self::assertCount(1, $items);
+        /** @var Item $item */
+        $item = $items[0];
+
+        $expectedSuffix = ChangeCase::pascal(
+            NoFriendlyNameWorker::class . '_Via_perform_For_noop_With_' . EmptyMessage::class,
+        );
+
+        self::assertSame($expectedSuffix, $item->generateClassesClassNameSuffix);
+
+        $hash = md5($expectedSuffix);
+        self::assertSame($hash, $item->hash);
+
+        self::assertSame(
+            str_replace(['.', '_'], '-', ChangeCase::snake($expectedSuffix) . '-' . $hash),
+            $item->generatedIndex,
+        );
+        self::assertSame(
+            str_replace(['.', '_'], '-', 'queue-worker-noop-' . $hash),
+            $item->groupName,
+        );
     }
 }

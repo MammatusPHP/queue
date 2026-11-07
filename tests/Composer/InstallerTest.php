@@ -101,6 +101,7 @@ final class InstallerTest extends TestCase
 
         self::assertFileDoesNotExist($sneakyFile);
         self::assertFileDoesNotExist($this->getTmpDir() . 'src/Generated/WorkerFactory/MammatusDevAppQueueOHellNoViaConstructForNoopWithMammatusDevAppQueueEmptyMessageAsNoop3.php');
+        self::assertFileExists($fileNameGroupAddons);
 
         $output = $io->output();
 
