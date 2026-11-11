@@ -371,12 +371,12 @@
         }
     },
     "failedReflections": [
-        "Mammatus\\Queue\\Composer\\CodeGenerator",
         "Mammatus\\Queue\\Encoder\\InvalidJSONArray",
         "Mammatus\\Queue\\Encoder\\InvalidJSON",
+        "Mammatus\\Queue\\Composer\\CodeGenerator",
+        "Mammatus\\ExitCode",
         "MammatusGeneratedCompiledContainer",
         "Mammatus\\Composer\\ContainerCompiler",
-        "Mammatus\\ExitCode",
         "Mammatus\\Groups\\Type",
         "Mammatus\\Groups\\Composer\\Installer",
         "Mammatus\\Kubernetes\\Events\\Helm\\Values\\Registry\\Section",
@@ -434,9 +434,9 @@
         "vendor\/mammatus\/groups\/src\/Composer\/Plugin.php": "d0494fc56d46d527dc6348eaef654c52",
         "vendor\/mammatus\/groups\/src\/Contracts\/LifeCycleHandler.php": "1f39df26c218f4c6f9d937a586921fe9",
         "vendor\/mammatus\/groups\/src\/Fallback\/DealingWIthLife.php": "a204e15a4b3c05e743fc64cecd91c563",
-        "vendor\/mammatus\/groups\/src\/Groups.php": "8872d11a23a94497620474bf7cf4b249",
+        "vendor\/mammatus\/groups\/src\/Groups.php": "443d5bf01bef4aed4fa95e18e66d4552",
         "vendor\/mammatus\/groups\/src\/PHPSan\/ShipMonkDeadCode.php": "7c4ae3abfb33687be93ead4fb88a5342",
-        "vendor\/mammatus\/groups\/src\/SpawnDaemons.php": "af33835f6032a0561a72a31755872b47",
+        "vendor\/mammatus\/groups\/src\/SpawnDaemons.php": "efe95059ebe9008f4c442a288368e4c6",
         "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values.php": "9c60541d631b204d40216fdb88efe77f",
         "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Groups.php": "c2db45949d9367fa04a695e04284fc45",
         "vendor\/mammatus\/kubernetes-events\/src\/Helm\/Values\/Groups\/Group.php": "cb3a3cadeb72100f69c609be6e32d56d",
@@ -455,8 +455,8 @@
         "vendor\/wyrihaximus\/broadcast\/src\/Dummy\/AsyncListener.php": "637ba799e7ae0795a0d3bbb8042dd60c",
         "vendor\/wyrihaximus\/broadcast\/src\/Dummy\/Event.php": "eee7243b959b042edda703bee019fb49",
         "vendor\/wyrihaximus\/broadcast\/src\/Dummy\/Listener.php": "5233f4f45b2017ab27c3b06cb470f3a7",
-        "vendor\/wyrihaximus\/broadcast\/src\/Generated\/AbstractListenerProvider.php": "2cc7907c6c80cd18759b9078a44517d5",
+        "vendor\/wyrihaximus\/broadcast\/src\/Generated\/AbstractListenerProvider.php": "0255cda49b1fe90ce74ab8be4f60198a",
         "vendor\/wyrihaximus\/broadcast\/src\/PHPSan\/ShipMonkDeadCode.php": "b84f4bdbbd1605b7f6eefe6011a816f1"
     },
-    "installedJsonHash": "0ab4eecaecbc11ac3cfe871d61efc8b4"
+    "installedJsonHash": "4362067a98b851cc6089cb4ecf1673e9"
 }
